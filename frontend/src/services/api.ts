@@ -76,6 +76,33 @@ export interface EtlRun {
   duracion_s: number | null; metrics: Record<string, any> | null; error: string | null;
 }
 
+export interface FuenteReal {
+  mode: string;
+  source_path: string;
+  exists: boolean;
+  last_modified: string | null;
+  source_orders: number;
+  loaded_orders: number;
+  last_import_at: string | null;
+  last_status: string | null;
+  watcher_interval_seconds: number;
+}
+
+export interface ResultadoImportacion {
+  status: string;
+  started_at: string;
+  finished_at: string;
+  inserted: number;
+  updated: number;
+  unchanged: number;
+  skipped: number;
+  lines: number;
+  products: number;
+  errors: string[];
+  source_mtime: string | null;
+  message: string;
+}
+
 export interface DemandaProducto {
   product_id: number; name: string; sku: string; category: string | null; stock: number; horizon: number; total_predicho: number;
   model_version: string; diaria: { fecha: string; cantidad: number }[];
@@ -126,5 +153,9 @@ export const getMetricas = async () => (await apiClient.get<Metricas>('/analytic
 
 export const ejecutarEtl = async (force: boolean) => (await apiClient.post<EtlRun>('/etl/run', null, { params: { force } })).data;
 export const getRuns = async () => (await apiClient.get<EtlRun[]>('/etl/runs', { params: { limit: 20 } })).data;
+
+export const getFuenteReal = async () => (await apiClient.get<FuenteReal>('/etl/source-status')).data;
+export const importarFuenteReal = async (force = false) =>
+  (await apiClient.post<ResultadoImportacion>('/etl/import', null, { params: { force } })).data;
 
 export const preguntarAsesor = async (pregunta: string) => (await apiClient.post<PlanAccion>('/advisor/ask', { pregunta })).data;

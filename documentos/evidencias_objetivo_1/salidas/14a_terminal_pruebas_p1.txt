@@ -1,0 +1,38 @@
+$ venv\Scripts\python -m pytest tests/unit/test_red_rooster.py tests/unit/test_red_rooster_analitica.py tests/unit/test_red_rooster_migracion.py tests/api/test_red_rooster_api.py -v
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 43 items
+
+tests/unit/test_red_rooster.py::test_carga_inicial_normaliza_fecha_y_omite_pii PASSED [  2%]
+tests/unit/test_red_rooster.py::test_reimportar_es_idempotente_y_actualiza_estado_y_lineas PASSED [  4%]
+tests/unit/test_red_rooster.py::test_mismo_cliente_tiene_hash_estable_y_otra_clave_lo_separa PASSED [  6%]
+tests/unit/test_red_rooster.py::test_json_invalido_no_crea_catalogo_ni_ventas PASSED [  9%]
+tests/unit/test_red_rooster.py::test_clave_de_privacidad_obligatoria PASSED [ 11%]
+tests/unit/test_red_rooster.py::test_huella_telefono_con_y_sin_prefijo_pais_es_el_mismo_cliente PASSED [ 13%]
+tests/unit/test_red_rooster.py::test_huella_solo_quita_57_si_son_12_digitos PASSED [ 16%]
+tests/unit/test_red_rooster.py::test_huella_telefono_tiene_prioridad_sobre_la_direccion PASSED [ 18%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_sin_telefono_usa_direccion_normalizada PASSED [ 20%]
+tests/unit/test_red_rooster.py::test_huella_sin_datos_identificables_no_crea_cliente PASSED [ 23%]
+tests/unit/test_red_rooster.py::test_huella_con_otra_clave_es_distinta PASSED [ 25%]
+tests/unit/test_red_rooster.py::test_canal_de_los_cuatro_valores PASSED  [ 27%]
+tests/unit/test_red_rooster.py::test_importar_clientes_segun_huella_y_canal PASSED [ 30%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_con_tipo_en_mayusculas_o_mixto_usa_la_direccion PASSED [ 32%]
+tests/unit/test_red_rooster.py::test_importar_domicilio_con_tipo_en_mayusculas_sin_telefono_recibe_cliente_y_canal PASSED [ 34%]
+tests/unit/test_red_rooster.py::test_privacidad_ningun_dato_personal_en_ninguna_tabla PASSED [ 37%]
+tests/unit/test_red_rooster.py::test_codigos_por_orden_de_primera_compra_aunque_el_json_venga_desordenado PASSED [ 39%]
+tests/unit/test_red_rooster.py::test_codigos_estables_entre_corridas_y_nuevos_continuan_la_numeracion PASSED [ 41%]
+tests/unit/test_red_rooster.py::test_cambio_de_tipo_en_origen_cuenta_como_actualizacion_y_cambia_el_canal PASSED [ 44%]
+tests/unit/test_red_rooster.py::test_segunda_corrida_sin_cambios_e_incremental_inserta_uno_y_actualiza_uno PASSED [ 46%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_continua_festivo_martes_y_quincena PASSED [ 48%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-03-30-2026-04-01-quincenas0] PASSED [ 51%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-04-29-2026-05-01-quincenas1] PASSED [ 53%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2028-02-28-2028-03-01-quincenas2] PASSED [ 55%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-12-30-2027-01-01-quincenas3] PASSED [ 58%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_incluye_dias_de_pedidos_cancelados_y_no_se_acumula_al_reimportar PASSED [ 60%]
+tests/unit/test_red_rooster_analitica.py::test_ventas_diarias_solo_pagados_lags_nulos_y_ticket PASSED [ 62%]
+tests/unit/test_red_rooster_analitica.py::test_media_movil_no_incluye_el_dia_actual PASSED [ 65%]
+tests/unit/test_red_rooster_analitica.py::test_un_pico_en_el_dia_d_no_cambia_su_propia_media_pero_si_la_de_d_mas_1 PASSED [ 67%]

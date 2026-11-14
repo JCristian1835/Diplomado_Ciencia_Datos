@@ -1,0 +1,8 @@
+$ python generar_evidencias.py   # paso 4: rr._leer_json y rr._fingerprint sobre la copia de trabajo
+pedidos.json     2.530.447 bytes   elementos leídos: 3042
+productos.json      11.253 bytes   elementos leídos: 44
+
+_fingerprint(pedidos.json, productos.json) = cbf2b0fd8d03f9c5…  (64 caracteres hexadecimales)
+Cálculo independiente (hashlib): coincide = True
+Segunda ejecución sobre los mismos archivos: misma huella = True
+Huella de la copia == huella de BD/ originales: True

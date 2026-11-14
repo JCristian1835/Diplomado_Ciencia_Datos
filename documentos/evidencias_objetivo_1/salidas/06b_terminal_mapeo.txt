@@ -1,0 +1,28 @@
+$ python generar_evidencias.py   # paso 6: mapeo origen -> destino calculado con el código del ETL y cotejado con SQLite
+estado (origen)  ->  status (destino)
+estado     status     pedidos
+---------  ---------  -------
+pagado     COMPLETED    3.016
+cancelado  CANCELLED       25
+entregado  COMPLETED        1
+Verificación en SQLite (status agrupado): coincide con la BD = True
+
+metodo_pago (origen)  ->  payment_method (destino)
+metodo_pago  payment_method  pedidos
+-----------  --------------  -------
+breb         TRANSFERENCIA     1.695
+efectivo     EFECTIVO          1.153
+tarjeta      TARJETA             110
+nequi        NEQUI                59
+(vacío)      EFECTIVO             25
+Verificación en SQLite (payment_method agrupado): coincide con la BD = True
+
+tipo (origen)  ->  canal (destino)
+tipo       canal      pedidos
+---------  ---------  -------
+llevar     llevar       1.528
+mesa       mesa         1.278
+domicilio  domicilio      231
+(vacío)    sin_dato         5
+Verificación en SQLite (canal agrupado): coincide con la BD = True
+

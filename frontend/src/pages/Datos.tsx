@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { ejecutarEtl, getMetricas, getRuns, mensajeError } from '../services/api';
+import { ejecutarEtl, getFuenteReal, getMetricas, getRuns, importarFuenteReal, mensajeError } from '../services/api';
 import { Pill, RunPill } from '../ui/Badges';
 import { Button } from '../ui/Button';
 import { Switch } from '../ui/Inputs';
@@ -8,13 +8,25 @@ import { Alert, Card, CardHeader, EmptyState, Skeleton, Stat } from '../ui/Surfa
 import { vars } from '../ui/cls';
 import { formatoDec, formatoFecha, formatoNum } from '../ui/format';
 import { useToast } from '../ui/useToast';
+import { CargaFuenteReal } from '../ui/CargaFuenteReal';
 
 export default function Datos() {
   const qc = useQueryClient();
   const avisar = useToast();
   const [force, setForce] = useState(false);
+  const [forzarImportacion, setForzarImportacion] = useState(false);
+  const fuente = useQuery({ queryKey: ['fuente-real'], queryFn: getFuenteReal, refetchInterval: 30_000 });
   const runs = useQuery({ queryKey: ['runs'], queryFn: getRuns });
   const metricas = useQuery({ queryKey: ['metricas'], queryFn: getMetricas });
+
+  const importar = useMutation({
+    mutationFn: () => importarFuenteReal(forzarImportacion),
+    onSuccess: (r) => {
+      avisar(r.message || 'Sincronización de datos reales completada', r.status === 'SUCCESS' ? 'ok' : 'info');
+      for (const key of ['fuente-real', 'productos', 'clientes', 'kpis', 'runs']) void qc.invalidateQueries({ queryKey: [key] });
+    },
+    onError: (e) => { avisar(mensajeError(e), 'error'); void qc.invalidateQueries({ queryKey: ['fuente-real'] }); },
+  });
 
   const ejecutar = useMutation({
     mutationFn: () => ejecutarEtl(force),
@@ -37,6 +49,18 @@ export default function Datos() {
         <h1 className="title rise" style={vars({ '--i': 1 })}>ETL y <em>modelos</em></h1>
         <p className="lead rise" style={vars({ '--i': 2 })}>Extrae de forma incremental (watermark), transforma con Pandas, entrena los tres modelos y carga el esquema analítico.</p>
       </header>
+
+      {fuente.isError && <Alert tone="danger" title="No se pudo consultar la fuente real" role="alert">{mensajeError(fuente.error)}</Alert>}
+      <CargaFuenteReal
+        fuente={fuente.data}
+        fuenteCargando={fuente.isLoading}
+        importando={importar.isPending}
+        forzar={forzarImportacion}
+        onForzar={setForzarImportacion}
+        onImportar={() => importar.mutate()}
+        error={importar.isError ? mensajeError(importar.error) : undefined}
+        resultado={importar.data}
+      />
 
       <Card feature className="rise" style={vars({ '--i': 3 })}>
         <CardHeader icon="datos" title="Ejecutar pipeline" />

@@ -1,0 +1,37 @@
+$ PRAGMA table_info(dim_fecha);
+cid  name               type         notnull  dflt_value  pk
+---  -----------------  -----------  -------  ----------  --
+0    fecha              DATE         1        NULL        1
+1    anio               INTEGER      1        NULL        0
+2    mes                INTEGER      1        NULL        0
+3    dia                INTEGER      1        NULL        0
+4    dia_semana         INTEGER      1        NULL        0
+5    nombre_dia_semana  VARCHAR(12)  1        NULL        0
+6    es_festivo         BOOLEAN      1        NULL        0
+7    es_quincena        BOOLEAN      1        NULL        0
+8    es_descanso        BOOLEAN      1        NULL        0
+(9 filas)
+
+$ PRAGMA table_info(ventas_diarias);
+cid  name             type            notnull  dflt_value  pk
+---  ---------------  --------------  -------  ----------  --
+0    fecha            DATE            1        NULL        1
+1    pedidos_pagados  INTEGER         1        NULL        0
+2    ingresos         NUMERIC(12, 2)  1        NULL        0
+3    ticket_promedio  NUMERIC(12, 2)  0        NULL        0
+4    lag_1            INTEGER         0        NULL        0
+5    lag_7            INTEGER         0        NULL        0
+6    media_movil_7    NUMERIC(12, 4)  0        NULL        0
+(7 filas)
+
+$ SELECT COUNT(*) AS filas, MIN(fecha) AS desde, MAX(fecha) AS hasta, CAST(julianday(MAX(fecha)) - julianday(MIN(fecha)) AS INTEGER) + 1 AS dias_calendario FROM dim_fecha;
+filas  desde       hasta       dias_calendario
+-----  ----------  ----------  ---------------
+236    2026-03-23  2026-11-13  236
+(1 fila)
+
+$ SELECT COUNT(*) AS filas, MIN(fecha) AS desde, MAX(fecha) AS hasta FROM ventas_diarias;
+filas  desde       hasta
+-----  ----------  ----------
+236    2026-03-23  2026-11-13
+(1 fila)

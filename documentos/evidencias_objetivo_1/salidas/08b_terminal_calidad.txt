@@ -1,0 +1,43 @@
+$ GET http://localhost:8010/api/v1/etl/quality   (Authorization: Bearer <token del login>)
+HTTP 200 · reglas: 9
+
+regla                   registros_afectados
+----------------------  -------------------
+fechas_con_zona_utc                      91
+fechas_con_zona_bogota                2.951
+pedidos_sin_canal                         5
+mesero_texto_libre                       77
+productos_costo_cero                      8
+total_no_cuadra                           1
+pedidos_cancelados                       25
+pago_sin_dato                            25
+lineas_omitidas                           0
+
+fechas_con_zona_utc     Fechas de pedido con desfase +00:00 (UTC)
+                        -> Se convierten a America/Bogota (UTC-5) y se guardan como hora local naive
+fechas_con_zona_bogota  Fechas de pedido con desfase -05:00 (Bogotá)
+                        -> Se guardan como hora local naive sin cambio de hora
+pedidos_sin_canal       Pedidos sin tipo (mesa/llevar/domicilio)
+                        -> Se conservan con canal 'sin_dato'
+mesero_texto_libre      Campo mesero en texto libre sin catálogo; se cuentan los valores distintos
+                        -> Campo descartado: no se almacena ni se usa en el análisis
+productos_costo_cero    Productos del catálogo con costo 0 o vacío
+                        -> Costo 0 equivale a dato faltante: no se interpreta como margen del 100 %
+total_no_cuadra         Pedidos cuyo total difiere de la suma de qty*precio en más de 1
+                        -> Se conserva el total de origen; queda marcado para revisión
+pedidos_cancelados      Pedidos con estado distinto de pagado/entregado
+                        -> Se cargan como CANCELLED y no suman a ventas ni ingresos
+pago_sin_dato           Pedidos sin método de pago reconocido
+                        -> Se asigna EFECTIVO (columna obligatoria); en cancelados no afecta los ingresos
+lineas_omitidas         Líneas con producto inexistente en el catálogo o cantidad <= 0
+                        -> Se omiten al cargar el detalle del pedido
+
+conteos:
+tabla           registros
+--------------  ---------
+pedidos             3.042
+detalle             5.022
+productos              44
+clientes              126
+dim_fecha             236
+ventas_diarias        236

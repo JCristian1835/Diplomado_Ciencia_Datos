@@ -1,0 +1,29 @@
+$ SELECT * FROM ventas_diarias WHERE fecha BETWEEN '2026-07-20' AND '2026-07-27' ORDER BY fecha;
+fecha       pedidos_pagados  ingresos  ticket_promedio  lag_1  lag_7  media_movil_7
+----------  ---------------  --------  ---------------  -----  -----  ------------------
+2026-07-20  17               731200    43011.76         15     14     12.142857142857142
+2026-07-21  0                0         NULL             17     0      12.571428571428571
+2026-07-22  16               467400    29212.5          0      7      12.571428571428571
+2026-07-23  12               373400    31116.67         16     20     13.857142857142858
+2026-07-24  21               1046300   49823.81         12     15     12.714285714285714
+2026-07-25  16               876400    54775            21     14     13.571428571428571
+2026-07-26  17               773500    45500            16     15     13.857142857142858
+2026-07-27  12               401800    33483.33         17     17     14.142857142857142
+(8 filas)
+
+$ SELECT fecha, nombre_dia_semana, es_festivo, es_quincena, es_descanso FROM dim_fecha WHERE fecha BETWEEN '2026-07-20' AND '2026-07-27' ORDER BY fecha;
+fecha       nombre_dia_semana  es_festivo  es_quincena  es_descanso
+----------  -----------------  ----------  -----------  -----------
+2026-07-20  lunes              1           0            0
+2026-07-21  martes             0           0            1
+2026-07-22  miércoles          0           0            0
+2026-07-23  jueves             0           0            0
+2026-07-24  viernes            0           0            0
+2026-07-25  sábado             0           0            0
+2026-07-26  domingo            0           0            0
+2026-07-27  lunes              0           0            0
+(8 filas)
+
+$ python generar_evidencias.py   # paso 10: verificación independiente
+Verificación independiente de media_movil_7 en 2026-07-20: promedio de los 7 días previos = 12.1429; guardado = 12.1429; coincide = True
+lag_7 de 2026-07-27 = pedidos_pagados de 2026-07-20: True

@@ -1,0 +1,1156 @@
+[
+  {
+    "id": "01a_arquitectura",
+    "archivo": "01a_arquitectura.png",
+    "paso": 1,
+    "tipo": "diagrama",
+    "titulo": "Arquitectura del proceso ETL (extraer, transformar, cargar)",
+    "archivo_codigo": "backend/app/etl/red_rooster.py · red_rooster_analitica.py · watch_red_rooster.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "pedidos_origen": 3042,
+      "productos_origen": 44,
+      "reglas_calidad": 9,
+      "tablas_destino": [
+        "products",
+        "customers",
+        "sales",
+        "sale_items",
+        "dim_fecha",
+        "ventas_diarias",
+        "calidad_datos",
+        "source_import_runs"
+      ]
+    },
+    "nota": "Diagrama generado con nombres verificados contra el código (funciones por AST y tablas por Base.metadata); no es una captura de una herramienta externa.",
+    "orden": 1
+  },
+  {
+    "id": "02a_perfil_fuente",
+    "archivo": "02a_perfil_fuente.png",
+    "paso": 2,
+    "tipo": "terminal",
+    "titulo": "Perfil de la fuente: BD/pedidos.json y BD/productos.json",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "python generar_evidencias.py   # paso 2: perfil_fuente(BD/pedidos.json, BD/productos.json)",
+    "cifras": {
+      "pedidos": 3042,
+      "ids_distintos": 3042,
+      "fecha_primera_utc": "2026-03-23T18:49:49+00:00",
+      "fecha_ultima_utc": "2026-11-13T17:50:04-05:00",
+      "campos": [
+        "id",
+        "fecha",
+        "tipo",
+        "mesero",
+        "nota",
+        "productos",
+        "total",
+        "estado",
+        "cliente",
+        "telefono",
+        "direccion",
+        "ip",
+        "pagado_en",
+        "metodo_pago",
+        "mesa_id",
+        "mesa_num",
+        "metodo_pago_indicado"
+      ],
+      "personales_con_valor": {
+        "cliente": 3042,
+        "telefono": 236,
+        "direccion": 235,
+        "nota": 280,
+        "ip": 3042
+      },
+      "personales_distintos": {
+        "cliente": 559,
+        "telefono": 166,
+        "direccion": 144,
+        "nota": 239,
+        "ip": 664
+      },
+      "estado": {
+        "pagado": 3016,
+        "cancelado": 25,
+        "entregado": 1
+      },
+      "tipo": {
+        "llevar": 1528,
+        "mesa": 1278,
+        "domicilio": 231,
+        "(vacío)": 5
+      },
+      "metodo_pago": {
+        "breb": 1695,
+        "efectivo": 1153,
+        "tarjeta": 110,
+        "nequi": 59,
+        "(vacío)": 25
+      },
+      "lineas": 5022,
+      "productos_catalogo": 44,
+      "productos_costo_cero": 8
+    },
+    "nota": "Solo conteos: ningún valor personal aparece en la salida.",
+    "orden": 2
+  },
+  {
+    "id": "03a_codigo_config",
+    "archivo": "03a_codigo_config.png",
+    "paso": 3,
+    "tipo": "codigo",
+    "titulo": "Configuración: ruta del origen y clave de privacidad",
+    "archivo_codigo": "backend/app/core/config.py",
+    "lineas": [
+      [
+        11,
+        11
+      ],
+      [
+        30,
+        31
+      ],
+      [
+        58,
+        70
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "11-11 y 30-31 y 58-70",
+    "orden": 3
+  },
+  {
+    "id": "03b_terminal_seguridad",
+    "archivo": "03b_terminal_seguridad.png",
+    "paso": 3,
+    "tipo": "terminal",
+    "titulo": "Archivos excluidos del repositorio y existencia de la clave de privacidad",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "Get-Content .gitignore && Get-Content backend\\.gitignore && Test-Path backend\\data\\.privacy_key && (Get-Content backend\\data\\.privacy_key -Raw).Trim().Length   # solo la longitud; el valor nunca se imprime",
+    "cifras": {
+      "gitignore_raiz_excluye_BD": true,
+      "gitignore_raiz_excluye_privacy_key": true,
+      "gitignore_backend_excluye_privacy_key": true,
+      "privacy_key_existe": true,
+      "privacy_key_longitud": 64
+    },
+    "nota": "El valor de la clave nunca se muestra.",
+    "orden": 4
+  },
+  {
+    "id": "04a_codigo_extraccion",
+    "archivo": "04a_codigo_extraccion.png",
+    "paso": 4,
+    "tipo": "codigo",
+    "titulo": "Extracción: lectura del JSON y huella SHA-256 de los archivos de origen",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        61,
+        73
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "61-73",
+    "orden": 5
+  },
+  {
+    "id": "04b_terminal_huella",
+    "archivo": "04b_terminal_huella.png",
+    "paso": 4,
+    "tipo": "terminal",
+    "titulo": "Huella SHA-256 del origen",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "python generar_evidencias.py   # paso 4: rr._leer_json y rr._fingerprint sobre la copia de trabajo",
+    "cifras": {
+      "huella_16": "cbf2b0fd8d03f9c5",
+      "huella_longitud": 64,
+      "bytes_pedidos": 2530447,
+      "bytes_productos": 11253,
+      "pedidos": 3042,
+      "productos": 44,
+      "calculo_independiente_coincide": true
+    },
+    "nota": "La huella completa son 64 hex; en el documento basta citar los 16 primeros caracteres.",
+    "orden": 6
+  },
+  {
+    "id": "05a_codigo_fecha",
+    "archivo": "05a_codigo_fecha.png",
+    "paso": 5,
+    "tipo": "codigo",
+    "titulo": "Fechas: conversión a hora local de Bogotá (UTC-5) sin zona",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        18,
+        18
+      ],
+      [
+        25,
+        29
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "18-18 y 25-29",
+    "orden": 7
+  },
+  {
+    "id": "05b_terminal_fechas",
+    "archivo": "05b_terminal_fechas.png",
+    "paso": 5,
+    "tipo": "terminal",
+    "titulo": "Conversión de fechas: antes y después de _fecha()",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "python generar_evidencias.py   # paso 5: rr._fecha() sobre 3 pedidos reales",
+    "cifras": {
+      "ejemplos": [
+        {
+          "id": 101,
+          "caso": "+00:00 (UTC)",
+          "origen": "2026-03-23T18:49:49+00:00",
+          "destino": "2026-03-23 13:49:49"
+        },
+        {
+          "id": 172,
+          "caso": "-05:00 (Bogotá)",
+          "origen": "2026-03-30T12:38:04-05:00",
+          "destino": "2026-03-30 12:38:04"
+        },
+        {
+          "id": 110,
+          "caso": "+00:00 cambia de día",
+          "origen": "2026-03-24T01:08:14+00:00",
+          "destino": "2026-03-23 20:08:14"
+        }
+      ],
+      "pedidos_utc": 91,
+      "pedidos_bogota": 2951
+    },
+    "nota": "Solo id y fecha; el tercer ejemplo muestra un pedido UTC que cae el día anterior en hora de Bogotá.",
+    "orden": 8
+  },
+  {
+    "id": "06a_codigo_estandarizacion",
+    "archivo": "06a_codigo_estandarizacion.png",
+    "paso": 6,
+    "tipo": "codigo",
+    "titulo": "Estandarización: estados, métodos de pago y canal",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        19,
+        22
+      ],
+      [
+        32,
+        34
+      ],
+      [
+        153,
+        156
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "19-22 y 32-34 y 153-156",
+    "orden": 9
+  },
+  {
+    "id": "06b_terminal_mapeo",
+    "archivo": "06b_terminal_mapeo.png",
+    "paso": 6,
+    "tipo": "terminal",
+    "titulo": "Mapeo origen → destino con conteos reales",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "python generar_evidencias.py   # paso 6: mapeo origen -> destino calculado con el código del ETL y cotejado con SQLite",
+    "cifras": {
+      "estado": {
+        "mapeo": [
+          {
+            "origen": "pagado",
+            "destino": "COMPLETED",
+            "pedidos": 3016
+          },
+          {
+            "origen": "cancelado",
+            "destino": "CANCELLED",
+            "pedidos": 25
+          },
+          {
+            "origen": "entregado",
+            "destino": "COMPLETED",
+            "pedidos": 1
+          }
+        ],
+        "coincide_con_bd": true,
+        "total": 3042
+      },
+      "metodo_pago": {
+        "mapeo": [
+          {
+            "origen": "nequi",
+            "destino": "NEQUI",
+            "pedidos": 59
+          },
+          {
+            "origen": "efectivo",
+            "destino": "EFECTIVO",
+            "pedidos": 1153
+          },
+          {
+            "origen": "breb",
+            "destino": "TRANSFERENCIA",
+            "pedidos": 1695
+          },
+          {
+            "origen": "tarjeta",
+            "destino": "TARJETA",
+            "pedidos": 110
+          },
+          {
+            "origen": "(vacío)",
+            "destino": "EFECTIVO",
+            "pedidos": 25
+          }
+        ],
+        "coincide_con_bd": true,
+        "total": 3042
+      },
+      "tipo": {
+        "mapeo": [
+          {
+            "origen": "domicilio",
+            "destino": "domicilio",
+            "pedidos": 231
+          },
+          {
+            "origen": "llevar",
+            "destino": "llevar",
+            "pedidos": 1528
+          },
+          {
+            "origen": "mesa",
+            "destino": "mesa",
+            "pedidos": 1278
+          },
+          {
+            "origen": "(vacío)",
+            "destino": "sin_dato",
+            "pedidos": 5
+          }
+        ],
+        "coincide_con_bd": true,
+        "total": 3042
+      }
+    },
+    "nota": "Los destinos se calculan con ESTADOS_PAGADOS, PAGOS y canal_de del código; el estado vacío/otro cae en CANCELLED y el pago vacío en EFECTIVO.",
+    "orden": 10
+  },
+  {
+    "id": "07a_codigo_anonimizacion",
+    "archivo": "07a_codigo_anonimizacion.png",
+    "paso": 7,
+    "tipo": "codigo",
+    "titulo": "Anonimización: HMAC del teléfono y código C### por orden de primera compra",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        37,
+        58
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "37-58",
+    "orden": 11
+  },
+  {
+    "id": "07b_terminal_clientes",
+    "archivo": "07b_terminal_clientes.png",
+    "paso": 7,
+    "tipo": "terminal",
+    "titulo": "Clientes anonimizados en SQLite y verificación de ausencia de datos personales",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "PRAGMA table_info(customers); && SELECT id, codigo_anonimo, substr(source_key, 1, 12) AS source_key_12, first_name FROM customers ORDER BY id LIMIT 5; && SELECT COUNT(*) AS clientes, COUNT(DISTINCT source_key) AS source_key_distintas, COUNT(DISTINCT codigo_anonimo) AS codigos_distintos, MIN(codigo_anonimo) AS primero, MAX(codigo_anonimo) AS ultimo, COUNT(encrypted_email) AS con_email, COUNT(encrypted_phone) AS con_telefono FROM customers; && python generar_evidencias.py   # paso 7: buscar en TODAS las tablas los nombres, teléfonos, direcciones e IP del JSON",
+    "cifras": {
+      "columnas_customers": [
+        "id",
+        "first_name",
+        "last_name",
+        "encrypted_email",
+        "encrypted_phone",
+        "source_key",
+        "codigo_anonimo",
+        "created_at"
+      ],
+      "muestra": [
+        [
+          "1",
+          "C001",
+          "e12aa63e4781",
+          "Cliente"
+        ],
+        [
+          "2",
+          "C002",
+          "9ee00cb239e5",
+          "Cliente"
+        ],
+        [
+          "3",
+          "C003",
+          "a59295e1fd5d",
+          "Cliente"
+        ],
+        [
+          "4",
+          "C004",
+          "9f8ec9a76856",
+          "Cliente"
+        ],
+        [
+          "5",
+          "C005",
+          "9308e26f19af",
+          "Cliente"
+        ]
+      ],
+      "clientes": 126,
+      "source_key_distintas": 126,
+      "codigos_distintos": 126,
+      "primero": "C001",
+      "ultimo": "C126",
+      "con_email": 0,
+      "con_telefono": 0,
+      "verificacion": {
+        "buscados": {
+          "nombres": 464,
+          "telefonos": 219,
+          "direcciones": 134,
+          "ips": 664
+        },
+        "encontrados": {
+          "nombres": 0,
+          "telefonos": 0,
+          "direcciones": 0,
+          "ips": 0
+        },
+        "encontrados_total": 0,
+        "etiquetas_excluidas": 10,
+        "tablas_revisadas": 12,
+        "tablas_omitidas": [
+          "products",
+          "users"
+        ],
+        "celdas_texto_revisadas": 13538
+      }
+    },
+    "nota": "source_key se muestra truncado a 12 caracteres; first_name es el literal 'Cliente'.",
+    "orden": 12
+  },
+  {
+    "id": "08a_codigo_calidad",
+    "archivo": "08a_codigo_calidad.png",
+    "paso": 8,
+    "tipo": "codigo",
+    "titulo": "Calidad de datos: nueve reglas medidas sobre el origen",
+    "archivo_codigo": "backend/app/etl/red_rooster_analitica.py",
+    "lineas": [
+      [
+        74,
+        108
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "74-108",
+    "orden": 13
+  },
+  {
+    "id": "08b_terminal_calidad",
+    "archivo": "08b_terminal_calidad.png",
+    "paso": 8,
+    "tipo": "terminal",
+    "titulo": "Respuesta de GET /api/v1/etl/quality (reglas de calidad y conteos)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "GET http://localhost:8010/api/v1/etl/quality   (Authorization: Bearer <token del login>)",
+    "cifras": {
+      "http": 200,
+      "reglas": {
+        "fechas_con_zona_utc": 91,
+        "fechas_con_zona_bogota": 2951,
+        "pedidos_sin_canal": 5,
+        "mesero_texto_libre": 77,
+        "productos_costo_cero": 8,
+        "total_no_cuadra": 1,
+        "pedidos_cancelados": 25,
+        "pago_sin_dato": 25,
+        "lineas_omitidas": 0
+      },
+      "conteos": {
+        "pedidos": 3042,
+        "detalle": 5022,
+        "productos": 44,
+        "clientes": 126,
+        "dim_fecha": 236,
+        "ventas_diarias": 236
+      }
+    },
+    "nota": "Respuesta real del servidor en el puerto 8010 sobre la BD cargada.",
+    "orden": 14
+  },
+  {
+    "id": "09a_codigo_upsert_p1",
+    "archivo": "09a_codigo_upsert_p1.png",
+    "paso": 9,
+    "tipo": "codigo",
+    "titulo": "Carga: bucle de upsert de pedidos dentro de importar() (parte 1 de 2)",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        117,
+        144
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "117-144",
+    "orden": 15
+  },
+  {
+    "id": "09a_codigo_upsert_p2",
+    "archivo": "09a_codigo_upsert_p2.png",
+    "paso": 9,
+    "tipo": "codigo",
+    "titulo": "Carga: bucle de upsert de pedidos dentro de importar() (parte 2 de 2)",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        145,
+        173
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "145-173",
+    "orden": 16
+  },
+  {
+    "id": "09b_app_antes",
+    "archivo": "09b_app_antes.png",
+    "paso": 9,
+    "tipo": "app",
+    "titulo": "Pantalla «Datos reales · Red Rooster» antes de sincronizar (base vacía)",
+    "archivo_codigo": "frontend/src/ui/CargaFuenteReal.tsx",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "tarjeta_antes": [
+        "3.042",
+        "PEDIDOS EN EL JSON",
+        "0",
+        "PEDIDOS EN SQLITE",
+        "—",
+        "ÚLTIMA SINCRONIZACIÓN",
+        "SIN CARGAS",
+        "ESTADO DE LA ÚLTIMA CARGA"
+      ],
+      "ruta_configurada": "C:\\rr_evid\\origen\\pedidos.json"
+    },
+    "nota": "Captura de la aplicación real (Vite 5180 + FastAPI 8010) con SQLite temporal vacía.",
+    "orden": 17
+  },
+  {
+    "id": "09c_app_despues",
+    "archivo": "09c_app_despues.png",
+    "paso": 9,
+    "tipo": "app",
+    "titulo": "Pantalla «Datos reales · Red Rooster» después de pulsar «Sincronizar pedidos»",
+    "archivo_codigo": "frontend/src/ui/CargaFuenteReal.tsx",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "tarjeta_despues": [
+        "3.042",
+        "PEDIDOS EN EL JSON",
+        "3.042",
+        "PEDIDOS EN SQLITE",
+        "13/11/2026, 22:06",
+        "ÚLTIMA SINCRONIZACIÓN",
+        "EXITOSO",
+        "ESTADO DE LA ÚLTIMA CARGA"
+      ],
+      "mensaje": [
+        "Importación completada",
+        "Inicio: 13/11/2026, 10:05:57 p. m. · duración 9.5 s."
+      ],
+      "resultado": [
+        "3.042",
+        "PEDIDOS NUEVOS",
+        "0",
+        "PEDIDOS ACTUALIZADOS",
+        "0",
+        "SIN CAMBIOS",
+        "5.022",
+        "LÍNEAS PROCESADAS"
+      ],
+      "alertas": [
+        "Importación completada\n\nInicio: 13/11/2026, 10:05:57 p. m. · duración 9.5 s."
+      ]
+    },
+    "nota": "Captura de la aplicación real tras la sincronización inicial.",
+    "orden": 18
+  },
+  {
+    "id": "10a_codigo_modelo_analitico",
+    "archivo": "10a_codigo_modelo_analitico.png",
+    "paso": 10,
+    "tipo": "codigo",
+    "titulo": "Modelo analítico: dim_fecha y ventas_diarias (variables rezagadas sin fuga)",
+    "archivo_codigo": "backend/app/etl/red_rooster_analitica.py",
+    "lineas": [
+      [
+        27,
+        56
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "27-56",
+    "orden": 19
+  },
+  {
+    "id": "10b_codigo_reconstruir",
+    "archivo": "10b_codigo_reconstruir.png",
+    "paso": 10,
+    "tipo": "codigo",
+    "titulo": "reconstruir(): reemplaza las tres tablas analíticas dentro de la transacción",
+    "archivo_codigo": "backend/app/etl/red_rooster_analitica.py",
+    "lineas": [
+      [
+        111,
+        126
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "111-126",
+    "orden": 20
+  },
+  {
+    "id": "10c_terminal_esquema",
+    "archivo": "10c_terminal_esquema.png",
+    "paso": 10,
+    "tipo": "terminal",
+    "titulo": "Esquema y tamaño de dim_fecha y ventas_diarias",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "PRAGMA table_info(dim_fecha); && PRAGMA table_info(ventas_diarias); && SELECT COUNT(*) AS filas, MIN(fecha) AS desde, MAX(fecha) AS hasta, CAST(julianday(MAX(fecha)) - julianday(MIN(fecha)) AS INTEGER) + 1 AS dias_calendario FROM dim_fecha; && SELECT COUNT(*) AS filas, MIN(fecha) AS desde, MAX(fecha) AS hasta FROM ventas_diarias;",
+    "cifras": {
+      "columnas_dim_fecha": [
+        "fecha",
+        "anio",
+        "mes",
+        "dia",
+        "dia_semana",
+        "nombre_dia_semana",
+        "es_festivo",
+        "es_quincena",
+        "es_descanso"
+      ],
+      "columnas_ventas_diarias": [
+        "fecha",
+        "pedidos_pagados",
+        "ingresos",
+        "ticket_promedio",
+        "lag_1",
+        "lag_7",
+        "media_movil_7"
+      ],
+      "filas_dim_fecha": 236,
+      "desde": "2026-03-23",
+      "hasta": "2026-11-13",
+      "dias_calendario": 236,
+      "filas_ventas_diarias": 236
+    },
+    "nota": null,
+    "orden": 21
+  },
+  {
+    "id": "10d_terminal_semana",
+    "archivo": "10d_terminal_semana.png",
+    "paso": 10,
+    "tipo": "terminal",
+    "titulo": "Ocho días reales de ventas_diarias (2026-07-20 a 2026-07-27) y su calendario",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "SELECT * FROM ventas_diarias WHERE fecha BETWEEN '2026-07-20' AND '2026-07-27' ORDER BY fecha; && SELECT fecha, nombre_dia_semana, es_festivo, es_quincena, es_descanso FROM dim_fecha WHERE fecha BETWEEN '2026-07-20' AND '2026-07-27' ORDER BY fecha; && python generar_evidencias.py   # paso 10: verificación independiente",
+    "cifras": {
+      "desde": "2026-07-20",
+      "hasta": "2026-07-27",
+      "ventas_diarias": [
+        {
+          "fecha": "2026-07-20",
+          "pedidos_pagados": 17,
+          "ingresos": 731200,
+          "ticket_promedio": 43011.76,
+          "lag_1": 15,
+          "lag_7": 14,
+          "media_movil_7": 12.142857142857142
+        },
+        {
+          "fecha": "2026-07-21",
+          "pedidos_pagados": 0,
+          "ingresos": 0,
+          "ticket_promedio": null,
+          "lag_1": 17,
+          "lag_7": 0,
+          "media_movil_7": 12.571428571428571
+        },
+        {
+          "fecha": "2026-07-22",
+          "pedidos_pagados": 16,
+          "ingresos": 467400,
+          "ticket_promedio": 29212.5,
+          "lag_1": 0,
+          "lag_7": 7,
+          "media_movil_7": 12.571428571428571
+        },
+        {
+          "fecha": "2026-07-23",
+          "pedidos_pagados": 12,
+          "ingresos": 373400,
+          "ticket_promedio": 31116.67,
+          "lag_1": 16,
+          "lag_7": 20,
+          "media_movil_7": 13.857142857142858
+        },
+        {
+          "fecha": "2026-07-24",
+          "pedidos_pagados": 21,
+          "ingresos": 1046300,
+          "ticket_promedio": 49823.81,
+          "lag_1": 12,
+          "lag_7": 15,
+          "media_movil_7": 12.714285714285714
+        },
+        {
+          "fecha": "2026-07-25",
+          "pedidos_pagados": 16,
+          "ingresos": 876400,
+          "ticket_promedio": 54775,
+          "lag_1": 21,
+          "lag_7": 14,
+          "media_movil_7": 13.571428571428571
+        },
+        {
+          "fecha": "2026-07-26",
+          "pedidos_pagados": 17,
+          "ingresos": 773500,
+          "ticket_promedio": 45500,
+          "lag_1": 16,
+          "lag_7": 15,
+          "media_movil_7": 13.857142857142858
+        },
+        {
+          "fecha": "2026-07-27",
+          "pedidos_pagados": 12,
+          "ingresos": 401800,
+          "ticket_promedio": 33483.33,
+          "lag_1": 17,
+          "lag_7": 17,
+          "media_movil_7": 14.142857142857142
+        }
+      ],
+      "media_movil_7_recalculada": 12.1429,
+      "media_movil_7_guardada": 12.142857142857142,
+      "coincide": true
+    },
+    "nota": "Semana elegida por regla: primer lunes después del punto medio del rango (2026-07-20), más 7 días para que lag_7 y la media móvil tengan valor.",
+    "orden": 22
+  },
+  {
+    "id": "10e_terminal_conteos",
+    "archivo": "10e_terminal_conteos.png",
+    "paso": 10,
+    "tipo": "terminal",
+    "titulo": "Registros por tabla después de la carga inicial",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;  -- y SELECT COUNT(*) FROM <tabla> por cada una",
+    "cifras": {
+      "conteos": {
+        "analytics_customer_segments": 0,
+        "analytics_demand_forecast": 0,
+        "analytics_market_basket_rules": 0,
+        "calidad_datos": 9,
+        "customers": 126,
+        "dim_fecha": 236,
+        "etl_runs": 0,
+        "inventory_movements": 0,
+        "products": 44,
+        "sale_items": 5022,
+        "sales": 3042,
+        "source_import_runs": 1,
+        "users": 1,
+        "ventas_diarias": 236
+      }
+    },
+    "nota": "Las tablas analytics_* y users pertenecen a la aplicación; no las llena el ETL de Red Rooster.",
+    "orden": 23
+  },
+  {
+    "id": "10f_diagrama_bd",
+    "archivo": "10f_diagrama_bd.png",
+    "paso": 10,
+    "tipo": "diagrama",
+    "titulo": "Modelo de datos de red_rooster.db (diagrama entidad-relación)",
+    "archivo_codigo": "backend/app/adapters/outbound/persistence/models.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "tablas": 14,
+      "columnas": 100,
+      "claves_foraneas": 7,
+      "fks": [
+        "analytics_customer_segments.customer_id -> customers.id",
+        "analytics_demand_forecast.product_id -> products.id",
+        "inventory_movements.product_id -> products.id",
+        "sale_items.product_id -> products.id",
+        "sale_items.sale_id -> sales.id",
+        "sales.customer_id -> customers.id",
+        "ventas_diarias.fecha -> dim_fecha.fecha"
+      ],
+      "relaciones_logicas": [
+        "sales.created_at -> dim_fecha.fecha"
+      ],
+      "filas_por_tabla": {
+        "analytics_customer_segments": 0,
+        "analytics_demand_forecast": 0,
+        "analytics_market_basket_rules": 0,
+        "calidad_datos": 9,
+        "customers": 126,
+        "dim_fecha": 236,
+        "etl_runs": 0,
+        "inventory_movements": 0,
+        "products": 44,
+        "sale_items": 5022,
+        "sales": 3042,
+        "source_import_runs": 2,
+        "users": 1,
+        "ventas_diarias": 236
+      },
+      "columnas_por_tabla": {
+        "analytics_customer_segments": 8,
+        "analytics_demand_forecast": 7,
+        "analytics_market_basket_rules": 7,
+        "calidad_datos": 5,
+        "customers": 8,
+        "dim_fecha": 9,
+        "etl_runs": 8,
+        "inventory_movements": 6,
+        "products": 9,
+        "sale_items": 6,
+        "sales": 7,
+        "source_import_runs": 8,
+        "users": 5,
+        "ventas_diarias": 7
+      }
+    },
+    "nota": "Tablas, columnas, tipos, PK, FK y conteos se leen por PRAGMA table_info/foreign_key_list y COUNT(*) sobre carga.db abierta en solo lectura (base cargada en esta corrida; la red_rooster.db de backend/data puede tener otro contenido). Solo la agrupación por colores, la disposición y la relación lógica sales.created_at -> dim_fecha.fecha son decisiones de diseño. Lienzo 1800x1200 px, PNG a escala 2.",
+    "orden": 24
+  },
+  {
+    "id": "11a_codigo_sin_cambios",
+    "archivo": "11a_codigo_sin_cambios.png",
+    "paso": 11,
+    "tipo": "codigo",
+    "titulo": "Idempotencia: la huella igual a la última carga devuelve SIN_CAMBIOS",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        85,
+        91
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "85-91",
+    "orden": 25
+  },
+  {
+    "id": "11b_swagger_import",
+    "archivo": "11b_swagger_import.png",
+    "paso": 11,
+    "tipo": "app",
+    "titulo": "Swagger (/docs): POST /api/v1/etl/import con Authorize devuelve SIN_CAMBIOS",
+    "archivo_codigo": "backend/app/adapters/inbound/api/v1/etl.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "codigo_http": "200",
+      "respuesta": {
+        "status": "SIN_CAMBIOS",
+        "inserted": 0,
+        "updated": 0,
+        "unchanged": 0,
+        "skipped": 0,
+        "lines": 0,
+        "products": 0,
+        "errors": 0,
+        "source_mtime": 1794613898.9832432,
+        "message": "Los archivos de origen no han cambiado",
+        "started_at": "2026-11-13T22:06:16.575510",
+        "finished_at": "2026-11-13T22:06:16.590469"
+      }
+    },
+    "nota": "Se oculta en la captura el bloque «curl» de Swagger porque incluía el token JWT completo.",
+    "orden": 26
+  },
+  {
+    "id": "11c_terminal_force",
+    "archivo": "11c_terminal_force.png",
+    "paso": 11,
+    "tipo": "terminal",
+    "titulo": "Reimportación forzada: sin duplicados",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "SELECT (SELECT COUNT(*) FROM sales) AS sales, (SELECT COUNT(DISTINCT id) FROM sales) AS sales_id_distintos, (SELECT COUNT(*) FROM sale_items) AS sale_items, (SELECT COUNT(*) FROM customers) AS customers; && POST http://localhost:8010/api/v1/etl/import?force=true   (Authorization: Bearer <token>) && SELECT (SELECT COUNT(*) FROM sales) AS sales, (SELECT COUNT(DISTINCT id) FROM sales) AS sales_id_distintos, (SELECT COUNT(*) FROM sale_items) AS sale_items, (SELECT COUNT(*) FROM customers) AS customers; && SELECT id, status, json_extract(report,'$.inserted') ... FROM source_import_runs ORDER BY id;",
+    "cifras": {
+      "http": 200,
+      "respuesta_force": {
+        "status": "SUCCESS",
+        "inserted": 0,
+        "updated": 0,
+        "unchanged": 3042,
+        "skipped": 0,
+        "lines": 0,
+        "products": 44
+      },
+      "antes": {
+        "sales": 3042,
+        "sales_id_distintos": 3042,
+        "sale_items": 5022,
+        "customers": 126
+      },
+      "despues": {
+        "sales": 3042,
+        "sales_id_distintos": 3042,
+        "sale_items": 5022,
+        "customers": 126
+      },
+      "corridas": [
+        [
+          1,
+          "SUCCESS",
+          3042,
+          0,
+          0
+        ],
+        [
+          2,
+          "SUCCESS",
+          0,
+          0,
+          3042
+        ]
+      ]
+    },
+    "nota": "force=true vuelve a comparar los 3.042 pedidos uno a uno: ninguno cambió, por eso no inserta ni actualiza.",
+    "orden": 27
+  },
+  {
+    "id": "12a_codigo_incremental",
+    "archivo": "12a_codigo_incremental.png",
+    "paso": 12,
+    "tipo": "codigo",
+    "titulo": "Incremental: comparación del pedido existente con el objetivo y conteo de insertados/actualizados",
+    "archivo_codigo": "backend/app/etl/red_rooster.py",
+    "lineas": [
+      [
+        134,
+        144
+      ],
+      [
+        157,
+        171
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "134-144 y 157-171",
+    "orden": 28
+  },
+  {
+    "id": "12b_terminal_incremental",
+    "archivo": "12b_terminal_incremental.png",
+    "paso": 12,
+    "tipo": "terminal",
+    "titulo": "Importación incremental: un pedido nuevo y un pedido cancelado",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "SELECT status, COUNT(*) AS pedidos FROM sales GROUP BY status ORDER BY status;   -- antes && python generar_evidencias.py   # paso 12: modificar la COPIA del JSON y llamar a rr.importar() sobre una copia de la BD cargada && SELECT status, COUNT(*) AS pedidos FROM sales GROUP BY status ORDER BY status;   -- después && SELECT id, created_at, status, total_amount, canal FROM sales WHERE id IN (1625, 3149) ORDER BY id;",
+    "cifras": {
+      "modificaciones": {
+        "cancelado": {
+          "id": 1625,
+          "fecha": "2026-07-13T19:19:22-05:00",
+          "total": 28000,
+          "estado_antes": "pagado",
+          "estado_despues": "cancelado"
+        },
+        "nuevo": {
+          "id": 3149,
+          "copia_de": 106,
+          "fecha": "2026-11-13T18:50:04-05:00",
+          "tipo": "mesa",
+          "total": 58000,
+          "lineas": 3
+        }
+      },
+      "primera": {
+        "status": "SUCCESS",
+        "inserted": 1,
+        "updated": 1,
+        "unchanged": 3041,
+        "skipped": 0,
+        "lines": 4
+      },
+      "segunda": "SIN_CAMBIOS",
+      "sales_antes": 3042,
+      "sales_despues": 3043,
+      "estados_antes": {
+        "CANCELLED": 25,
+        "COMPLETED": 3017
+      },
+      "estados_despues": {
+        "CANCELLED": 26,
+        "COMPLETED": 3017
+      },
+      "pedidos_afectados": [
+        [
+          "1625",
+          "2026-07-13 19:19:22.000000",
+          "CANCELLED",
+          "28000",
+          "llevar"
+        ],
+        [
+          "3149",
+          "2026-11-13 18:50:04.000000",
+          "COMPLETED",
+          "58000",
+          "mesa"
+        ]
+      ]
+    },
+    "nota": "Trabajo sobre copias: C:\\rr_evid\\incremental\\pedidos.json (copia de BD/pedidos.json) y una copia de la BD cargada. Se agregó el pedido id=max+1 (copia de una venta de mesa sin datos personales, ip vacía, una hora después de la última) y el pedido indicado pasó de 'pagado' a 'cancelado'.",
+    "orden": 29
+  },
+  {
+    "id": "13a_codigo_vigilante",
+    "archivo": "13a_codigo_vigilante.png",
+    "paso": 13,
+    "tipo": "codigo",
+    "titulo": "Vigilante: carga periódica del JSON (watch_red_rooster.py)",
+    "archivo_codigo": "backend/app/etl/watch_red_rooster.py",
+    "lineas": [
+      [
+        1,
+        30
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "1-30",
+    "orden": 30
+  },
+  {
+    "id": "13b_terminal_vigilante",
+    "archivo": "13b_terminal_vigilante.png",
+    "paso": 13,
+    "tipo": "terminal",
+    "titulo": "Vigilante en ejecución sobre la copia: SIN_CAMBIOS y luego SUCCESS",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "$env:RED_ROOSTER_POLL_SECONDS=5; venv\\Scripts\\python -m app.etl.watch_red_rooster   # RED_ROOSTER_JSON y DATABASE_URL apuntan a las copias de trabajo; se detiene a los ~15 s",
+    "cifras": {
+      "cargas_en_el_log": 3,
+      "estados_en_orden": [
+        "SIN_CAMBIOS",
+        "SIN_CAMBIOS",
+        "SUCCESS"
+      ],
+      "eventos_durante_la_ejecucion": [
+        "touch (cambia la fecha de modificación, no el contenido)",
+        "se agrega el pedido id=3149 a la copia"
+      ],
+      "pedido_agregado": 3149
+    },
+    "nota": "Mientras corría se hizo (1) touch del archivo y (2) se agregó un pedido a la copia. El proceso se detuvo al terminar.",
+    "orden": 31
+  },
+  {
+    "id": "14a_terminal_pruebas_p1",
+    "archivo": "14a_terminal_pruebas_p1.png",
+    "paso": 14,
+    "tipo": "terminal",
+    "titulo": "Pruebas automáticas del ETL (pytest -v) (parte 1 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m pytest tests/unit/test_red_rooster.py tests/unit/test_red_rooster_analitica.py tests/unit/test_red_rooster_migracion.py tests/api/test_red_rooster_api.py -v",
+    "cifras": {
+      "resumen": "43 passed, 11 warnings in 18.88s",
+      "codigo_salida": 0,
+      "passed": 43,
+      "warnings": 11
+    },
+    "nota": "Salida real de pytest; si hay dos imágenes, la segunda continúa la lista y trae el resumen final.",
+    "orden": 32
+  },
+  {
+    "id": "14a_terminal_pruebas_p2",
+    "archivo": "14a_terminal_pruebas_p2.png",
+    "paso": 14,
+    "tipo": "terminal",
+    "titulo": "Pruebas automáticas del ETL (pytest -v) (parte 2 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m pytest tests/unit/test_red_rooster.py tests/unit/test_red_rooster_analitica.py tests/unit/test_red_rooster_migracion.py tests/api/test_red_rooster_api.py -v   # continuación",
+    "cifras": {
+      "resumen": "43 passed, 11 warnings in 18.88s",
+      "codigo_salida": 0,
+      "passed": 43,
+      "warnings": 11
+    },
+    "nota": "Salida real de pytest; si hay dos imágenes, la segunda continúa la lista y trae el resumen final.",
+    "orden": 33
+  }
+]

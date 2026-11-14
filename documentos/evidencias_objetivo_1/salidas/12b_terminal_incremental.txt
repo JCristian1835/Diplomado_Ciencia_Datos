@@ -1,0 +1,29 @@
+$ SELECT status, COUNT(*) AS pedidos FROM sales GROUP BY status ORDER BY status;   -- antes
+status     pedidos
+---------  -------
+CANCELLED       25
+COMPLETED     3017
+(2 filas)
+
+$ python generar_evidencias.py   # paso 12: modificar la COPIA del JSON y llamar a rr.importar() sobre una copia de la BD cargada
+Modificación 1 (inserción): pedido nuevo id=3149, copia del id=106 sin datos personales, fecha 2026-11-13T18:50:04-05:00, tipo mesa, total 58.000, 3 líneas
+Modificación 2 (actualización): pedido id=1625 (2026-07-13T19:19:22-05:00, total 28.000) estado 'pagado' -> 'cancelado'
+
+importar(...) sobre la copia modificada:
+  status=SUCCESS · inserted=1 · updated=1 · unchanged=3041 · skipped=0 · lines=4
+Segunda ejecución sin tocar el archivo: status=SIN_CAMBIOS
+
+
+$ SELECT status, COUNT(*) AS pedidos FROM sales GROUP BY status ORDER BY status;   -- después
+status     pedidos
+---------  -------
+CANCELLED       26
+COMPLETED     3017
+(2 filas)
+
+$ SELECT id, created_at, status, total_amount, canal FROM sales WHERE id IN (1625, 3149) ORDER BY id;
+id    created_at                  status     total_amount  canal
+----  --------------------------  ---------  ------------  ------
+1625  2026-07-13 19:19:22.000000  CANCELLED  28000         llevar
+3149  2026-11-13 18:50:04.000000  COMPLETED  58000         mesa
+(2 filas)

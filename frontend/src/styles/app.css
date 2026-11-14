@@ -152,4 +152,6 @@
 .login-card h1 { font-size: var(--fs-6); }
 
 /* Historial de corridas */
-.run-metrics { display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+.run-metrics { display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+.run-metrics .stat { min-width: 0; }
+.run-metrics .num-texto { font-family: var(--font-ui); font-size: var(--fs-4); line-height: 1.2; }

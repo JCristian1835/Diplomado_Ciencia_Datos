@@ -34,6 +34,8 @@ class CustomerModel(Base):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     encrypted_email: Mapped[str | None] = mapped_column(Text)
     encrypted_phone: Mapped[str | None] = mapped_column(Text)
+    source_key: Mapped[str | None] = mapped_column(String(64), unique=True, index=True)
+    codigo_anonimo: Mapped[str | None] = mapped_column(String(10), unique=True, index=True)  # C001, C002...
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
 
 
@@ -44,6 +46,7 @@ class SaleModel(Base):
     total_amount: Mapped[float] = mapped_column(dinero(), nullable=False)
     payment_method: Mapped[str] = mapped_column(String(50), nullable=False)
     status: Mapped[str] = mapped_column(String(20), default="COMPLETED")
+    canal: Mapped[str] = mapped_column(String(20), nullable=False, default="sin_dato", server_default="sin_dato")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now, index=True)
     items: Mapped[list["SaleItemModel"]] = relationship(back_populates="sale", cascade="all, delete-orphan",
                                                         order_by="SaleItemModel.id")
@@ -94,6 +97,18 @@ class EtlRunModel(Base):
     error: Mapped[str | None] = mapped_column(Text)
 
 
+class SourceImportRunModel(Base):
+    __tablename__ = "source_import_runs"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    started_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime)
+    status: Mapped[str] = mapped_column(String(20), nullable=False)
+    source_path: Mapped[str] = mapped_column(Text, nullable=False)
+    source_mtime: Mapped[float | None] = mapped_column(Numeric(16, 3, asdecimal=False))
+    report: Mapped[dict | None] = mapped_column(JSON)
+    error: Mapped[str | None] = mapped_column(Text)
+
+
 class DemandForecastModel(Base):
     __tablename__ = "analytics_demand_forecast"
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
@@ -127,3 +142,38 @@ class CustomerSegmentModel(Base):
     cluster: Mapped[int] = mapped_column(Integer, nullable=False)
     segment_label: Mapped[str] = mapped_column(String(80), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
+
+
+# ----- Tablas analíticas del caso Red Rooster (se reconstruyen en cada importación) -----
+
+class DimFechaModel(Base):
+    __tablename__ = "dim_fecha"
+    fecha: Mapped[date] = mapped_column(Date, primary_key=True)
+    anio: Mapped[int] = mapped_column(Integer, nullable=False)
+    mes: Mapped[int] = mapped_column(Integer, nullable=False)
+    dia: Mapped[int] = mapped_column(Integer, nullable=False)
+    dia_semana: Mapped[int] = mapped_column(Integer, nullable=False)  # 0 = lunes ... 6 = domingo
+    nombre_dia_semana: Mapped[str] = mapped_column(String(12), nullable=False)
+    es_festivo: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    es_quincena: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    es_descanso: Mapped[bool] = mapped_column(Boolean, nullable=False)
+
+
+class VentaDiariaModel(Base):
+    __tablename__ = "ventas_diarias"
+    fecha: Mapped[date] = mapped_column(ForeignKey("dim_fecha.fecha"), primary_key=True)
+    pedidos_pagados: Mapped[int] = mapped_column(Integer, nullable=False)
+    ingresos: Mapped[float] = mapped_column(dinero(), nullable=False)
+    ticket_promedio: Mapped[float | None] = mapped_column(dinero())
+    lag_1: Mapped[int | None] = mapped_column(Integer)
+    lag_7: Mapped[int | None] = mapped_column(Integer)
+    media_movil_7: Mapped[float | None] = mapped_column(Numeric(12, 4, asdecimal=False))
+
+
+class CalidadDatosModel(Base):
+    __tablename__ = "calidad_datos"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    regla: Mapped[str] = mapped_column(String(60), nullable=False)
+    descripcion: Mapped[str] = mapped_column(Text, nullable=False)
+    registros_afectados: Mapped[int] = mapped_column(Integer, nullable=False)
+    tratamiento: Mapped[str] = mapped_column(Text, nullable=False)

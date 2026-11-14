@@ -1,0 +1,43 @@
+$ python generar_evidencias.py   # paso 2: perfil_fuente(BD/pedidos.json, BD/productos.json)
+Archivo: pedidos.json (2.530.447 bytes) · productos.json (11.253 bytes)
+Pedidos: 3.042   ids distintos: 3.042   id mínimo-máximo: 101-3148
+Rango de fechas (comparado en UTC): 2026-03-23T18:49:49+00:00  ->  2026-11-13T17:50:04-05:00
+
+Campos de cada pedido y pedidos que traen valor:
+campo                 pedidos_con_valor
+--------------------  -----------------
+id                                3.042
+fecha                             3.042
+tipo                              3.037
+mesero                            3.037
+nota                                280
+productos                         3.042
+total                             3.042
+estado                            3.042
+cliente                           3.042
+telefono                            236
+direccion                           235
+ip                                3.042
+pagado_en                         3.017
+metodo_pago                       3.017
+mesa_id                           1.278
+mesa_num                          1.278
+metodo_pago_indicado                776
+
+Campos personales (solo conteos; no se muestran valores):
+campo      pedidos_con_valor  valores_distintos
+---------  -----------------  -----------------
+cliente                3.042                559
+telefono                 236                166
+direccion                235                144
+nota                     280                239
+ip                     3.042                664
+
+estado: pagado 3.016 · cancelado 25 · entregado 1
+
+tipo: llevar 1.528 · mesa 1.278 · domicilio 231 · (vacío) 5
+
+metodo_pago: breb 1.695 · efectivo 1.153 · tarjeta 110 · nequi 59 · (vacío) 25
+
+Líneas de pedido: 5.022   pedidos sin líneas: 0   promedio de líneas por pedido: 1.65
+Catálogo: 44 productos · con costo 0 o vacío: 8

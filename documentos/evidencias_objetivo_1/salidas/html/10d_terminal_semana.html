@@ -1,0 +1,128 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Terminal</title><style>
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:#fff;font-family:"Segoe UI",Arial,sans-serif}
+.panel{width:1100px;border:1px solid #b9c0ca;border-radius:8px;overflow:hidden;font-size:15px}
+.cab{display:flex;justify-content:space-between;gap:16px;padding:10px 16px;background:#e9edf2;color:#1f2933;
+  font:600 16px "Segoe UI",Arial,sans-serif;border-bottom:1px solid #b9c0ca}
+.cab .der{font-weight:400;color:#4a5563}
+.codigo{background:#fafbfc;padding:10px 0}
+.codigo table{border-collapse:collapse;width:100%}
+.codigo td{vertical-align:top;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace}
+.codigo td.n{width:58px;text-align:right;padding:0 12px 0 0;color:#7b8594;border-right:1px solid #d9dee5;user-select:none}
+.codigo td.c{padding:0 14px 0 14px;white-space:pre-wrap;overflow-wrap:anywhere;color:#1f2933}
+.codigo tr.dest td{background:#fff3c4}
+.codigo tr.dest td.n{color:#6b5300;font-weight:700}
+.codigo tr.sep td{color:#7b8594;text-align:center;background:#eef1f5;font-style:italic}
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codigo .hll { background-color: #ffffcc }
+.codigo { background: #f8f8f8; }
+.codigo .c { color: #3D7B7B; font-style: italic } /* Comment */
+.codigo .err { border: 1px solid #F00 } /* Error */
+.codigo .k { color: #008000; font-weight: bold } /* Keyword */
+.codigo .o { color: #666 } /* Operator */
+.codigo .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.codigo .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.codigo .cp { color: #9C6500 } /* Comment.Preproc */
+.codigo .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.codigo .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.codigo .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.codigo .gd { color: #A00000 } /* Generic.Deleted */
+.codigo .ge { font-style: italic } /* Generic.Emph */
+.codigo .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codigo .gr { color: #E40000 } /* Generic.Error */
+.codigo .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codigo .gi { color: #008400 } /* Generic.Inserted */
+.codigo .go { color: #717171 } /* Generic.Output */
+.codigo .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codigo .gs { font-weight: bold } /* Generic.Strong */
+.codigo .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codigo .gt { color: #04D } /* Generic.Traceback */
+.codigo .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codigo .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codigo .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codigo .kp { color: #008000 } /* Keyword.Pseudo */
+.codigo .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codigo .kt { color: #B00040 } /* Keyword.Type */
+.codigo .m { color: #666 } /* Literal.Number */
+.codigo .s { color: #BA2121 } /* Literal.String */
+.codigo .na { color: #687822 } /* Name.Attribute */
+.codigo .nb { color: #008000 } /* Name.Builtin */
+.codigo .nc { color: #00F; font-weight: bold } /* Name.Class */
+.codigo .no { color: #800 } /* Name.Constant */
+.codigo .nd { color: #A2F } /* Name.Decorator */
+.codigo .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.codigo .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.codigo .nf { color: #00F } /* Name.Function */
+.codigo .nl { color: #767600 } /* Name.Label */
+.codigo .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.codigo .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codigo .nv { color: #19177C } /* Name.Variable */
+.codigo .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.codigo .w { color: #BBB } /* Text.Whitespace */
+.codigo .mb { color: #666 } /* Literal.Number.Bin */
+.codigo .mf { color: #666 } /* Literal.Number.Float */
+.codigo .mh { color: #666 } /* Literal.Number.Hex */
+.codigo .mi { color: #666 } /* Literal.Number.Integer */
+.codigo .mo { color: #666 } /* Literal.Number.Oct */
+.codigo .sa { color: #BA2121 } /* Literal.String.Affix */
+.codigo .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codigo .sc { color: #BA2121 } /* Literal.String.Char */
+.codigo .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codigo .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codigo .s2 { color: #BA2121 } /* Literal.String.Double */
+.codigo .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.codigo .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codigo .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.codigo .sx { color: #008000 } /* Literal.String.Other */
+.codigo .sr { color: #A45A77 } /* Literal.String.Regex */
+.codigo .s1 { color: #BA2121 } /* Literal.String.Single */
+.codigo .ss { color: #19177C } /* Literal.String.Symbol */
+.codigo .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codigo .fm { color: #00F } /* Name.Function.Magic */
+.codigo .vc { color: #19177C } /* Name.Variable.Class */
+.codigo .vg { color: #19177C } /* Name.Variable.Global */
+.codigo .vi { color: #19177C } /* Name.Variable.Instance */
+.codigo .vm { color: #19177C } /* Name.Variable.Magic */
+.codigo .il { color: #666 } /* Literal.Number.Integer.Long */
+.term{background:#1b1f27;color:#d9dee7;padding:12px 18px 16px}
+.term pre{margin:0;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .pr{color:#7ee787}
+.term .cm{color:#f0f3f6;font-weight:700}
+.term .nota{color:#8b98a9}
+.term .hl{background:#33405a;display:inline-block;width:100%}
+.cab.osc{background:#2b313c;color:#e6eaf0;border-bottom:1px solid #12151b}
+.cab.osc .der{color:#9aa7b8}
+svg text{font-family:"Segoe UI",Arial,sans-serif}
+</style></head><body><div class="panel"><div class="cab osc"><span>Terminal</span><span class="der">SQLite temporal (carga.db)</span></div><div class="term"><pre><span class="pr">sqlite&gt; </span><span class="cm">SELECT * FROM ventas_diarias WHERE fecha BETWEEN &#x27;2026-07-20&#x27; AND &#x27;2026-07-27&#x27; ORDER BY fecha;</span>
+fecha       pedidos_pagados  ingresos  ticket_promedio  lag_1  lag_7  media_movil_7
+----------  ---------------  --------  ---------------  -----  -----  ------------------
+2026-07-20  17               731200    43011.76         15     14     12.142857142857142
+2026-07-21  0                0         NULL             17     0      12.571428571428571
+2026-07-22  16               467400    29212.5          0      7      12.571428571428571
+2026-07-23  12               373400    31116.67         16     20     13.857142857142858
+2026-07-24  21               1046300   49823.81         12     15     12.714285714285714
+2026-07-25  16               876400    54775            21     14     13.571428571428571
+2026-07-26  17               773500    45500            16     15     13.857142857142858
+2026-07-27  12               401800    33483.33         17     17     14.142857142857142
+(8 filas)
+
+<span class="pr">sqlite&gt; </span><span class="cm">SELECT fecha, nombre_dia_semana, es_festivo, es_quincena, es_descanso FROM dim_fecha WHERE fecha BETWEEN &#x27;2026-07-20&#x27; AND &#x27;2026-07-27&#x27; ORDER BY fecha;</span>
+fecha       nombre_dia_semana  es_festivo  es_quincena  es_descanso
+----------  -----------------  ----------  -----------  -----------
+2026-07-20  lunes              1           0            0
+2026-07-21  martes             0           0            1
+2026-07-22  miércoles          0           0            0
+2026-07-23  jueves             0           0            0
+2026-07-24  viernes            0           0            0
+2026-07-25  sábado             0           0            0
+2026-07-26  domingo            0           0            0
+2026-07-27  lunes              0           0            0
+(8 filas)
+
+<span class="pr">$ </span><span class="cm">python generar_evidencias.py   # paso 10: verificación independiente</span>
+Verificación independiente de media_movil_7 en 2026-07-20: promedio de los 7 días previos = 12.1429; guardado = 12.1429; coincide = True
+lag_7 de 2026-07-27 = pedidos_pagados de 2026-07-20: True</pre></div></div></body></html>

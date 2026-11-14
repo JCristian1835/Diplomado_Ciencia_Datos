@@ -1,0 +1,5 @@
+$ $env:RED_ROOSTER_POLL_SECONDS=5; venv\Scripts\python -m app.etl.watch_red_rooster   # RED_ROOSTER_JSON y DATABASE_URL apuntan a las copias de trabajo; se detiene a los ~15 s
+2026-11-13 22:06:39,518 INFO Vigilando C:\rr_evid\vigilante\pedidos.json cada 5 segundos. Ctrl+C para detener.
+2026-11-13 22:06:39,588 INFO Carga: {'status': 'SIN_CAMBIOS', 'inserted': 0, 'updated': 0, 'unchanged': 0, 'skipped': 0, 'lines': 0, 'products': 0, 'errors': 0, 'source_mtime': 1794613898.9832432, 'message': 'Los archivos de origen no han cambiado'}
+2026-11-13 22:06:44,598 INFO Carga: {'status': 'SIN_CAMBIOS', 'inserted': 0, 'updated': 0, 'unchanged': 0, 'skipped': 0, 'lines': 0, 'products': 0, 'errors': 0, 'source_mtime': 1794625601.6602528, 'message': 'Los archivos de origen no han cambiado'}
+2026-11-13 22:06:54,695 INFO Carga: {'status': 'SUCCESS', 'fingerprint': '6129d32b131c85e6c0696d65cfee56bc40f7e6ce5c6ada4cefa242552976926a', 'inserted': 1, 'updated': 0, 'unchanged': 3042, 'skipped': 0, 'lines': 3, 'products': 44, 'orders_in_source': 3043, 'errors': 0, 'source_mtime': 1794625606.8802023, 'message': 'Importación completada'}

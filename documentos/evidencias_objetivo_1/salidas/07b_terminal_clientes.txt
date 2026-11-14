@@ -1,0 +1,38 @@
+$ PRAGMA table_info(customers);
+cid  name             type          notnull  dflt_value  pk
+---  ---------------  ------------  -------  ----------  --
+0    id               INTEGER       1        NULL        1
+1    first_name       VARCHAR(100)  1        NULL        0
+2    last_name        VARCHAR(100)  1        NULL        0
+3    encrypted_email  TEXT          0        NULL        0
+4    encrypted_phone  TEXT          0        NULL        0
+5    source_key       VARCHAR(64)   0        NULL        0
+6    codigo_anonimo   VARCHAR(10)   0        NULL        0
+7    created_at       DATETIME      1        NULL        0
+(8 filas)
+
+$ SELECT id, codigo_anonimo, substr(source_key, 1, 12) AS source_key_12, first_name FROM customers ORDER BY id LIMIT 5;
+id  codigo_anonimo  source_key_12  first_name
+--  --------------  -------------  ----------
+1   C001            e12aa63e4781   Cliente
+2   C002            9ee00cb239e5   Cliente
+3   C003            a59295e1fd5d   Cliente
+4   C004            9f8ec9a76856   Cliente
+5   C005            9308e26f19af   Cliente
+(5 filas)
+
+$ SELECT COUNT(*) AS clientes, COUNT(DISTINCT source_key) AS source_key_distintas, COUNT(DISTINCT codigo_anonimo) AS codigos_distintos, MIN(codigo_anonimo) AS primero, MAX(codigo_anonimo) AS ultimo, COUNT(encrypted_email) AS con_email, COUNT(encrypted_phone) AS con_telefono FROM customers;
+clientes  source_key_distintas  codigos_distintos  primero  ultimo  con_email  con_telefono
+--------  --------------------  -----------------  -------  ------  ---------  ------------
+126       126                   126                C001     C126    0          0
+(1 fila)
+
+$ python generar_evidencias.py   # paso 7: buscar en TODAS las tablas los nombres, teléfonos, direcciones e IP del JSON
+Tablas revisadas: 12 (se omiten products, users) · celdas de texto revisadas: 13.538
+Búsqueda sin distinguir mayúsculas; nombres como palabra completa; se excluyen 10 etiquetas de servicio del campo cliente (Llevar, Cliente, Mesa, Mesa n)
+  nombres      buscados (distintos):   464   encontrados en la BD: 0
+  telefonos    buscados (distintos):   219   encontrados en la BD: 0
+  direcciones  buscados (distintos):   134   encontrados en la BD: 0
+  ips          buscados (distintos):   664   encontrados en la BD: 0
+
+valores personales del origen encontrados en la BD: 0

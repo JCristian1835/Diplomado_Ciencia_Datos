@@ -1,0 +1,137 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Terminal</title><style>
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:#fff;font-family:"Segoe UI",Arial,sans-serif}
+.panel{width:1100px;border:1px solid #b9c0ca;border-radius:8px;overflow:hidden;font-size:15px}
+.cab{display:flex;justify-content:space-between;gap:16px;padding:10px 16px;background:#e9edf2;color:#1f2933;
+  font:600 16px "Segoe UI",Arial,sans-serif;border-bottom:1px solid #b9c0ca}
+.cab .der{font-weight:400;color:#4a5563}
+.codigo{background:#fafbfc;padding:10px 0}
+.codigo table{border-collapse:collapse;width:100%}
+.codigo td{vertical-align:top;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace}
+.codigo td.n{width:58px;text-align:right;padding:0 12px 0 0;color:#7b8594;border-right:1px solid #d9dee5;user-select:none}
+.codigo td.c{padding:0 14px 0 14px;white-space:pre-wrap;overflow-wrap:anywhere;color:#1f2933}
+.codigo tr.dest td{background:#fff3c4}
+.codigo tr.dest td.n{color:#6b5300;font-weight:700}
+.codigo tr.sep td{color:#7b8594;text-align:center;background:#eef1f5;font-style:italic}
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codigo .hll { background-color: #ffffcc }
+.codigo { background: #f8f8f8; }
+.codigo .c { color: #3D7B7B; font-style: italic } /* Comment */
+.codigo .err { border: 1px solid #F00 } /* Error */
+.codigo .k { color: #008000; font-weight: bold } /* Keyword */
+.codigo .o { color: #666 } /* Operator */
+.codigo .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.codigo .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.codigo .cp { color: #9C6500 } /* Comment.Preproc */
+.codigo .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.codigo .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.codigo .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.codigo .gd { color: #A00000 } /* Generic.Deleted */
+.codigo .ge { font-style: italic } /* Generic.Emph */
+.codigo .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codigo .gr { color: #E40000 } /* Generic.Error */
+.codigo .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codigo .gi { color: #008400 } /* Generic.Inserted */
+.codigo .go { color: #717171 } /* Generic.Output */
+.codigo .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codigo .gs { font-weight: bold } /* Generic.Strong */
+.codigo .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codigo .gt { color: #04D } /* Generic.Traceback */
+.codigo .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codigo .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codigo .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codigo .kp { color: #008000 } /* Keyword.Pseudo */
+.codigo .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codigo .kt { color: #B00040 } /* Keyword.Type */
+.codigo .m { color: #666 } /* Literal.Number */
+.codigo .s { color: #BA2121 } /* Literal.String */
+.codigo .na { color: #687822 } /* Name.Attribute */
+.codigo .nb { color: #008000 } /* Name.Builtin */
+.codigo .nc { color: #00F; font-weight: bold } /* Name.Class */
+.codigo .no { color: #800 } /* Name.Constant */
+.codigo .nd { color: #A2F } /* Name.Decorator */
+.codigo .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.codigo .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.codigo .nf { color: #00F } /* Name.Function */
+.codigo .nl { color: #767600 } /* Name.Label */
+.codigo .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.codigo .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codigo .nv { color: #19177C } /* Name.Variable */
+.codigo .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.codigo .w { color: #BBB } /* Text.Whitespace */
+.codigo .mb { color: #666 } /* Literal.Number.Bin */
+.codigo .mf { color: #666 } /* Literal.Number.Float */
+.codigo .mh { color: #666 } /* Literal.Number.Hex */
+.codigo .mi { color: #666 } /* Literal.Number.Integer */
+.codigo .mo { color: #666 } /* Literal.Number.Oct */
+.codigo .sa { color: #BA2121 } /* Literal.String.Affix */
+.codigo .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codigo .sc { color: #BA2121 } /* Literal.String.Char */
+.codigo .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codigo .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codigo .s2 { color: #BA2121 } /* Literal.String.Double */
+.codigo .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.codigo .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codigo .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.codigo .sx { color: #008000 } /* Literal.String.Other */
+.codigo .sr { color: #A45A77 } /* Literal.String.Regex */
+.codigo .s1 { color: #BA2121 } /* Literal.String.Single */
+.codigo .ss { color: #19177C } /* Literal.String.Symbol */
+.codigo .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codigo .fm { color: #00F } /* Name.Function.Magic */
+.codigo .vc { color: #19177C } /* Name.Variable.Class */
+.codigo .vg { color: #19177C } /* Name.Variable.Global */
+.codigo .vi { color: #19177C } /* Name.Variable.Instance */
+.codigo .vm { color: #19177C } /* Name.Variable.Magic */
+.codigo .il { color: #666 } /* Literal.Number.Integer.Long */
+.term{background:#1b1f27;color:#d9dee7;padding:12px 18px 16px}
+.term pre{margin:0;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .pr{color:#7ee787}
+.term .cm{color:#f0f3f6;font-weight:700}
+.term .nota{color:#8b98a9}
+.term .hl{background:#33405a;display:inline-block;width:100%}
+.cab.osc{background:#2b313c;color:#e6eaf0;border-bottom:1px solid #12151b}
+.cab.osc .der{color:#9aa7b8}
+svg text{font-family:"Segoe UI",Arial,sans-serif}
+</style></head><body><div class="panel"><div class="cab osc"><span>Terminal</span><span class="der">proyecto Diplomado · backend</span></div><div class="term"><pre><span class="pr">PS backend&gt; </span><span class="cm">venv\Scripts\python -m pytest tests/unit/test_red_rooster.py tests/unit/test_red_rooster_analitica.py tests/unit/test_red_rooster_migracion.py tests/api/test_red_rooster_api.py -v</span>
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 43 items
+ 
+tests/unit/test_red_rooster.py::test_carga_inicial_normaliza_fecha_y_omite_pii PASSED [  2%]
+tests/unit/test_red_rooster.py::test_reimportar_es_idempotente_y_actualiza_estado_y_lineas PASSED [  4%]
+tests/unit/test_red_rooster.py::test_mismo_cliente_tiene_hash_estable_y_otra_clave_lo_separa PASSED [  6%]
+tests/unit/test_red_rooster.py::test_json_invalido_no_crea_catalogo_ni_ventas PASSED [  9%]
+tests/unit/test_red_rooster.py::test_clave_de_privacidad_obligatoria PASSED [ 11%]
+tests/unit/test_red_rooster.py::test_huella_telefono_con_y_sin_prefijo_pais_es_el_mismo_cliente PASSED [ 13%]
+tests/unit/test_red_rooster.py::test_huella_solo_quita_57_si_son_12_digitos PASSED [ 16%]
+tests/unit/test_red_rooster.py::test_huella_telefono_tiene_prioridad_sobre_la_direccion PASSED [ 18%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_sin_telefono_usa_direccion_normalizada PASSED [ 20%]
+tests/unit/test_red_rooster.py::test_huella_sin_datos_identificables_no_crea_cliente PASSED [ 23%]
+tests/unit/test_red_rooster.py::test_huella_con_otra_clave_es_distinta PASSED [ 25%]
+tests/unit/test_red_rooster.py::test_canal_de_los_cuatro_valores PASSED  [ 27%]
+tests/unit/test_red_rooster.py::test_importar_clientes_segun_huella_y_canal PASSED [ 30%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_con_tipo_en_mayusculas_o_mixto_usa_la_direccion PASSED [ 32%]
+tests/unit/test_red_rooster.py::test_importar_domicilio_con_tipo_en_mayusculas_sin_telefono_recibe_cliente_y_canal PASSED [ 34%]
+tests/unit/test_red_rooster.py::test_privacidad_ningun_dato_personal_en_ninguna_tabla PASSED [ 37%]
+tests/unit/test_red_rooster.py::test_codigos_por_orden_de_primera_compra_aunque_el_json_venga_desordenado PASSED [ 39%]
+tests/unit/test_red_rooster.py::test_codigos_estables_entre_corridas_y_nuevos_continuan_la_numeracion PASSED [ 41%]
+tests/unit/test_red_rooster.py::test_cambio_de_tipo_en_origen_cuenta_como_actualizacion_y_cambia_el_canal PASSED [ 44%]
+tests/unit/test_red_rooster.py::test_segunda_corrida_sin_cambios_e_incremental_inserta_uno_y_actualiza_uno PASSED [ 46%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_continua_festivo_martes_y_quincena PASSED [ 48%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-03-30-2026-04-01-quincenas0] PASSED [ 51%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-04-29-2026-05-01-quincenas1] PASSED [ 53%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2028-02-28-2028-03-01-quincenas2] PASSED [ 55%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-12-30-2027-01-01-quincenas3] PASSED [ 58%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_incluye_dias_de_pedidos_cancelados_y_no_se_acumula_al_reimportar PASSED [ 60%]
+tests/unit/test_red_rooster_analitica.py::test_ventas_diarias_solo_pagados_lags_nulos_y_ticket PASSED [ 62%]
+tests/unit/test_red_rooster_analitica.py::test_media_movil_no_incluye_el_dia_actual PASSED [ 65%]
+tests/unit/test_red_rooster_analitica.py::test_un_pico_en_el_dia_d_no_cambia_su_propia_media_pero_si_la_de_d_mas_1 PASSED [ 67%]</pre></div></div></body></html>

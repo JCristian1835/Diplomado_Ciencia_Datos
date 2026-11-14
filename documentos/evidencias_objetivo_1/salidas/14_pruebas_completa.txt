@@ -1,0 +1,75 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend
+configfile: pytest.ini
+plugins: anyio-4.16.0
+collecting ... collected 43 items
+
+tests/unit/test_red_rooster.py::test_carga_inicial_normaliza_fecha_y_omite_pii PASSED [  2%]
+tests/unit/test_red_rooster.py::test_reimportar_es_idempotente_y_actualiza_estado_y_lineas PASSED [  4%]
+tests/unit/test_red_rooster.py::test_mismo_cliente_tiene_hash_estable_y_otra_clave_lo_separa PASSED [  6%]
+tests/unit/test_red_rooster.py::test_json_invalido_no_crea_catalogo_ni_ventas PASSED [  9%]
+tests/unit/test_red_rooster.py::test_clave_de_privacidad_obligatoria PASSED [ 11%]
+tests/unit/test_red_rooster.py::test_huella_telefono_con_y_sin_prefijo_pais_es_el_mismo_cliente PASSED [ 13%]
+tests/unit/test_red_rooster.py::test_huella_solo_quita_57_si_son_12_digitos PASSED [ 16%]
+tests/unit/test_red_rooster.py::test_huella_telefono_tiene_prioridad_sobre_la_direccion PASSED [ 18%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_sin_telefono_usa_direccion_normalizada PASSED [ 20%]
+tests/unit/test_red_rooster.py::test_huella_sin_datos_identificables_no_crea_cliente PASSED [ 23%]
+tests/unit/test_red_rooster.py::test_huella_con_otra_clave_es_distinta PASSED [ 25%]
+tests/unit/test_red_rooster.py::test_canal_de_los_cuatro_valores PASSED  [ 27%]
+tests/unit/test_red_rooster.py::test_importar_clientes_segun_huella_y_canal PASSED [ 30%]
+tests/unit/test_red_rooster.py::test_huella_domicilio_con_tipo_en_mayusculas_o_mixto_usa_la_direccion PASSED [ 32%]
+tests/unit/test_red_rooster.py::test_importar_domicilio_con_tipo_en_mayusculas_sin_telefono_recibe_cliente_y_canal PASSED [ 34%]
+tests/unit/test_red_rooster.py::test_privacidad_ningun_dato_personal_en_ninguna_tabla PASSED [ 37%]
+tests/unit/test_red_rooster.py::test_codigos_por_orden_de_primera_compra_aunque_el_json_venga_desordenado PASSED [ 39%]
+tests/unit/test_red_rooster.py::test_codigos_estables_entre_corridas_y_nuevos_continuan_la_numeracion PASSED [ 41%]
+tests/unit/test_red_rooster.py::test_cambio_de_tipo_en_origen_cuenta_como_actualizacion_y_cambia_el_canal PASSED [ 44%]
+tests/unit/test_red_rooster.py::test_segunda_corrida_sin_cambios_e_incremental_inserta_uno_y_actualiza_uno PASSED [ 46%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_continua_festivo_martes_y_quincena PASSED [ 48%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-03-30-2026-04-01-quincenas0] PASSED [ 51%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-04-29-2026-05-01-quincenas1] PASSED [ 53%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2028-02-28-2028-03-01-quincenas2] PASSED [ 55%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_quincena_es_ultimo_dia_del_mes[2026-12-30-2027-01-01-quincenas3] PASSED [ 58%]
+tests/unit/test_red_rooster_analitica.py::test_dim_fecha_incluye_dias_de_pedidos_cancelados_y_no_se_acumula_al_reimportar PASSED [ 60%]
+tests/unit/test_red_rooster_analitica.py::test_ventas_diarias_solo_pagados_lags_nulos_y_ticket PASSED [ 62%]
+tests/unit/test_red_rooster_analitica.py::test_media_movil_no_incluye_el_dia_actual PASSED [ 65%]
+tests/unit/test_red_rooster_analitica.py::test_un_pico_en_el_dia_d_no_cambia_su_propia_media_pero_si_la_de_d_mas_1 PASSED [ 67%]
+tests/unit/test_red_rooster_analitica.py::test_sin_ventas_no_hay_filas_analiticas_pero_si_calidad PASSED [ 69%]
+tests/unit/test_red_rooster_analitica.py::test_calidad_nueve_reglas_con_conteos_exactos PASSED [ 72%]
+tests/unit/test_red_rooster_analitica.py::test_calidad_tolerancia_del_total_uno_no_cuenta_dos_si PASSED [ 74%]
+tests/unit/test_red_rooster_analitica.py::test_calidad_se_reemplaza_y_no_se_acumula_al_reimportar_con_force PASSED [ 76%]
+tests/unit/test_red_rooster_analitica.py::test_sin_cambios_no_toca_calidad_ni_las_tablas_analiticas PASSED [ 79%]
+tests/unit/test_red_rooster_analitica.py::test_import_fallido_conserva_calidad_y_en_primera_carga_no_crea_tablas PASSED [ 81%]
+tests/unit/test_red_rooster_analitica.py::test_primera_carga_invalida_deja_vacias_las_tablas_analiticas PASSED [ 83%]
+tests/unit/test_red_rooster_migracion.py::test_lifespan_agrega_columnas_nuevas_sin_perder_datos PASSED [ 86%]
+tests/api/test_red_rooster_api.py::test_importador_exige_auth PASSED     [ 88%]
+tests/api/test_red_rooster_api.py::test_status_y_import_idempotente PASSED [ 90%]
+tests/api/test_red_rooster_api.py::test_import_fallido_se_registra_en_estado PASSED [ 93%]
+tests/api/test_red_rooster_api.py::test_quality_exige_token PASSED       [ 95%]
+tests/api/test_red_rooster_api.py::test_quality_sin_importar_devuelve_reglas_vacias_y_conteos_en_cero PASSED [ 97%]
+tests/api/test_red_rooster_api.py::test_quality_con_token_devuelve_reglas_y_seis_conteos PASSED [100%]
+
+============================== warnings summary ===============================
+venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/api/test_red_rooster_api.py::test_status_y_import_idempotente
+tests/api/test_red_rooster_api.py::test_import_fallido_se_registra_en_estado
+tests/api/test_red_rooster_api.py::test_quality_sin_importar_devuelve_reglas_vacias_y_conteos_en_cero
+tests/api/test_red_rooster_api.py::test_quality_con_token_devuelve_reglas_y_seis_conteos
+  C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Lib\site-packages\jwt\api_jwt.py:149: InsecureKeyLengthWarning: The HMAC key is 26 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    return self._jws.encode(
+
+tests/api/test_red_rooster_api.py::test_status_y_import_idempotente
+tests/api/test_red_rooster_api.py::test_status_y_import_idempotente
+tests/api/test_red_rooster_api.py::test_import_fallido_se_registra_en_estado
+tests/api/test_red_rooster_api.py::test_quality_sin_importar_devuelve_reglas_vacias_y_conteos_en_cero
+tests/api/test_red_rooster_api.py::test_quality_con_token_devuelve_reglas_y_seis_conteos
+tests/api/test_red_rooster_api.py::test_quality_con_token_devuelve_reglas_y_seis_conteos
+  C:\Users\Juan\Documents\Proyectos\Desarrollos_propios\Diplomado Ciencia de datos\backend\venv\Lib\site-packages\jwt\api_jwt.py:370: InsecureKeyLengthWarning: The HMAC key is 26 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    decoded = self.decode_complete(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 43 passed, 11 warnings in 18.88s =======================

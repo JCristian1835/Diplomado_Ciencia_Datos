@@ -1,0 +1,29 @@
+$ SELECT (SELECT COUNT(*) FROM sales) AS sales, (SELECT COUNT(DISTINCT id) FROM sales) AS sales_id_distintos, (SELECT COUNT(*) FROM sale_items) AS sale_items, (SELECT COUNT(*) FROM customers) AS customers;
+sales  sales_id_distintos  sale_items  customers
+-----  ------------------  ----------  ---------
+3042   3042                5022        126
+(1 fila)
+
+$ POST http://localhost:8010/api/v1/etl/import?force=true   (Authorization: Bearer <token>)
+HTTP 200
+status     SUCCESS
+inserted   0
+updated    0
+unchanged  3042
+skipped    0
+lines      0
+products   44
+message    Importación completada
+
+$ SELECT (SELECT COUNT(*) FROM sales) AS sales, (SELECT COUNT(DISTINCT id) FROM sales) AS sales_id_distintos, (SELECT COUNT(*) FROM sale_items) AS sale_items, (SELECT COUNT(*) FROM customers) AS customers;
+sales  sales_id_distintos  sale_items  customers
+-----  ------------------  ----------  ---------
+3042   3042                5022        126
+(1 fila)
+
+$ SELECT id, status, json_extract(report,'$.inserted') ... FROM source_import_runs ORDER BY id;
+id  status   inserted  updated  unchanged
+--  -------  --------  -------  ---------
+1   SUCCESS  3042      0        0
+2   SUCCESS  0         0        3042
+(2 filas)

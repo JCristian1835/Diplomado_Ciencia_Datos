@@ -26,3 +26,8 @@ Lee siempre `PLAN.md` (fuente de verdad), `documento_srs_especificaci_n_t_cnica.
 - Cada ruta monta su fondo animado en `AppShell.Fondo` (Inicio=OrbitBackdrop, POS/Productos/Clientes=Blueprint, Analítica=Constellation, Asesor=TopoRadar, Datos=SealTrace, Login=OrbitBackdrop).
 - Gráficos con Recharts leyendo colores de los tokens con `usePaleta()` (`charts/paleta.ts`).
 - Datos siempre con `useQuery`/`useMutation`; carga con `Skeleton`, vacíos con `EmptyState`.
+
+## Datos del caso Red Rooster
+- La fuente es `BD/pedidos.json` (datos reales) junto con `BD/productos.json`; `BD/` no se versiona.
+- La clave HMAC `backend/data/.privacy_key` no se cambia (rompe los códigos de cliente `C###`).
+- `backend/data/red_rooster.db` se reconstruye borrándola: el importador no borra pedidos ausentes del origen.

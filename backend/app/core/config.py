@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     admin_user: str = "admin"
     admin_password: str = "admin123"
     fernet_key: str = ""
-    database_url: str = f"sqlite:///{(BASE_DIR / 'data' / 'micronegocio.db').as_posix()}"
+    database_url: str = f"sqlite:///{(BASE_DIR / 'data' / 'red_rooster.db').as_posix()}"
     cors_origins: str = "http://localhost:5180"
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
@@ -26,6 +26,10 @@ class Settings(BaseSettings):
     apriori_min_lift: float = 1.2
     demanda_test_dias: int = 30
     seed_on_empty: bool = True
+    data_source_mode: str = "red_rooster"
+    red_rooster_json: str = str(BASE_DIR.parent / "BD" / "pedidos.json")
+    data_privacy_key: str = ""
+    red_rooster_poll_seconds: int = 60
 
     @property
     def cors_lista(self) -> list[str]:
@@ -49,3 +53,20 @@ def obtener_clave_fernet() -> str:
     clave = Fernet.generate_key().decode()
     archivo.write_text(clave)
     return clave
+
+
+def obtener_clave_privacidad() -> str:
+    """Clave HMAC estable para seudonimizar clientes importados."""
+    s = get_settings()
+    if s.data_privacy_key:
+        return s.data_privacy_key
+    archivo = BASE_DIR / "data" / ".privacy_key"
+    if archivo.exists():
+        return archivo.read_text().strip()
+    import secrets
+    archivo.parent.mkdir(parents=True, exist_ok=True)
+    clave = secrets.token_urlsafe(48)
+    archivo.write_text(clave)
+    return clave
+
+

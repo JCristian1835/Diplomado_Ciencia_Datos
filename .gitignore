@@ -8,5 +8,10 @@ __pycache__/
 .pytest_cache/
 
 data/.fernet_key
+data/.privacy_key
 .fernet_key
 *.db
+BD/
+
+# Archivos temporales de Word
+~$*

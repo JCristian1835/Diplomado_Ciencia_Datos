@@ -1,0 +1,17 @@
+$ SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;  -- y SELECT COUNT(*) FROM <tabla> por cada una
+tabla                          registros
+-----------------------------  ---------
+analytics_customer_segments            0
+analytics_demand_forecast              0
+analytics_market_basket_rules          0
+calidad_datos                          9
+customers                            126
+dim_fecha                            236
+etl_runs                               0
+inventory_movements                    0
+products                              44
+sale_items                         5.022
+sales                              3.042
+source_import_runs                     1
+users                                  1
+ventas_diarias                       236

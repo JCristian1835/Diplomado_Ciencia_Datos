@@ -1,0 +1,44 @@
+{
+  "antes": [
+    "3.042",
+    "PEDIDOS EN EL JSON",
+    "0",
+    "PEDIDOS EN SQLITE",
+    "—",
+    "ÚLTIMA SINCRONIZACIÓN",
+    "SIN CARGAS",
+    "ESTADO DE LA ÚLTIMA CARGA"
+  ],
+  "ruta_configurada": "C:\\rr_evid\\origen\\pedidos.json",
+  "mensaje": [
+    "Importación completada",
+    "Inicio: 13/11/2026, 10:05:57 p. m. · duración 9.5 s."
+  ],
+  "despues": [
+    "3.042",
+    "PEDIDOS EN EL JSON",
+    "3.042",
+    "PEDIDOS EN SQLITE",
+    "13/11/2026, 22:06",
+    "ÚLTIMA SINCRONIZACIÓN",
+    "EXITOSO",
+    "ESTADO DE LA ÚLTIMA CARGA"
+  ],
+  "resultado": [
+    "3.042",
+    "PEDIDOS NUEVOS",
+    "0",
+    "PEDIDOS ACTUALIZADOS",
+    "0",
+    "SIN CAMBIOS",
+    "5.022",
+    "LÍNEAS PROCESADAS"
+  ],
+  "alertas": [
+    "Importación completada\n\nInicio: 13/11/2026, 10:05:57 p. m. · duración 9.5 s."
+  ],
+  "swagger": {
+    "codigo": "200",
+    "cuerpo": "{\n  \"status\": \"SIN_CAMBIOS\",\n  \"inserted\": 0,\n  \"updated\": 0,\n  \"unchanged\": 0,\n  \"skipped\": 0,\n  \"lines\": 0,\n  \"products\": 0,\n  \"errors\": 0,\n  \"source_mtime\": 1794613898.9832432,\n  \"message\": \"Los archivos de origen no han cambiado\",\n  \"started_at\": \"2026-11-13T22:06:16.575510\",\n  \"finished_at\": \"2026-11-13T22:06:16.590469\"\n}"
+  }
+}

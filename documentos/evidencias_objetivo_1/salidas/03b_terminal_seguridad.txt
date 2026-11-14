@@ -1,0 +1,33 @@
+$ Get-Content .gitignore
+venv/
+.env
+data/*.db
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+data/.fernet_key
+data/.privacy_key
+.fernet_key
+*.db
+BD/
+
+$ Get-Content backend\.gitignore
+venv/
+.env
+data/*.db
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/.privacy_key
+data/.fernet_key
+
+$ Test-Path backend\data\.privacy_key
+True
+
+$ (Get-Content backend\data\.privacy_key -Raw).Trim().Length   # solo la longitud; el valor nunca se imprime
+64
