@@ -56,7 +56,7 @@ export interface Producto {
 export interface ProductoIn { sku: string; name: string; category?: string | null; unit_price: number; unit_cost: number; stock: number }
 export interface ProductoUpdate { name?: string; category?: string | null; unit_price?: number; unit_cost?: number; is_active?: boolean }
 
-export interface Cliente { id: number; first_name: string; last_name: string; email: string | null; phone: string | null; revelado: boolean; created_at: string | null }
+export interface Cliente { id: number; codigo_anonimo: string | null; first_name: string; last_name: string; email: string | null; phone: string | null; revelado: boolean; created_at: string | null }
 
 export interface ItemVenta { id: number | null; product_id: number; product_name: string | null; quantity: number; unit_price: number; subtotal: number }
 export interface Venta { id: number; customer_id: number | null; total_amount: number; payment_method: string; status: string; created_at: string | null; items: ItemVenta[] }

@@ -27,6 +27,7 @@ class Cliente:
     encrypted_phone: str | None = None
     id: int | None = None
     created_at: datetime | None = None
+    codigo_anonimo: str | None = None
 
 
 @dataclass

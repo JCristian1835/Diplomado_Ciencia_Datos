@@ -26,3 +26,4 @@ class ClienteOut(BaseModel):
     phone: str | None
     revelado: bool
     created_at: datetime | None
+    codigo_anonimo: str | None = None

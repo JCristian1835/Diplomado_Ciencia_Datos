@@ -39,7 +39,7 @@ export default function Clientes() {
               <tbody>
                 {clientes.data.map((c) => (
                   <tr key={c.id}>
-                    <td>{c.first_name} {c.last_name}</td>
+                    <td>{c.codigo_anonimo ?? `${c.first_name} ${c.last_name}`}</td>
                     <td className="mono">{c.email ?? '—'}</td>
                     <td className="mono">{c.phone ?? '—'}</td>
                     <td className="muted">{formatoFecha(c.created_at)}</td>

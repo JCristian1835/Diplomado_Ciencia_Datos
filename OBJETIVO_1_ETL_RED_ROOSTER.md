@@ -31,6 +31,8 @@ Cada importación registra estado, conteos, errores y huella de los archivos. Si
 
 ## Verificación y estado
 
+Verificado el 2026-11-14: `pytest` con 224 pruebas pasadas y 0 fallidas (las 9 nuevas cubren `codigo_anonimo` en la API de clientes), `npm run build`, `npm run lint` y comprobaciones estáticas `92/92` sin errores. Sobre la base ya cargada se agregó un stock inicial de 100 unidades por producto (44 entradas IN en el kardex, por la API; respaldo previo `red_rooster_respaldo_20261114_antes_stock.db`), que una reimportación forzada no borra, pero que hay que volver a cargar si la BD se recrea desde cero. La fuente 3.042 coincide con los 3.042 pedidos cargados.
+
 Verificado el 2026-11-13: `pytest` con 215 pruebas pasadas y 0 fallidas (43 del ETL), `npm run build`, `npm run lint` y comprobaciones estáticas `92/92` sin errores. La base `backend/data/red_rooster.db` se respaldó en `red_rooster_respaldo_20261113.db` y se recargó desde cero solo con `BD/pedidos.json`. Las evidencias (32 capturas y su manifiesto) están en `documentos/evidencias_objetivo_1/`.
 
 Limitaciones conocidas: el margen en `repositories.py:189` trata el costo 0 como real; un `null` dentro de `productos` descarta el pedido completo en `red_rooster.py` en lugar de solo la línea; `api.ts:101` tipa `errors` como `string[]` aunque el backend devuelve un entero.

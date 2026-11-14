@@ -18,7 +18,8 @@ def _producto(r: m.ProductModel) -> Producto:
 
 
 def _cliente(r: m.CustomerModel) -> Cliente:
-    return Cliente(r.first_name, r.last_name, r.encrypted_email, r.encrypted_phone, r.id, r.created_at)
+    return Cliente(r.first_name, r.last_name, r.encrypted_email, r.encrypted_phone, r.id, r.created_at,
+                   r.codigo_anonimo)
 
 
 def _venta(r: m.SaleModel) -> Venta:

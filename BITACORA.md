@@ -62,3 +62,18 @@
   - Documento: `documentos/evidencias_objetivo_1/armar_documento.py` genera `Proyecto integrador Red Rooster (en plantilla)_Objetivo_1_v2.docx` a partir de `_V1.docx`: 30 figuras nuevas en 14 pasos, diagnóstico movido al objetivo 2 con figuras antiguas renumeradas 31–36, Tabla 1, Fuente de datos y Fases actualizadas, referencias Kimball & Ross (2013) y Krawczyk et al. (1997). Tabla de contenido actualizada con Word; 51 páginas.
   - Documentación: `OBJETIVO_1_ETL_RED_ROOSTER.md` corregido (fuente, capa analítica, `/etl/quality`, verificación real); `CLAUDE.md` con regla de la fuente Red Rooster.
   - Pendientes: el margen en `repositories.py:189` sigue tomando costo 0 como real (objetivo 3); un `null` dentro de `productos` descarta el pedido entero en `red_rooster.py` (~146) en vez de solo la línea; `api.ts:101` tipa `errors` como `string[]` pero el backend devuelve un entero; no cambiar la clave HMAC (rompe los códigos de cliente); el bloque «Descripción» del Word sigue citando el corte del 22-oct (2.810 pedidos), coherente con el objetivo 2.
+
+- 2026-11-14 (Objetivo 1 Red Rooster: diagrama de la BD, push, revisión completa, stock inicial y código anónimo): cierre del día; sin cambios en los archivos que cita el documento (`etl/*`, `models.py`, `config.py`, `main.py`, `api/v1/etl.py`).
+  - Documento v2: agregado el diagrama completo de la BD como Figura 23, al final del Paso 10.
+  - GitHub: push del commit `c510a3e` (111 archivos, incluido `_Objetivo_1_v2.docx`). Excluidos: `BD/`, `*.db`, claves, archivos con solo cambios de fin de línea, el `_Objetivo_1.docx` viejo y `_anteriores/`. Antes del push se reemplazó un teléfono real que estaba en las pruebas por `3005550142`.
+  - Revisión completa del 2026-11-14: backend 8010 y frontend 5180 levantan; 16 endpoints de lectura OK; 7 pantallas sin errores de consola ni de API; fuente 3.042 = cargados 3.042.
+  - Analítica vacía tras la recarga desde cero: se ejecutó `POST /etl/run`. Demanda XGBoost MAE 0,52 y R² 0,57 (línea base lag-7: R² 0,25); K-Means k=4, silueta 0,54; Apriori 0 reglas.
+  - Stock inicial: 100 unidades por producto (44 entradas IN «Stock inicial» en el kardex, cargadas por la API) en `backend/data/red_rooster.db`. Respaldo previo: `red_rooster_respaldo_20261114_antes_stock.db`. Valor de inventario $29.433.400. Una reimportación forzada no lo borra; si se recrea la BD desde cero hay que volver a cargarlo.
+  - Código anónimo de cliente: la API expone `codigo_anonimo` (`entities.py:30`, `repositories.py:21-22`, `application/clientes.py:19,46-47`, `schemas/clientes.py:29`); `Clientes.tsx:42` y `PuntoVenta.tsx:115` muestran el código C### (si no existe, el nombre). No se puede asignar por POST/PUT.
+  - Verificación: pruebas nuevas `tests/api/test_clientes_codigo_anonimo.py` (9); pytest 224 pasadas; build, lint y `check_static` 92/92. seguridad-negocio: APROBADO.
+  - Pendientes (Juan Pablo pidió no olvidarlos):
+    - Obj. 3, Apriori: da 0 reglas con soporte 0,02 (el par máximo tiene 1,6 %); con 0,01 salen reglas con lift 3,6–4,3. El documento presenta «sin reglas» como hallazgo: cambiarlo solo como un paso documentado.
+    - Obj. 2, segmentos: repiten etiquetas (Campeones ×2, Ocasionales ×2). El documento dice silueta 0,44 con 5 grupos y la app da 0,54 con 4: hay que alinearlos. El tooltip RFM (`DispersionRFM.tsx:21`) aún muestra «Cliente Red Rooster».
+    - Menor: el buscador de Clientes filtra por nombre, así que buscar «C001» no encuentra nada.
+    - El texto de `iniciar_sistema.bat` dice «siembra datos sintéticos» y ya no es cierto.
+    - Demostración: vender en el POS altera los totales frente al documento; restaurar desde el respaldo después.

@@ -16,6 +16,7 @@ class ClienteVista:
     phone: str | None
     revelado: bool
     created_at: datetime | None
+    codigo_anonimo: str | None = None
 
 
 def enmascarar_email(email: str | None) -> str | None:
@@ -42,7 +43,8 @@ class ServicioClientes:
         tel = self.cipher.descifrar(c.encrypted_phone)
         if not revelar:
             email, tel = enmascarar_email(email), enmascarar_telefono(tel)
-        return ClienteVista(c.id, c.first_name, c.last_name, email, tel, revelar, c.created_at)
+        return ClienteVista(c.id, c.first_name, c.last_name, email, tel, revelar, c.created_at,
+                            c.codigo_anonimo)
 
     def _obtener(self, id: int) -> Cliente:
         c = self.repo.obtener(id)

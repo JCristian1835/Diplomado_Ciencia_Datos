@@ -112,7 +112,7 @@ export default function PuntoVenta() {
           <div className="stack">
             <Select label="Cliente (opcional)" value={cliente} onChange={(e) => setCliente(e.target.value)}>
               <option value="">Venta de mostrador (sin cliente)</option>
-              {(clientes.data ?? []).map((c) => <option key={c.id} value={c.id}>{c.first_name} {c.last_name}</option>)}
+              {(clientes.data ?? []).map((c) => <option key={c.id} value={c.id}>{c.codigo_anonimo ?? `${c.first_name} ${c.last_name}`}</option>)}
             </Select>
             <Select label="Método de pago" value={medio} onChange={(e) => setMedio(e.target.value)}>
               {MEDIOS.map((m) => <option key={m} value={m}>{m.charAt(0) + m.slice(1).toLowerCase()}</option>)}
