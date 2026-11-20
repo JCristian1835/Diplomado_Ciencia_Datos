@@ -1,0 +1,297 @@
+{
+  "resumen": {
+    "pedidos_pagados": 3017,
+    "pedidos_no_pagados": 25,
+    "ingresos": 138605100,
+    "primer_dia": "2026-03-23",
+    "ultimo_dia": "2026-11-13",
+    "dias_abiertos_comparables": 168,
+    "pedidos_13_nov_excluidos": 10,
+    "pedidos_en_martes": 5
+  },
+  "por_mes": [
+    {
+      "mes": "marzo",
+      "periodo": "Arranque",
+      "pedidos": 87,
+      "ingresos": 3554800,
+      "ticket": 40859.770115,
+      "dias_abiertos": 7,
+      "pedidos_por_dia_abierto": 11.714286
+    },
+    {
+      "mes": "abril",
+      "periodo": "Arranque",
+      "pedidos": 362,
+      "ingresos": 15119200,
+      "ticket": 41765.745856,
+      "dias_abiertos": 26,
+      "pedidos_por_dia_abierto": 13.923077
+    },
+    {
+      "mes": "mayo",
+      "periodo": "Base",
+      "pedidos": 456,
+      "ingresos": 19750000,
+      "ticket": 43311.403509,
+      "dias_abiertos": 27,
+      "pedidos_por_dia_abierto": 16.888889
+    },
+    {
+      "mes": "junio",
+      "periodo": "Base",
+      "pedidos": 399,
+      "ingresos": 18554500,
+      "ticket": 46502.506266,
+      "dias_abiertos": 25,
+      "pedidos_por_dia_abierto": 15.96
+    },
+    {
+      "mes": "julio",
+      "periodo": "Base",
+      "pedidos": 458,
+      "ingresos": 20045700,
+      "ticket": 43767.90393,
+      "dias_abiertos": 27,
+      "pedidos_por_dia_abierto": 16.962963
+    },
+    {
+      "mes": "agosto",
+      "periodo": "Base",
+      "pedidos": 432,
+      "ingresos": 20767000,
+      "ticket": 48071.759259,
+      "dias_abiertos": 27,
+      "pedidos_por_dia_abierto": 16.0
+    },
+    {
+      "mes": "septiembre",
+      "periodo": "Caída",
+      "pedidos": 349,
+      "ingresos": 15760900,
+      "ticket": 45160.17192,
+      "dias_abiertos": 25,
+      "pedidos_por_dia_abierto": 13.96
+    },
+    {
+      "mes": "octubre",
+      "periodo": "Caída",
+      "pedidos": 332,
+      "ingresos": 17734400,
+      "ticket": 53416.86747,
+      "dias_abiertos": 27,
+      "pedidos_por_dia_abierto": 12.296296
+    },
+    {
+      "mes": "noviembre",
+      "periodo": "Caída",
+      "pedidos": 132,
+      "ingresos": 6751100,
+      "ticket": 51144.69697,
+      "dias_abiertos": 10,
+      "pedidos_por_dia_abierto": 13.2
+    }
+  ],
+  "por_dia_semana": [
+    {
+      "dia": "lunes",
+      "pedidos": 380,
+      "ingresos": 16626600,
+      "ticket": 43754.210526,
+      "pedidos_por_dia_base": 16.388889,
+      "pedidos_por_dia_caida": 8.5
+    },
+    {
+      "dia": "miércoles",
+      "pedidos": 400,
+      "ingresos": 13578600,
+      "ticket": 33946.5,
+      "pedidos_por_dia_base": 14.117647,
+      "pedidos_por_dia_caida": 14.545455
+    },
+    {
+      "dia": "jueves",
+      "pedidos": 422,
+      "ingresos": 14483200,
+      "ticket": 34320.379147,
+      "pedidos_por_dia_base": 15.647059,
+      "pedidos_por_dia_caida": 14.181818
+    },
+    {
+      "dia": "viernes",
+      "pedidos": 490,
+      "ingresos": 22412200,
+      "ticket": 45739.183673,
+      "pedidos_por_dia_base": 18.222222,
+      "pedidos_por_dia_caida": 16.2
+    },
+    {
+      "dia": "sábado",
+      "pedidos": 419,
+      "ingresos": 25121400,
+      "ticket": 59955.608592,
+      "pedidos_por_dia_base": 17.777778,
+      "pedidos_por_dia_caida": 9.9
+    },
+    {
+      "dia": "domingo",
+      "pedidos": 447,
+      "ingresos": 27141600,
+      "ticket": 60719.463087,
+      "pedidos_por_dia_base": 16.444444,
+      "pedidos_por_dia_caida": 15.1
+    }
+  ],
+  "por_franja": {
+    "franjas": [
+      {
+        "franja": "Almuerzo (antes de 15 h)",
+        "pedidos": 1096,
+        "pct": 0.42846,
+        "pct_base": 0.398281,
+        "pct_caida": 0.493235,
+        "ticket": 38810.766423
+      },
+      {
+        "franja": "Tarde (15 h a 17:59)",
+        "pedidos": 694,
+        "pct": 0.271306,
+        "pct_base": 0.284814,
+        "pct_caida": 0.242312,
+        "ticket": 48445.533141
+      },
+      {
+        "franja": "Noche (desde las 18 h)",
+        "pedidos": 768,
+        "pct": 0.300235,
+        "pct_base": 0.316905,
+        "pct_caida": 0.264453,
+        "ticket": 56257.552083
+      }
+    ],
+    "hora_pico": 13,
+    "pedidos_por_hora": {
+      "10": 1,
+      "11": 17,
+      "12": 243,
+      "13": 452,
+      "14": 383,
+      "15": 310,
+      "16": 211,
+      "17": 173,
+      "18": 163,
+      "19": 190,
+      "20": 197,
+      "21": 119,
+      "22": 73,
+      "23": 26
+    }
+  },
+  "por_canal": [
+    {
+      "categoria": "llevar",
+      "pedidos": 1350,
+      "pct": 0.527756,
+      "pedidos_base": 955,
+      "pedidos_caida": 395,
+      "pct_base": 0.547278,
+      "pct_caida": 0.485855,
+      "ingresos": 63170600,
+      "ticket": 46793.037037
+    },
+    {
+      "categoria": "mesa",
+      "pedidos": 1078,
+      "pct": 0.421423,
+      "pedidos_base": 675,
+      "pedidos_caida": 403,
+      "pct_base": 0.386819,
+      "pct_caida": 0.495695,
+      "ingresos": 51316900,
+      "ticket": 47603.80334
+    },
+    {
+      "categoria": "domicilio",
+      "pedidos": 130,
+      "pct": 0.050821,
+      "pedidos_base": 115,
+      "pedidos_caida": 15,
+      "pct_base": 0.065903,
+      "pct_caida": 0.01845,
+      "ingresos": 4876100,
+      "ticket": 37508.461538
+    }
+  ],
+  "por_metodo_pago": [
+    {
+      "categoria": "TRANSFERENCIA",
+      "pedidos": 1493,
+      "pct": 0.583659,
+      "pedidos_base": 1022,
+      "pedidos_caida": 471,
+      "pct_base": 0.585673,
+      "pct_caida": 0.579336,
+      "ingresos": 70229800,
+      "ticket": 47039.383791
+    },
+    {
+      "categoria": "EFECTIVO",
+      "pedidos": 943,
+      "pct": 0.368647,
+      "pedidos_base": 639,
+      "pedidos_caida": 304,
+      "pct_base": 0.366189,
+      "pct_caida": 0.373924,
+      "ingresos": 42250600,
+      "ticket": 44804.453871
+    },
+    {
+      "categoria": "TARJETA",
+      "pedidos": 92,
+      "pct": 0.035966,
+      "pedidos_base": 57,
+      "pedidos_caida": 35,
+      "pct_base": 0.032665,
+      "pct_caida": 0.04305,
+      "ingresos": 5350500,
+      "ticket": 58157.608696
+    },
+    {
+      "categoria": "NEQUI",
+      "pedidos": 30,
+      "pct": 0.011728,
+      "pedidos_base": 27,
+      "pedidos_caida": 3,
+      "pct_base": 0.015473,
+      "pct_caida": 0.00369,
+      "ingresos": 1532700,
+      "ticket": 51090.0
+    }
+  ],
+  "descriptivos_pedidos_por_dia_abierto": {
+    "base": {
+      "dias": 106,
+      "media": 16.462264,
+      "mediana": 16.0,
+      "desviacion": 4.504336,
+      "q1": 13.0,
+      "q3": 20.0,
+      "minimo": 7.0,
+      "maximo": 30.0
+    },
+    "caida": {
+      "dias": 62,
+      "media": 13.112903,
+      "mediana": 13.0,
+      "desviacion": 5.831247,
+      "q1": 9.25,
+      "q3": 17.0,
+      "minimo": 1.0,
+      "maximo": 24.0
+    }
+  },
+  "variacion_media": -0.203457,
+  "graficas": [
+    "a01_perfil_ventas_pedidos_por_dia_abierto_mes.png"
+  ]
+}

@@ -54,6 +54,7 @@ class ResumenSegmento(BaseModel):
 
 class ClienteSegmentoOut(BaseModel):
     customer_id: int
+    codigo_anonimo: str | None = None
     first_name: str
     last_name: str
     recency: int

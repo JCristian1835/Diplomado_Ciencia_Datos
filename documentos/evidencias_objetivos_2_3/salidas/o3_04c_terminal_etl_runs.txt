@@ -1,0 +1,12 @@
+$ SELECT id, status AS estado, rows_extracted AS filas,
+       round(json_extract(metrics,'$.demanda.mae'),4) AS mae, round(json_extract(metrics,'$.demanda.r2'),4) AS r2,
+       round(json_extract(metrics,'$.demanda.mae_baseline_lag7'),4) AS mae_base_lag7,
+       round(json_extract(metrics,'$.demanda.r2_baseline_lag7'),4) AS r2_base_lag7,
+       json_extract(metrics,'$.canasta.n_canastas') AS canastas, json_extract(metrics,'$.canasta.n_reglas') AS n_reglas,
+       json_extract(metrics,'$.segmentos.k') AS k, round(json_extract(metrics,'$.segmentos.silhouette'),4) AS silueta,
+       json_extract(metrics,'$.segmentos.n_clientes') AS n_clientes
+FROM etl_runs ORDER BY id DESC LIMIT 1;
+id   estado  filas     mae      r2  mae_base_lag7  r2_base_lag7  canastas  n_reglas  k  silueta  n_clientes
+--  -------  -----  ------  ------  -------------  ------------  --------  --------  -  -------  ----------
+ 2  SUCCESS      0  0.5212  0.5689         0.5985        0.2505      3017        32  4   0.5429         123
+(1 fila)

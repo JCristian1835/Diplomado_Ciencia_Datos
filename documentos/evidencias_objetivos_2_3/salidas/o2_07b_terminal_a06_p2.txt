@@ -1,0 +1,35 @@
+$ venv\Scripts\python -m analisis.a06_venta_cruzada   # continuación
+--- Pedidos sin bebida por categoría de plato ---
+Categorías de bebida (products.category): bebidas -> Club Colombia, Coca Cola 1.5L, Coca Cola 237ml vidrio, Coca Cola 250ml, Coca Cola 400ml, Coca Cola Zero 500ml, Coronita, Jugo Natural FRESA, Jugo Natural LULO, Limonada Natural, Poker, Quatro 1.5L, Quatro 400ml, agua con gas, agua sin gas
+Categoría de plato  Pedidos con la categoría  Sin bebida  % sin bebida
+------------------  ------------------------  ----------  ------------
+promos                                   755         708        93,8 %
+menu_dia                               1.033         955        92,4 %
+hamburguesas                             241         172        71,4 %
+pollo                                    434         303        69,8 %
+porciones                                135          85        63,0 %
+carta                                    879         477        54,3 %
+Todos los platos                       3.010       2.449        81,4 %
+Un pedido con platos de varias categorías cuenta en cada una de ellas.
+
+[ ... secciones omitidas en la imagen: Margen por producto ]
+
+--- Hallazgos de calidad del catálogo (se usa el precio real y un costo estimado) ---
+Producto         Hallazgo                             Precio lista  Precio real  Costo registrado  Costo usado
+---------------  -----------------------------------  ------------  -----------  ----------------  -----------
+Churrasco        costo registrado >= precio de lista      $ 40.000     $ 35.000          $ 40.000     $ 14.129
+Chuleta Apanada  precio de lista distinto al cobrado     $ 350.000     $ 30.000           $ 8.279      $ 8.279
+sopa             42 % de las ventas con otro precio        $ 8.000      $ 8.000               $ 0      $ 2.807
+Criterios: costo >= precio de lista; precio de lista a más de 20 % del cobrado; más de 30 % de las ventas a un precio que se aparta más de 20 % del real.
+
+--- Combos sugeridos: plato + bebida, lift >= 2, los 5 más frecuentes (precio = 90 % de la suma de precios reales) ---
+Pares plato + bebida con lift >= 2: 14
+Plato                          Bebida  Soporte  Lift  Suma precios  Precio combo     Costo    Margen  Margen %
+---------------  --------------------  -------  ----  ------------  ------------  --------  --------  --------
+Churrasco            Limonada Natural   0,0149  4,28      $ 45.000      $ 40.500  $ 15.429  $ 25.071    61,9 %
+Churrasco          Jugo Natural FRESA   0,0116  3,76      $ 45.000      $ 40.500  $ 16.429  $ 24.071    59,4 %
+Churrasco              Coca Cola 1.5L   0,0109  4,32      $ 43.000      $ 38.700  $ 18.177  $ 20.523    53,0 %
+Chuleta Apanada    Jugo Natural FRESA   0,0096  6,84      $ 40.000      $ 36.000  $ 10.579  $ 25.421    70,6 %
+Churrasco        Coca Cola Zero 500ml   0,0083  4,07      $ 40.000      $ 36.000  $ 16.143  $ 19.857    55,2 %
+
+Gráfica guardada: analisis/salidas/a06_venta_cruzada_pedidos_sin_bebida.png

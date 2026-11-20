@@ -114,8 +114,8 @@ class AnalyticsRepoSQL:
                  "confidence": r.confidence, "lift": r.lift} for r in filas]
 
     def segmentos(self):
-        stmt = (select(m.CustomerSegmentModel.customer_id, m.CustomerModel.first_name, m.CustomerModel.last_name,
-                       m.CustomerSegmentModel.recency, m.CustomerSegmentModel.frequency,
+        stmt = (select(m.CustomerSegmentModel.customer_id, m.CustomerModel.codigo_anonimo, m.CustomerModel.first_name,
+                       m.CustomerModel.last_name, m.CustomerSegmentModel.recency, m.CustomerSegmentModel.frequency,
                        m.CustomerSegmentModel.monetary, m.CustomerSegmentModel.cluster,
                        m.CustomerSegmentModel.segment_label)
                 .join(m.CustomerModel, m.CustomerModel.id == m.CustomerSegmentModel.customer_id)

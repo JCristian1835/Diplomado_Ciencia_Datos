@@ -1,0 +1,59 @@
+
+==============================================================================
+ PASO 3 - INFERENCIA ESTADÍSTICA (alfa = 0,05)
+==============================================================================
+
+--- Mann-Whitney: pedidos por día abierto, base vs caída ---
+Base: n = 106, media = 16,46, mediana = 16,00
+Caída: n = 62, media = 13,11, mediana = 13,00
+Estadístico U = 4.284,5   p = 0,0010
+Tamaño del efecto (delta de Cliff) = 0,304 -> pequeño
+Conclusión: La caída de pedidos por día abierto es estadísticamente significativa (p < 0,05).
+Diferencia de medias (base - caída) = 3,35 pedidos por día abierto
+IC 95 % bootstrap (10.000 réplicas, semilla 42): [1,72 ; 5,03]
+El intervalo no incluye el 0: la caída es real.
+
+--- Robustez: sin los días casi sin pedidos (<= 5) ---
+Base: n = 106, media = 16,46, mediana = 16,00
+Caída: n = 53, media = 14,83, mediana = 15,00
+Estadístico U = 3.330,5   p = 0,0563
+Tamaño del efecto (delta de Cliff) = 0,186 -> pequeño
+Conclusión: Sin los días casi sin pedidos la diferencia deja de ser significativa (p >= 0,05).
+Diferencia de medias = 1,63   IC 95 % bootstrap: [0,20 ; 3,05]
+
+--- Chi-cuadrado: canal x periodo ---
+Canal      Base  % base  Caída  % caída
+---------  ----  ------  -----  -------
+mesa        675  38,7 %    403   49,6 %
+llevar      955  54,7 %    395   48,6 %
+domicilio   115   6,6 %     15    1,8 %
+Chi-cuadrado = 44,14   g.l. = 2   p < 0,0001
+V de Cramér = 0,131   (frecuencia esperada mínima = 41,3; válida si >= 5)
+Conclusión: El canal y el periodo no son independientes: la mezcla de canales cambió (p < 0,05).
+
+--- Chi-cuadrado sin domicilio: mesa vs llevar x periodo ---
+Canal   Base  % base  Caída  % caída
+------  ----  ------  -----  -------
+mesa     675  41,4 %    403   50,5 %
+llevar   955  58,6 %    395   49,5 %
+Chi-cuadrado = 17,57   g.l. = 1   p < 0,0001
+V de Cramér = 0,085   (frecuencia esperada mínima = 354,3; válida si >= 5)
+Conclusión: El canal y el periodo no son independientes: la mezcla de canales cambió (p < 0,05).
+Se excluyen los pedidos 'sin_dato' (menos de 5 en total): su frecuencia esperada sería insuficiente.
+
+--- Kruskal-Wallis: ¿cambian los pedidos según el día de la semana? ---
+Muestra           H  g.l.  valor p  epsilon²  Conclusión (alfa 0,05)
+------------  -----  ----  -------  --------  ----------------------
+Base + caída  10,47     5   0,0631     0,063  sin diferencias claras
+Solo base      9,97     5   0,0760     0,095  sin diferencias claras
+Solo caída    13,75     5   0,0173     0,225         hay diferencias
+epsilon² mide cuánta de la variación de los pedidos explica el día de la semana (0 a 1).
+
+--- Mann-Whitney: ticket por pedido, caída vs base (delta > 0: caída mayor) ---
+Caída: n = 813, media = $ 49.504, mediana = $ 35.000
+Base: n = 1745, media = $ 45.339, mediana = $ 40.000
+Estadístico U = 662.751,5   p = 0,0073
+Tamaño del efecto (delta de Cliff) = -0,066 -> insignificante
+Conclusión: El ticket de la caída es significativamente distinto al del periodo base (p < 0,05).
+Diferencia de medias (caída - base) = $ 4.164   IC 95 % bootstrap: [$ -437 ; $ 9.382]
+Lectura: la mediana y la media se mueven en sentidos opuestos (pocos pedidos muy grandes jalan la media); por eso el efecto es insignificante y el IC de la media puede incluir el 0.

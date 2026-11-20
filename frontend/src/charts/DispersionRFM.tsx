@@ -1,6 +1,6 @@
 import { CartesianGrid, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from 'recharts';
 import type { ClienteSegmento, ResumenSegmento } from '../services/api';
-import { formatoCOP, formatoCompacto } from '../ui/format';
+import { formatoCOP, formatoCompacto, formatoNum } from '../ui/format';
 import { estiloEje, usePaleta } from './paleta';
 import { Tip } from './Tip';
 
@@ -18,7 +18,7 @@ export function DispersionRFM({ clientes, resumen }: { clientes: ClienteSegmento
             <YAxis type="number" dataKey="monetary" name="Monetario" {...eje} tickFormatter={formatoCompacto} width={52} />
             <ZAxis range={[36, 36]} />
             <Tooltip
-              content={<Tip formato={formatoCOP} titulo={(_l, d) => `${d?.first_name ?? ''} ${d?.last_name ?? ''} · ${d?.segment_label ?? ''}`} />}
+              content={<Tip formato={(v, nombre) => (nombre === 'Recencia' ? `${formatoNum(v)} ${v === 1 ? 'día' : 'días'}` : formatoCOP(v))} titulo={(_l, d) => `${d?.codigo_anonimo ?? `${d?.first_name ?? ''} ${d?.last_name ?? ''}`} · ${d?.segment_label ?? ''}`} />}
               cursor={{ strokeDasharray: '3 3', stroke: p.line }}
             />
             {resumen.map((s, i) => (

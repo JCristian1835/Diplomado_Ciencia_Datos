@@ -3,6 +3,8 @@ import holidays
 import numpy as np
 import pandas as pd
 
+from app.domain.costos import costo_unitario, razones_costo
+
 FEATURES = ["product_id", "lag_1", "lag_7", "lag_14", "ma_7", "ma_28", "dow", "month", "is_holiday"]
 
 
@@ -16,8 +18,10 @@ def imputar(items: pd.DataFrame, productos: pd.DataFrame) -> tuple[pd.DataFrame,
     productos = productos.copy()
     nulos = int(items[["quantity", "unit_price", "subtotal"]].isna().sum().sum()
                 + productos[["unit_cost", "category"]].isna().sum().sum())
-    productos["unit_cost"] = productos["unit_cost"].fillna(0.0).astype(float)
     productos["category"] = productos["category"].fillna("Sin categoría")
+    razones = razones_costo(zip(productos["category"], productos["unit_price"], productos["unit_cost"]))
+    productos["unit_cost"] = [costo_unitario(c, p, k, razones) for c, p, k in
+                              zip(productos["category"], productos["unit_price"], productos["unit_cost"])]
     items = items.dropna(subset=["sale_id", "product_id", "created_at"])
     items["quantity"] = items["quantity"].fillna(0).astype(float)
     items = items[items["quantity"] > 0].copy()

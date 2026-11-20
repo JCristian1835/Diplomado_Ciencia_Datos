@@ -1,0 +1,47 @@
+$ venv\Scripts\python -m analisis.a02_estacionalidad_anomalias
+==============================================================================
+ PASO 2 - ESTACIONALIDAD Y DÍAS ANÓMALOS
+==============================================================================
+
+--- Efecto del día de la semana (pedidos por día abierto, base + caída) ---
+Día        Días  Media  Índice  Media base  Media caída  Variación
+---------  ----  -----  ------  ----------  -----------  ---------
+lunes        28   13,6    0,89        16,4          8,5    -48,1 %
+miércoles    28   14,3    0,94        14,1         14,5      3,0 %
+jueves       28   15,1    0,99        15,6         14,2     -9,4 %
+viernes      28   17,5    1,15        18,2         16,2    -11,1 %
+sábado       28   15,0    0,98        17,8          9,9    -44,3 %
+domingo      28   16,0    1,05        16,4         15,1     -8,2 %
+Índice = media del día / media general (1,00 = igual al promedio).
+
+[ ... secciones omitidas en la imagen: Efecto de quincena; Efecto de festivo ]
+
+--- Días anómalos: regla de Tukey sobre pedidos por día abierto (base + caída) ---
+Q1 = 12,0   Q3 = 19,0   IQR = 7,0   valla inferior = Q1 - 1,5 x IQR = 1,50
+Días por debajo de la valla: 1 -> 19-09-2026 (pedidos: 1)
+Días atípicos al alza (Q3 + 1,5 x IQR = 29,5): 1
+Si la valla se calcula solo con el periodo base (2,50): 4 días.
+La regla marca pocos días porque la caída ensancha la dispersión; por eso también se listan los días casi sin pedidos (<= 5).
+
+--- Días abiertos casi sin pedidos (<= 5); mínimo del periodo base: 7 ---
+Fecha           Día  Pedidos  Festivo  Quincena
+----------  -------  -------  -------  --------
+19-09-2026   sábado        1       no        no
+21-09-2026    lunes        5       no        no
+03-10-2026   sábado        5       no        no
+10-10-2026   sábado        2       no        no
+12-10-2026    lunes        2       sí        no
+23-10-2026  viernes        3       no        no
+24-10-2026   sábado        3       no        no
+31-10-2026   sábado        4       no        sí
+02-11-2026    lunes        2       sí        no
+
+9 de 62 días abiertos de la caída; 89 % cayeron en lunes o sábado.
+
+--- Servicio de domicilio ---
+Último domicilio registrado: 13-11-2026
+Interrupción más larga: último domicilio 30-08-2026, siguiente 26-10-2026 (56 días sin domicilios).
+
+Gráfica guardada: analisis/salidas/a02_estacionalidad_anomalias_pedidos_dia_semana_base_vs_caida.png
+
+Gráfica guardada: analisis/salidas/a02_estacionalidad_anomalias_serie_diaria_anomalias.png

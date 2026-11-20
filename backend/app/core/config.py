@@ -21,9 +21,9 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5180"
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
-    apriori_min_support: float = 0.02
-    apriori_min_confidence: float = 0.3
-    apriori_min_lift: float = 1.2
+    apriori_min_support: float = 0.005
+    apriori_min_confidence: float = 0.15
+    apriori_min_lift: float = 1.0
     demanda_test_dias: int = 30
     seed_on_empty: bool = True
     data_source_mode: str = "red_rooster"

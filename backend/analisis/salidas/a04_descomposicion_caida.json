@@ -1,0 +1,55 @@
+{
+  "descomposicion": {
+    "base": {
+      "dias": 106,
+      "dias_anomalos": 0,
+      "pedidos_por_dia": 16.462264,
+      "domicilios_por_dia": 1.084906,
+      "nivel_dias_normales": 15.377358,
+      "perdida_dias_anomalos": 0.0
+    },
+    "caida": {
+      "dias": 62,
+      "dias_anomalos": 9,
+      "pedidos_por_dia": 13.112903,
+      "domicilios_por_dia": 0.241935,
+      "nivel_dias_normales": 14.54717,
+      "perdida_dias_anomalos": 1.676202
+    },
+    "caida_total": 3.349361,
+    "partes": {
+      "domicilios": 0.84297,
+      "dias_casi_sin_pedidos": 1.676202,
+      "demanda_dias_normales": 0.830189
+    },
+    "porcentajes": {
+      "domicilios": 0.251681,
+      "dias_casi_sin_pedidos": 0.500454,
+      "demanda_dias_normales": 0.247865
+    },
+    "cuadre": true
+  },
+  "sensibilidad": {
+    "<= 5 pedidos (principal)": {
+      "dias_anomalos": 9,
+      "domicilios": 0.251681,
+      "dias_casi_sin_pedidos": 0.500454,
+      "demanda_dias_normales": 0.247865
+    },
+    "Tukey base + caída (valla 1,5)": {
+      "dias_anomalos": 1,
+      "domicilios": 0.251681,
+      "dias_casi_sin_pedidos": 0.058102,
+      "demanda_dias_normales": 0.690217
+    },
+    "Tukey solo base (valla 2,5)": {
+      "dias_anomalos": 4,
+      "domicilios": 0.251681,
+      "dias_casi_sin_pedidos": 0.228988,
+      "demanda_dias_normales": 0.519331
+    }
+  },
+  "graficas": [
+    "a04_descomposicion_caida_cascada_caida.png"
+  ]
+}

@@ -1,0 +1,753 @@
+{
+  "canastas": {
+    "pedidos": 3017,
+    "con_2_o_mas_productos": 918,
+    "pct_con_2_o_mas": 0.304276,
+    "productos_promedio": 1.518396,
+    "maximo_productos": 16
+  },
+  "apriori_producto": {
+    "n_reglas": 32,
+    "soporte_minimo": 0.005,
+    "confianza_minima": 0.15,
+    "lift_minimo": 1.0,
+    "lift_maximo": 7.616662,
+    "top": [
+      {
+        "antecedent": "Limonada Natural",
+        "consequent": "Mojarra Frita",
+        "support": 0.006298,
+        "confidence": 0.179245,
+        "lift": 7.616662
+      },
+      {
+        "antecedent": "Mojarra Frita",
+        "consequent": "Limonada Natural",
+        "support": 0.006298,
+        "confidence": 0.267606,
+        "lift": 7.616662
+      },
+      {
+        "antecedent": "Jugo Natural FRESA",
+        "consequent": "Pechuga a la Plancha",
+        "support": 0.006961,
+        "confidence": 0.223404,
+        "lift": 7.094849
+      },
+      {
+        "antecedent": "Pechuga a la Plancha",
+        "consequent": "Jugo Natural FRESA",
+        "support": 0.006961,
+        "confidence": 0.221053,
+        "lift": 7.094849
+      },
+      {
+        "antecedent": "Jugo Natural FRESA",
+        "consequent": "Chuleta Apanada",
+        "support": 0.009612,
+        "confidence": 0.308511,
+        "lift": 6.843946
+      },
+      {
+        "antecedent": "Chuleta Apanada",
+        "consequent": "Jugo Natural FRESA",
+        "support": 0.009612,
+        "confidence": 0.213235,
+        "lift": 6.843946
+      },
+      {
+        "antecedent": "Limonada Natural",
+        "consequent": "Pechuga a la Plancha",
+        "support": 0.006961,
+        "confidence": 0.198113,
+        "lift": 6.291658
+      },
+      {
+        "antecedent": "Pechuga a la Plancha",
+        "consequent": "Limonada Natural",
+        "support": 0.006961,
+        "confidence": 0.221053,
+        "lift": 6.291658
+      },
+      {
+        "antecedent": "Porción de Papa",
+        "consequent": "½ Pollo",
+        "support": 0.006629,
+        "confidence": 0.289855,
+        "lift": 4.997101
+      },
+      {
+        "antecedent": "Limonada Natural",
+        "consequent": "Jugo Natural FRESA",
+        "support": 0.005303,
+        "confidence": 0.150943,
+        "lift": 4.844641
+      }
+    ]
+  },
+  "apriori_categoria": {
+    "n_reglas": 22,
+    "soporte_minimo": 0.005,
+    "confianza_minima": 0.15,
+    "lift_minimo": 1.0,
+    "lift_maximo": 4.108989,
+    "top": [
+      {
+        "antecedent": "carta + pollo",
+        "consequent": "bebidas",
+        "support": 0.01359,
+        "confidence": 0.773585,
+        "lift": 4.108989
+      },
+      {
+        "antecedent": "carta + menu_dia",
+        "consequent": "bebidas",
+        "support": 0.009944,
+        "confidence": 0.697674,
+        "lift": 3.705781
+      },
+      {
+        "antecedent": "carta + hamburguesas",
+        "consequent": "bebidas",
+        "support": 0.019224,
+        "confidence": 0.666667,
+        "lift": 3.54108
+      },
+      {
+        "antecedent": "carta + porciones",
+        "consequent": "bebidas",
+        "support": 0.012595,
+        "confidence": 0.633333,
+        "lift": 3.364026
+      },
+      {
+        "antecedent": "bebidas + hamburguesas",
+        "consequent": "carta",
+        "support": 0.019224,
+        "confidence": 0.84058,
+        "lift": 2.88513
+      },
+      {
+        "antecedent": "bebidas + porciones",
+        "consequent": "carta",
+        "support": 0.012595,
+        "confidence": 0.76,
+        "lift": 2.608555
+      },
+      {
+        "antecedent": "bebidas",
+        "consequent": "carta",
+        "support": 0.133245,
+        "confidence": 0.707746,
+        "lift": 2.429205
+      },
+      {
+        "antecedent": "carta",
+        "consequent": "bebidas",
+        "support": 0.133245,
+        "confidence": 0.457338,
+        "lift": 2.429205
+      },
+      {
+        "antecedent": "carta + promos",
+        "consequent": "bebidas",
+        "support": 0.008949,
+        "confidence": 0.402985,
+        "lift": 2.140503
+      },
+      {
+        "antecedent": "porciones",
+        "consequent": "bebidas + carta",
+        "support": 0.012595,
+        "confidence": 0.281481,
+        "lift": 2.112512
+      }
+    ]
+  },
+  "sin_bebida": {
+    "categorias_bebida": [
+      "bebidas"
+    ],
+    "por_categoria": [
+      {
+        "categoria": "promos",
+        "pedidos": 755,
+        "sin_bebida": 708,
+        "pct_sin_bebida": 0.937748
+      },
+      {
+        "categoria": "menu_dia",
+        "pedidos": 1033,
+        "sin_bebida": 955,
+        "pct_sin_bebida": 0.924492
+      },
+      {
+        "categoria": "hamburguesas",
+        "pedidos": 241,
+        "sin_bebida": 172,
+        "pct_sin_bebida": 0.713693
+      },
+      {
+        "categoria": "pollo",
+        "pedidos": 434,
+        "sin_bebida": 303,
+        "pct_sin_bebida": 0.698157
+      },
+      {
+        "categoria": "porciones",
+        "pedidos": 135,
+        "sin_bebida": 85,
+        "pct_sin_bebida": 0.62963
+      },
+      {
+        "categoria": "carta",
+        "pedidos": 879,
+        "sin_bebida": 477,
+        "pct_sin_bebida": 0.542662
+      }
+    ],
+    "total": {
+      "pedidos_con_plato": 3010,
+      "sin_bebida": 2449,
+      "pct_sin_bebida": 0.813621
+    }
+  },
+  "margenes": [
+    {
+      "producto": "Limonada Natural",
+      "categoria": "bebidas",
+      "precio_real": 10000.0,
+      "costo": 1300.0,
+      "costo_estimado": false,
+      "margen": 8700.0,
+      "margen_pct": 0.87,
+      "unidades_vendidas": 154
+    },
+    {
+      "producto": "Coca Cola 237ml vidrio",
+      "categoria": "bebidas",
+      "precio_real": 3000.0,
+      "costo": 437.0,
+      "costo_estimado": false,
+      "margen": 2563.0,
+      "margen_pct": 0.854333,
+      "unidades_vendidas": 37
+    },
+    {
+      "producto": "Jugo Natural FRESA",
+      "categoria": "bebidas",
+      "precio_real": 10000.0,
+      "costo": 2300.0,
+      "costo_estimado": false,
+      "margen": 7700.0,
+      "margen_pct": 0.77,
+      "unidades_vendidas": 149
+    },
+    {
+      "producto": "Jugo Natural LULO",
+      "categoria": "bebidas",
+      "precio_real": 10000.0,
+      "costo": 2300.0,
+      "costo_estimado": false,
+      "margen": 7700.0,
+      "margen_pct": 0.77,
+      "unidades_vendidas": 58
+    },
+    {
+      "producto": "Quatro 1.5L",
+      "categoria": "bebidas",
+      "precio_real": 8000.0,
+      "costo": 3151.0,
+      "costo_estimado": false,
+      "margen": 4849.0,
+      "margen_pct": 0.606125,
+      "unidades_vendidas": 15
+    },
+    {
+      "producto": "Coca Cola 250ml",
+      "categoria": "bebidas",
+      "precio_real": 3000.0,
+      "costo": 1202.0,
+      "costo_estimado": false,
+      "margen": 1798.0,
+      "margen_pct": 0.599333,
+      "unidades_vendidas": 101
+    },
+    {
+      "producto": "Coca Cola Zero 500ml",
+      "categoria": "bebidas",
+      "precio_real": 5000.0,
+      "costo": 2013.666667,
+      "costo_estimado": true,
+      "margen": 2986.333333,
+      "margen_pct": 0.597267,
+      "unidades_vendidas": 81
+    },
+    {
+      "producto": "agua sin gas",
+      "categoria": "bebidas",
+      "precio_real": 3000.0,
+      "costo": 1208.2,
+      "costo_estimado": true,
+      "margen": 1791.8,
+      "margen_pct": 0.597267,
+      "unidades_vendidas": 31
+    },
+    {
+      "producto": "agua con gas",
+      "categoria": "bebidas",
+      "precio_real": 4000.0,
+      "costo": 1610.933333,
+      "costo_estimado": true,
+      "margen": 2389.066667,
+      "margen_pct": 0.597267,
+      "unidades_vendidas": 19
+    },
+    {
+      "producto": "Quatro 400ml",
+      "categoria": "bebidas",
+      "precio_real": 5000.0,
+      "costo": 2092.0,
+      "costo_estimado": false,
+      "margen": 2908.0,
+      "margen_pct": 0.5816,
+      "unidades_vendidas": 61
+    },
+    {
+      "producto": "Coca Cola 400ml",
+      "categoria": "bebidas",
+      "precio_real": 5000.0,
+      "costo": 2500.0,
+      "costo_estimado": false,
+      "margen": 2500.0,
+      "margen_pct": 0.5,
+      "unidades_vendidas": 75
+    },
+    {
+      "producto": "Coca Cola 1.5L",
+      "categoria": "bebidas",
+      "precio_real": 8000.0,
+      "costo": 4048.0,
+      "costo_estimado": false,
+      "margen": 3952.0,
+      "margen_pct": 0.494,
+      "unidades_vendidas": 78
+    },
+    {
+      "producto": "Coronita",
+      "categoria": "bebidas",
+      "precio_real": 6500.0,
+      "costo": 3500.0,
+      "costo_estimado": false,
+      "margen": 3000.0,
+      "margen_pct": 0.461538,
+      "unidades_vendidas": 20
+    },
+    {
+      "producto": "Club Colombia",
+      "categoria": "bebidas",
+      "precio_real": 6500.0,
+      "costo": 3500.0,
+      "costo_estimado": false,
+      "margen": 3000.0,
+      "margen_pct": 0.461538,
+      "unidades_vendidas": 17
+    },
+    {
+      "producto": "Poker",
+      "categoria": "bebidas",
+      "precio_real": 5000.0,
+      "costo": 3500.0,
+      "costo_estimado": false,
+      "margen": 1500.0,
+      "margen_pct": 0.3,
+      "unidades_vendidas": 44
+    },
+    {
+      "producto": "Chuleta Apanada",
+      "categoria": "carta",
+      "precio_real": 30000.0,
+      "costo": 8279.0,
+      "costo_estimado": false,
+      "margen": 21721.0,
+      "margen_pct": 0.724033,
+      "unidades_vendidas": 182
+    },
+    {
+      "producto": "Pechuga a la Plancha",
+      "categoria": "carta",
+      "precio_real": 27000.0,
+      "costo": 9479.0,
+      "costo_estimado": false,
+      "margen": 17521.0,
+      "margen_pct": 0.648926,
+      "unidades_vendidas": 110
+    },
+    {
+      "producto": "Lomo de Cerdo",
+      "categoria": "carta",
+      "precio_real": 27000.0,
+      "costo": 9479.0,
+      "costo_estimado": false,
+      "margen": 17521.0,
+      "margen_pct": 0.648926,
+      "unidades_vendidas": 44
+    },
+    {
+      "producto": "papa salada",
+      "categoria": "carta",
+      "precio_real": 5000.0,
+      "costo": 1766.125,
+      "costo_estimado": true,
+      "margen": 3233.875,
+      "margen_pct": 0.646775,
+      "unidades_vendidas": 3
+    },
+    {
+      "producto": "Churrasco",
+      "categoria": "carta",
+      "precio_real": 35000.0,
+      "costo": 14129.0,
+      "costo_estimado": true,
+      "margen": 20871.0,
+      "margen_pct": 0.596314,
+      "unidades_vendidas": 415
+    },
+    {
+      "producto": "Mojarra Frita",
+      "categoria": "carta",
+      "precio_real": 35000.0,
+      "costo": 14129.0,
+      "costo_estimado": false,
+      "margen": 20871.0,
+      "margen_pct": 0.596314,
+      "unidades_vendidas": 93
+    },
+    {
+      "producto": "salchipapas mini",
+      "categoria": "carta",
+      "precio_real": 15500.0,
+      "costo": 6534.6625,
+      "costo_estimado": true,
+      "margen": 8965.3375,
+      "margen_pct": 0.578409,
+      "unidades_vendidas": 8
+    },
+    {
+      "producto": "Alitas BBQ",
+      "categoria": "carta",
+      "precio_real": 23000.0,
+      "costo": 9760.0,
+      "costo_estimado": false,
+      "margen": 13240.0,
+      "margen_pct": 0.575652,
+      "unidades_vendidas": 398
+    },
+    {
+      "producto": "Salchipapas 3R",
+      "categoria": "carta",
+      "precio_real": 23000.0,
+      "costo": 10981.0,
+      "costo_estimado": false,
+      "margen": 12019.0,
+      "margen_pct": 0.522565,
+      "unidades_vendidas": 103
+    },
+    {
+      "producto": "Costillas BBQ",
+      "categoria": "carta",
+      "precio_real": 27000.0,
+      "costo": 16479.0,
+      "costo_estimado": false,
+      "margen": 10521.0,
+      "margen_pct": 0.389667,
+      "unidades_vendidas": 80
+    },
+    {
+      "producto": "Hamburguesa de Res",
+      "categoria": "hamburguesas",
+      "precio_real": 23000.0,
+      "costo": 8571.0,
+      "costo_estimado": false,
+      "margen": 14429.0,
+      "margen_pct": 0.627348,
+      "unidades_vendidas": 101
+    },
+    {
+      "producto": "Hamburguesa de Pollo",
+      "categoria": "hamburguesas",
+      "precio_real": 23000.0,
+      "costo": 8975.0,
+      "costo_estimado": false,
+      "margen": 14025.0,
+      "margen_pct": 0.609783,
+      "unidades_vendidas": 24
+    },
+    {
+      "producto": "Hamburguesa 3R",
+      "categoria": "hamburguesas",
+      "precio_real": 28000.0,
+      "costo": 12875.0,
+      "costo_estimado": false,
+      "margen": 15125.0,
+      "margen_pct": 0.540179,
+      "unidades_vendidas": 189
+    },
+    {
+      "producto": "Menú del Día",
+      "categoria": "menu_dia",
+      "precio_real": 15500.0,
+      "costo": 5184.0,
+      "costo_estimado": false,
+      "margen": 10316.0,
+      "margen_pct": 0.665548,
+      "unidades_vendidas": 927
+    },
+    {
+      "producto": "sopa",
+      "categoria": "menu_dia",
+      "precio_real": 8000.0,
+      "costo": 2807.382209,
+      "costo_estimado": true,
+      "margen": 5192.617791,
+      "margen_pct": 0.649077,
+      "unidades_vendidas": 27
+    },
+    {
+      "producto": "Almuerzo especial",
+      "categoria": "menu_dia",
+      "precio_real": 25000.0,
+      "costo": 8773.069404,
+      "costo_estimado": true,
+      "margen": 16226.930596,
+      "margen_pct": 0.649077,
+      "unidades_vendidas": 310
+    },
+    {
+      "producto": "Menú del Día Llevar",
+      "categoria": "menu_dia",
+      "precio_real": 16500.0,
+      "costo": 6062.0,
+      "costo_estimado": false,
+      "margen": 10438.0,
+      "margen_pct": 0.632606,
+      "unidades_vendidas": 387
+    },
+    {
+      "producto": "Bandeja con Pollo",
+      "categoria": "pollo",
+      "precio_real": 23000.0,
+      "costo": 5993.0,
+      "costo_estimado": false,
+      "margen": 17007.0,
+      "margen_pct": 0.739435,
+      "unidades_vendidas": 180
+    },
+    {
+      "producto": "Huevo",
+      "categoria": "pollo",
+      "precio_real": 2500.0,
+      "costo": 839.759585,
+      "costo_estimado": true,
+      "margen": 1660.240415,
+      "margen_pct": 0.664096,
+      "unidades_vendidas": 18
+    },
+    {
+      "producto": "¼ Pollo",
+      "categoria": "pollo",
+      "precio_real": 12000.0,
+      "costo": 4167.0,
+      "costo_estimado": false,
+      "margen": 7833.0,
+      "margen_pct": 0.65275,
+      "unidades_vendidas": 23
+    },
+    {
+      "producto": "1 Pollo",
+      "categoria": "pollo",
+      "precio_real": 39900.0,
+      "costo": 16800.0,
+      "costo_estimado": false,
+      "margen": 23100.0,
+      "margen_pct": 0.578947,
+      "unidades_vendidas": 124
+    },
+    {
+      "producto": "½ Pollo",
+      "categoria": "pollo",
+      "precio_real": 23000.0,
+      "costo": 9843.0,
+      "costo_estimado": false,
+      "margen": 13157.0,
+      "margen_pct": 0.572043,
+      "unidades_vendidas": 176
+    },
+    {
+      "producto": "Porción de Arroz",
+      "categoria": "porciones",
+      "precio_real": 4000.0,
+      "costo": 447.0,
+      "costo_estimado": false,
+      "margen": 3553.0,
+      "margen_pct": 0.88825,
+      "unidades_vendidas": 67
+    },
+    {
+      "producto": "Porción de Ensalada",
+      "categoria": "porciones",
+      "precio_real": 8000.0,
+      "costo": 900.0,
+      "costo_estimado": false,
+      "margen": 7100.0,
+      "margen_pct": 0.8875,
+      "unidades_vendidas": 29
+    },
+    {
+      "producto": "Porción de Papa",
+      "categoria": "porciones",
+      "precio_real": 8000.0,
+      "costo": 1840.0,
+      "costo_estimado": false,
+      "margen": 6160.0,
+      "margen_pct": 0.77,
+      "unidades_vendidas": 77
+    },
+    {
+      "producto": "decoracion",
+      "categoria": "porciones",
+      "precio_real": 15000.0,
+      "costo": 7000.0,
+      "costo_estimado": false,
+      "margen": 8000.0,
+      "margen_pct": 0.533333,
+      "unidades_vendidas": 2
+    },
+    {
+      "producto": "Promo 20 Alitas",
+      "categoria": "promos",
+      "precio_real": 45000.0,
+      "costo": 17838.0,
+      "costo_estimado": false,
+      "margen": 27162.0,
+      "margen_pct": 0.6036,
+      "unidades_vendidas": 244
+    },
+    {
+      "producto": "Promo 2 Hamburguesas",
+      "categoria": "promos",
+      "precio_real": 40000.0,
+      "costo": 17142.0,
+      "costo_estimado": false,
+      "margen": 22858.0,
+      "margen_pct": 0.57145,
+      "unidades_vendidas": 145
+    },
+    {
+      "producto": "Combo Pollo al Horno",
+      "categoria": "promos",
+      "precio_real": 49900.0,
+      "costo": 22281.0,
+      "costo_estimado": false,
+      "margen": 27619.0,
+      "margen_pct": 0.553487,
+      "unidades_vendidas": 450
+    }
+  ],
+  "hallazgos_catalogo": [
+    {
+      "producto": "Churrasco",
+      "hallazgo": "costo registrado >= precio de lista",
+      "precio_lista": 40000,
+      "precio_real": 35000.0,
+      "costo_registrado": 40000,
+      "costo_usado": 14129.0
+    },
+    {
+      "producto": "Chuleta Apanada",
+      "hallazgo": "precio de lista distinto al cobrado",
+      "precio_lista": 350000,
+      "precio_real": 30000.0,
+      "costo_registrado": 8279,
+      "costo_usado": 8279.0
+    },
+    {
+      "producto": "sopa",
+      "hallazgo": "42 % de las ventas con otro precio",
+      "precio_lista": 8000,
+      "precio_real": 8000.0,
+      "costo_registrado": 0,
+      "costo_usado": 2807.382209
+    }
+  ],
+  "combos": {
+    "descuento": 0.1,
+    "lift_minimo": 2.0,
+    "pares_candidatos": 14,
+    "sugeridos": [
+      {
+        "plato": "Churrasco",
+        "bebida": "Limonada Natural",
+        "soporte": 0.014915,
+        "lift": 4.283618,
+        "suma_precios": 45000.0,
+        "precio_combo": 40500.0,
+        "costo": 15429.0,
+        "margen": 25071.0,
+        "margen_pct": 0.619037,
+        "margen_sin_descuento": 29571.0
+      },
+      {
+        "plato": "Churrasco",
+        "bebida": "Jugo Natural FRESA",
+        "soporte": 0.011601,
+        "lift": 3.757027,
+        "suma_precios": 45000.0,
+        "precio_combo": 40500.0,
+        "costo": 16429.0,
+        "margen": 24071.0,
+        "margen_pct": 0.594346,
+        "margen_sin_descuento": 28571.0
+      },
+      {
+        "plato": "Churrasco",
+        "bebida": "Coca Cola 1.5L",
+        "soporte": 0.010938,
+        "lift": 4.324415,
+        "suma_precios": 43000.0,
+        "precio_combo": 38700.0,
+        "costo": 18177.0,
+        "margen": 20523.0,
+        "margen_pct": 0.53031,
+        "margen_sin_descuento": 24823.0
+      },
+      {
+        "plato": "Chuleta Apanada",
+        "bebida": "Jugo Natural FRESA",
+        "soporte": 0.009612,
+        "lift": 6.843946,
+        "suma_precios": 40000.0,
+        "precio_combo": 36000.0,
+        "costo": 10579.0,
+        "margen": 25421.0,
+        "margen_pct": 0.706139,
+        "margen_sin_descuento": 29421.0
+      },
+      {
+        "plato": "Churrasco",
+        "bebida": "Coca Cola Zero 500ml",
+        "soporte": 0.008286,
+        "lift": 4.06867,
+        "suma_precios": 40000.0,
+        "precio_combo": 36000.0,
+        "costo": 16142.666667,
+        "margen": 19857.333333,
+        "margen_pct": 0.551593,
+        "margen_sin_descuento": 23857.333333
+      }
+    ]
+  },
+  "graficas": [
+    "a06_venta_cruzada_pedidos_sin_bebida.png"
+  ]
+}

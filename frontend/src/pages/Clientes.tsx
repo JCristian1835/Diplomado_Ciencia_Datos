@@ -28,7 +28,7 @@ export default function Clientes() {
           </Button>
         } />
         <div className="toolbar" style={{ marginBottom: 'var(--sp-2)' }}>
-          <Field label="Buscar cliente" hideLabel icon="buscar" placeholder="Buscar por nombre o apellido…" value={q} onChange={(e) => setQ(e.target.value)} />
+          <Field label="Buscar cliente" hideLabel icon="buscar" placeholder="Buscar por código (C001) o nombre…" value={q} onChange={(e) => setQ(e.target.value)} />
           <Pill tone={revelar ? 'warn' : 'ok'}>{revelar ? 'PII visible' : 'PII enmascarada'}</Pill>
         </div>
         {clientes.isError && <Alert tone="danger" title="No se pudieron cargar los clientes" role="alert">{mensajeError(clientes.error)}</Alert>}

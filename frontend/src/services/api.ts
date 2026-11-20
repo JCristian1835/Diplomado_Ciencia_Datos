@@ -109,7 +109,7 @@ export interface DemandaProducto {
 }
 export interface Regla { id: number; antecedent: string; consequent: string; support: number; confidence: number; lift: number }
 export interface ResumenSegmento { cluster: number; segmento: string; n_clientes: number; recencia_media: number; frecuencia_media: number; monetario_medio: number; monetario_total: number }
-export interface ClienteSegmento { customer_id: number; first_name: string; last_name: string; recency: number; frequency: number; monetary: number; cluster: number; segment_label: string }
+export interface ClienteSegmento { customer_id: number; first_name: string; last_name: string; recency: number; frequency: number; monetary: number; cluster: number; segment_label: string; codigo_anonimo: string | null }
 export interface Segmentos { resumen: ResumenSegmento[]; clientes: ClienteSegmento[] }
 export interface Metricas {
   disponible: boolean; mae: number | null; r2: number | null; silhouette: number | null; k: number | null; n_reglas: number | null;

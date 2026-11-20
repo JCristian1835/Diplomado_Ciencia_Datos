@@ -8,27 +8,29 @@ from sklearn.preprocessing import StandardScaler
 from app.domain.errors import ValidacionError
 
 
+# Etiquetas de mejor a peor puntaje RFM según el número de clusters (cada cluster recibe una distinta).
+_ETIQUETAS_POR_K = {
+    2: ["Campeones", "Ocasionales"],
+    3: ["Campeones", "Ocasionales", "En riesgo"],
+    4: ["Campeones", "Leales", "Ocasionales", "En riesgo"],
+    5: ["Campeones", "Leales", "Prometedores", "En riesgo", "Perdidos"],
+    6: ["Campeones", "Leales", "Prometedores", "Ocasionales", "En riesgo", "Perdidos"],
+}
+
+
 def _etiquetar(rfm: pd.DataFrame) -> dict[int, str]:
-    """Etiquetas legibles a partir de las medias de cada cluster frente a los cuantiles globales."""
-    medias = rfm.groupby("cluster")[["recency", "frequency", "monetary"]].mean()
-    q40, q60 = rfm[["recency", "frequency", "monetary"]].quantile(0.4), rfm[["recency", "frequency", "monetary"]].quantile(0.6)
-    etiquetas: dict[int, str] = {}
-    for c, fila in medias.iterrows():
-        r_bueno, r_malo = fila.recency <= q40.recency, fila.recency > q60.recency
-        f_alta, f_baja = fila.frequency >= q60.frequency, fila.frequency <= q40.frequency
-        m_alto = fila.monetary >= q60.monetary
-        if not r_malo and f_alta and m_alto:
-            etiquetas[c] = "Campeones"
-        elif r_malo and f_baja:
-            etiquetas[c] = "Perdidos"
-        elif r_malo:
-            etiquetas[c] = "En riesgo"
-        elif r_bueno and f_baja:
+    """Etiqueta única por cluster: se ordenan por puntaje RFM (recencia baja, frecuencia y monto altos)."""
+    cols = ["recency", "frequency", "monetary"]
+    medias = rfm.groupby("cluster")[cols].mean()
+    z = (medias - rfm[cols].mean()) / rfm[cols].std(ddof=0).replace(0, 1)
+    orden = (z["frequency"] + z["monetary"] - z["recency"]).sort_values(ascending=False).index
+    nombres = _ETIQUETAS_POR_K[len(orden)]
+    etiquetas = dict(zip(orden, nombres))
+    # "En riesgo"/"Perdidos" exigen recencia peor que la mediana; si no, el cluster es de clientes recientes.
+    for c, nombre in etiquetas.items():
+        if (nombre in ("En riesgo", "Perdidos") and medias.loc[c, "recency"] <= rfm["recency"].median()
+                and "Nuevos" not in etiquetas.values()):
             etiquetas[c] = "Nuevos"
-        elif f_alta or m_alto:
-            etiquetas[c] = "Leales"
-        else:
-            etiquetas[c] = "Ocasionales"
     return etiquetas
 
 

@@ -1,0 +1,31 @@
+$ venv\Scripts\python -m analisis.a05_demanda
+==============================================================================
+ PASO 5 - PRONÓSTICO DE DEMANDA (walk-forward)
+==============================================================================
+Calendario (quincena y festivo) coincide con dim_fecha en todo el histórico: sí
+
+[ ... secciones omitidas en la imagen: Ventanas de prueba ]
+
+--- Comparación de modelos (todas las ventanas juntas) ---
+Horizonte                 Modelo  Días   MAE      R²          
+---------  ---------------------  ----  ----  ------  --------
+7 días       M1 Promedio 24 días    39  3,94  -0,217  <- mejor
+7 días     M2 Mismo día (4 sem.)    39  4,01  -0,328          
+7 días                M3 XGBoost    39  4,43  -0,559          
+30 días      M1 Promedio 24 días    42  3,81  -0,186  <- mejor
+30 días    M2 Mismo día (4 sem.)    42  4,21  -0,557          
+30 días               M3 XGBoost    42  4,27  -0,455          
+R² negativo = el modelo explica menos variación que simplemente usar el promedio de los días de prueba.
+
+Modelo usado para el pronóstico: M1 Promedio 24 días (M1 Promedio 24 días gana a 30 días y XGBoost no gana a 7 días).
+
+--- Importancia de variables de XGBoost (ganancia normalizada, modelo final) ---
+Variable             Importancia
+-------------------  -----------
+Semana anterior           24,6 %
+Día de la semana          23,5 %
+Quincena                  23,4 %
+Festivo                   16,7 %
+Días hacia adelante       11,8 %
+
+[ ... secciones omitidas en la imagen: Pronóstico 14-11-2026 a 13-12-2026 ]

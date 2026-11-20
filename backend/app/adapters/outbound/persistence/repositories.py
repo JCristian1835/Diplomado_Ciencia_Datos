@@ -6,6 +6,7 @@ from sqlalchemy import delete, func, select, update
 from sqlalchemy.orm import Session, selectinload
 
 from app.adapters.outbound.persistence import models as m
+from app.domain.costos import costo_unitario, razones_costo
 from app.domain.entities import Cliente, ItemVenta, MovimientoInventario, Producto, Usuario, Venta
 
 COMPLETADA = "COMPLETED"
@@ -92,7 +93,8 @@ class CustomerRepoSQL:
         stmt = select(m.CustomerModel)
         if q:
             like = f"%{q}%"
-            stmt = stmt.where(m.CustomerModel.first_name.ilike(like) | m.CustomerModel.last_name.ilike(like))
+            stmt = stmt.where(m.CustomerModel.first_name.ilike(like) | m.CustomerModel.last_name.ilike(like)
+                              | m.CustomerModel.codigo_anonimo.ilike(like))
         stmt = stmt.order_by(m.CustomerModel.id).limit(limit).offset(offset)
         return [_cliente(r) for r in self.s.scalars(stmt)]
 
@@ -182,15 +184,23 @@ class KpiRepoSQL:
     def _filtro(desde, hasta):
         return (m.SaleModel.status == COMPLETADA, m.SaleModel.created_at >= desde, m.SaleModel.created_at <= hasta)
 
+    def _costos_unitarios(self) -> dict[int, float]:
+        """Costo unitario por producto; el costo 0 se estima con la regla de domain/costos.py."""
+        productos = self.s.execute(select(m.ProductModel.id, m.ProductModel.category, m.ProductModel.unit_price,
+                                          m.ProductModel.unit_cost)).all()
+        razones = razones_costo((c, float(p), k) for _, c, p, k in productos)
+        return {i: costo_unitario(c, float(p), k, razones) for i, c, p, k in productos}
+
     def totales(self, desde, hasta):
         n, total = self.s.execute(select(func.count(m.SaleModel.id), func.coalesce(func.sum(m.SaleModel.total_amount), 0))
                                   .where(*self._filtro(desde, hasta))).one()
-        uds, costo = self.s.execute(
-            select(func.coalesce(func.sum(m.SaleItemModel.quantity), 0),
-                   func.coalesce(func.sum(m.SaleItemModel.quantity * m.ProductModel.unit_cost), 0))
+        costos = self._costos_unitarios()
+        vendidas = self.s.execute(
+            select(m.SaleItemModel.product_id, func.sum(m.SaleItemModel.quantity))
             .join(m.SaleModel, m.SaleModel.id == m.SaleItemModel.sale_id)
-            .join(m.ProductModel, m.ProductModel.id == m.SaleItemModel.product_id)
-            .where(*self._filtro(desde, hasta))).one()
+            .where(*self._filtro(desde, hasta)).group_by(m.SaleItemModel.product_id)).all()
+        uds = sum(q for _, q in vendidas)
+        costo = sum(q * costos[i] for i, q in vendidas)
         return {"n_ventas": n, "total_ventas": float(total), "unidades": float(uds), "costo_vendido": float(costo)}
 
     def serie_diaria(self, desde, hasta):
@@ -221,9 +231,10 @@ class KpiRepoSQL:
         return [{"category": c, "unidades": int(u), "ingresos": round(float(g), 2)} for c, u, g in filas]
 
     def valor_inventario(self):
-        v = self.s.scalar(select(func.coalesce(func.sum(m.ProductModel.stock * m.ProductModel.unit_cost), 0))
-                          .where(m.ProductModel.is_active.is_(True)))
-        return float(v)
+        costos = self._costos_unitarios()
+        activos = self.s.execute(select(m.ProductModel.id, m.ProductModel.stock)
+                                 .where(m.ProductModel.is_active.is_(True))).all()
+        return float(sum(stock * costos[i] for i, stock in activos))
 
     def contar_bajo_stock(self, umbral):
         return self.s.scalar(select(func.count(m.ProductModel.id)).where(

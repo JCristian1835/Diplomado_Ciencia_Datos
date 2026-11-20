@@ -1,0 +1,1189 @@
+[
+  {
+    "id": "o2_01a_codigo_comun",
+    "archivo": "o2_01a_codigo_comun.png",
+    "paso": 1,
+    "tipo": "codigo",
+    "titulo": "Paquete de análisis: definiciones de periodos y día abierto, carga en solo lectura, precio real y costo",
+    "archivo_codigo": "backend/analisis/comun.py",
+    "lineas": [
+      [
+        1,
+        17
+      ],
+      [
+        42,
+        49
+      ],
+      [
+        228,
+        230
+      ],
+      [
+        239,
+        250
+      ],
+      [
+        264,
+        271
+      ],
+      [
+        280,
+        281
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "1-17 y 42-49 y 228-230 y 239-250 y 264-271 y 280-281",
+    "objetivo": 2,
+    "ref": "o2_01a",
+    "orden": 1
+  },
+  {
+    "id": "o2_02a_codigo_a01",
+    "archivo": "o2_02a_codigo_a01.png",
+    "paso": 2,
+    "tipo": "codigo",
+    "titulo": "Paso 1, perfil de ventas: pedidos por día abierto de cada mes y orden de ejecución",
+    "archivo_codigo": "backend/analisis/a01_perfil_ventas.py",
+    "lineas": [
+      [
+        41,
+        58
+      ],
+      [
+        159,
+        170
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "41-58 y 159-170",
+    "objetivo": 2,
+    "ref": "o2_02a",
+    "orden": 2
+  },
+  {
+    "id": "o2_02b_terminal_a01",
+    "archivo": "o2_02b_terminal_a01.png",
+    "paso": 2,
+    "tipo": "terminal",
+    "titulo": "Paso 1, perfil de ventas (resumen, meses y estadísticos por periodo)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a01_perfil_ventas",
+    "cifras": {
+      "pedidos_pagados": 3017,
+      "ingresos": 138605100,
+      "no_pagados": 25,
+      "media_base": 16.462264,
+      "media_caida": 13.112903,
+      "variacion_media": -0.203457
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a01_perfil_ventas.txt; en la imagen se omiten las secciones por día, franja, canal, pago y hora (aparecen marcadas).",
+    "objetivo": 2,
+    "ref": "o2_02b",
+    "orden": 3
+  },
+  {
+    "id": "o2_02c_grafica_mes",
+    "archivo": "o2_02c_grafica_mes.png",
+    "paso": 2,
+    "tipo": "grafica",
+    "titulo": "Pedidos por día abierto, por mes",
+    "archivo_codigo": "backend/analisis/a01_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "pedidos_por_dia_abierto": {
+        "marzo": 11.7,
+        "abril": 13.9,
+        "mayo": 16.9,
+        "junio": 16.0,
+        "julio": 17.0,
+        "agosto": 16.0,
+        "septiembre": 14.0,
+        "octubre": 12.3,
+        "noviembre": 13.2
+      },
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a01_perfil_ventas_pedidos_por_dia_abierto_mes.png.",
+    "objetivo": 2,
+    "ref": "o2_02c",
+    "orden": 4
+  },
+  {
+    "id": "o2_03a_codigo_a02",
+    "archivo": "o2_03a_codigo_a02.png",
+    "paso": 3,
+    "tipo": "codigo",
+    "titulo": "Paso 2, estacionalidad por día de la semana y días anómalos con la regla de Tukey",
+    "archivo_codigo": "backend/analisis/a02_estacionalidad_anomalias.py",
+    "lineas": [
+      [
+        17,
+        25
+      ],
+      [
+        28,
+        43
+      ],
+      [
+        62,
+        66
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "17-25 y 28-43 y 62-66",
+    "objetivo": 2,
+    "ref": "o2_03a",
+    "orden": 5
+  },
+  {
+    "id": "o2_03b_grafica_dia_semana",
+    "archivo": "o2_03b_grafica_dia_semana.png",
+    "paso": 3,
+    "tipo": "grafica",
+    "titulo": "Pedidos por día de la semana, base contra caída",
+    "archivo_codigo": "backend/analisis/a02_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "variacion_por_dia": {
+        "lunes": -0.481,
+        "miércoles": 0.03,
+        "jueves": -0.094,
+        "viernes": -0.111,
+        "sábado": -0.443,
+        "domingo": -0.082
+      },
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a02_estacionalidad_anomalias_pedidos_dia_semana_base_vs_caida.png.",
+    "objetivo": 2,
+    "ref": "o2_03b",
+    "orden": 6
+  },
+  {
+    "id": "o2_03c_grafica_serie_anomalias",
+    "archivo": "o2_03c_grafica_serie_anomalias.png",
+    "paso": 3,
+    "tipo": "grafica",
+    "titulo": "Serie diaria de pedidos con los días anómalos",
+    "archivo_codigo": "backend/analisis/a02_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "dias_casi_sin_pedidos": 9,
+      "valla_tukey": 1.5,
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a02_estacionalidad_anomalias_serie_diaria_anomalias.png.",
+    "objetivo": 2,
+    "ref": "o2_03c",
+    "orden": 7
+  },
+  {
+    "id": "o2_03d_terminal_a02",
+    "archivo": "o2_03d_terminal_a02.png",
+    "paso": 3,
+    "tipo": "terminal",
+    "titulo": "Paso 2, estacionalidad y días anómalos",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a02_estacionalidad_anomalias",
+    "cifras": {
+      "valla_inferior_tukey": 1.5,
+      "dias_bajo_la_valla": 1,
+      "dias_casi_sin_pedidos": 9,
+      "indice_festivo_dif": -0.117751,
+      "indice_quincena_dif": -0.020862
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a02_estacionalidad_anomalias.txt; se omiten las secciones de quincena y festivo (aparecen marcadas).",
+    "objetivo": 2,
+    "ref": "o2_03d",
+    "orden": 8
+  },
+  {
+    "id": "o2_04a_codigo_a03",
+    "archivo": "o2_04a_codigo_a03.png",
+    "paso": 4,
+    "tipo": "codigo",
+    "titulo": "Paso 3, inferencia: Mann-Whitney, delta de Cliff, bootstrap de la diferencia de medias y chi-cuadrado",
+    "archivo_codigo": "backend/analisis/a03_inferencia.py",
+    "lineas": [
+      [
+        19,
+        28
+      ],
+      [
+        35,
+        39
+      ],
+      [
+        42,
+        45
+      ],
+      [
+        92,
+        96
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "19-28 y 35-39 y 42-45 y 92-96",
+    "objetivo": 2,
+    "ref": "o2_04a",
+    "orden": 9
+  },
+  {
+    "id": "o2_04b_terminal_a03_p1",
+    "archivo": "o2_04b_terminal_a03_p1.png",
+    "paso": 4,
+    "tipo": "terminal",
+    "titulo": "Paso 3, pruebas de inferencia (parte 1 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a03_inferencia",
+    "cifras": {
+      "mann_whitney_U": 4284.5,
+      "mann_whitney_p": 0.00101,
+      "delta_cliff": 0.303865,
+      "ic95_bootstrap": [
+        1.719393,
+        5.031665
+      ],
+      "sin_dias_casi_vacios_p": 0.056315,
+      "chi2_canal_periodo": 44.137884,
+      "chi2_p": 0.0
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a03_inferencia.txt; salida completa repartida en dos imágenes.",
+    "objetivo": 2,
+    "ref": "o2_04b",
+    "orden": 10
+  },
+  {
+    "id": "o2_04b_terminal_a03_p2",
+    "archivo": "o2_04b_terminal_a03_p2.png",
+    "paso": 4,
+    "tipo": "terminal",
+    "titulo": "Paso 3, pruebas de inferencia (parte 2 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a03_inferencia   # continuación",
+    "cifras": {
+      "mann_whitney_U": 4284.5,
+      "mann_whitney_p": 0.00101,
+      "delta_cliff": 0.303865,
+      "ic95_bootstrap": [
+        1.719393,
+        5.031665
+      ],
+      "sin_dias_casi_vacios_p": 0.056315,
+      "chi2_canal_periodo": 44.137884,
+      "chi2_p": 0.0
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a03_inferencia.txt; salida completa repartida en dos imágenes.",
+    "objetivo": 2,
+    "ref": "o2_04b",
+    "orden": 11
+  },
+  {
+    "id": "o2_05a_codigo_a04",
+    "archivo": "o2_05a_codigo_a04.png",
+    "paso": 5,
+    "tipo": "codigo",
+    "titulo": "Paso 4, descomposición de la caída en domicilios, días casi sin pedidos y demanda en días normales",
+    "archivo_codigo": "backend/analisis/a04_descomposicion_caida.py",
+    "lineas": [
+      [
+        18,
+        26
+      ],
+      [
+        29,
+        39
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "18-26 y 29-39",
+    "objetivo": 2,
+    "ref": "o2_05a",
+    "orden": 12
+  },
+  {
+    "id": "o2_05b_terminal_a04",
+    "archivo": "o2_05b_terminal_a04.png",
+    "paso": 5,
+    "tipo": "terminal",
+    "titulo": "Paso 4, descomposición de la caída",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a04_descomposicion_caida",
+    "cifras": {
+      "caida_total_pedidos_por_dia": 3.349361,
+      "porcentajes": {
+        "domicilios": 0.252,
+        "dias_casi_sin_pedidos": 0.5,
+        "demanda_dias_normales": 0.248
+      },
+      "cuadra": true
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a04_descomposicion_caida.txt.",
+    "objetivo": 2,
+    "ref": "o2_05b",
+    "orden": 13
+  },
+  {
+    "id": "o2_05c_grafica_cascada",
+    "archivo": "o2_05c_grafica_cascada.png",
+    "paso": 5,
+    "tipo": "grafica",
+    "titulo": "Cascada de la caída de pedidos por día abierto",
+    "archivo_codigo": "backend/analisis/a04_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "porcentajes": {
+        "domicilios": 0.252,
+        "dias_casi_sin_pedidos": 0.5,
+        "demanda_dias_normales": 0.248
+      },
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a04_descomposicion_caida_cascada_caida.png.",
+    "objetivo": 2,
+    "ref": "o2_05c",
+    "orden": 14
+  },
+  {
+    "id": "o2_06a_codigo_a05",
+    "archivo": "o2_06a_codigo_a05.png",
+    "paso": 6,
+    "tipo": "codigo",
+    "titulo": "Paso 5, pronóstico de demanda: pares sin fuga de información, XGBoost, línea base y validación walk-forward",
+    "archivo_codigo": "backend/analisis/a05_demanda.py",
+    "lineas": [
+      [
+        67,
+        78
+      ],
+      [
+        81,
+        86
+      ],
+      [
+        89,
+        90
+      ],
+      [
+        111,
+        125
+      ],
+      [
+        157,
+        161
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "67-78 y 81-86 y 89-90 y 111-125 y 157-161",
+    "objetivo": 2,
+    "ref": "o2_06a",
+    "orden": 15
+  },
+  {
+    "id": "o2_06b_terminal_a05",
+    "archivo": "o2_06b_terminal_a05.png",
+    "paso": 6,
+    "tipo": "terminal",
+    "titulo": "Paso 5, comparación de modelos e importancia de variables",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a05_demanda",
+    "cifras": {
+      "modelo_elegido": "M1",
+      "mae_banda": 3.805556,
+      "mae_7d": {
+        "M1": 3.94,
+        "M2": 4.01,
+        "M3": 4.43
+      },
+      "mae_30d": {
+        "M1": 3.81,
+        "M2": 4.21,
+        "M3": 4.27
+      },
+      "importancia_xgboost": {
+        "dia_semana": 0.235,
+        "es_quincena": 0.234,
+        "es_festivo": 0.167,
+        "semana_anterior": 0.246,
+        "dias_adelante": 0.118
+      },
+      "pronostico_promedio_por_dia_abierto": 12.458333,
+      "pronostico_total_pedidos": 323.916667
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a05_demanda.txt; se omiten las ventanas de prueba y la tabla del pronóstico día a día (aparecen marcadas).",
+    "objetivo": 2,
+    "ref": "o2_06b",
+    "orden": 16
+  },
+  {
+    "id": "o2_06c_grafica_pronostico",
+    "archivo": "o2_06c_grafica_pronostico.png",
+    "paso": 6,
+    "tipo": "grafica",
+    "titulo": "Pronóstico de pedidos por día abierto a 30 días",
+    "archivo_codigo": "backend/analisis/a05_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "modelo": "M1",
+      "banda_mae": 3.805556,
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a05_demanda_pronostico_30_dias.png.",
+    "objetivo": 2,
+    "ref": "o2_06c",
+    "orden": 17
+  },
+  {
+    "id": "o2_07a_codigo_a06",
+    "archivo": "o2_07a_codigo_a06.png",
+    "paso": 7,
+    "tipo": "codigo",
+    "titulo": "Paso 6, venta cruzada: reglas Apriori, hallazgos de calidad del catálogo y armado de combos",
+    "archivo_codigo": "backend/analisis/a06_venta_cruzada.py",
+    "lineas": [
+      [
+        50,
+        51
+      ],
+      [
+        107,
+        120
+      ],
+      [
+        130,
+        137
+      ],
+      [
+        142,
+        147
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "50-51 y 107-120 y 130-137 y 142-147",
+    "objetivo": 2,
+    "ref": "o2_07a",
+    "orden": 18
+  },
+  {
+    "id": "o2_07b_terminal_a06_p1",
+    "archivo": "o2_07b_terminal_a06_p1.png",
+    "paso": 7,
+    "tipo": "terminal",
+    "titulo": "Paso 6, venta cruzada: reglas, hallazgos del catálogo y combos (parte 1 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a06_venta_cruzada",
+    "cifras": {
+      "reglas_por_producto": 32,
+      "reglas_por_categoria": 22,
+      "lift_maximo_producto": 7.616662,
+      "pct_canastas_2_o_mas": 0.304276,
+      "pares_plato_bebida_lift_2": 14,
+      "combos_sugeridos": [
+        "Churrasco + Limonada Natural",
+        "Churrasco + Jugo Natural FRESA",
+        "Churrasco + Coca Cola 1.5L",
+        "Chuleta Apanada + Jugo Natural FRESA",
+        "Churrasco + Coca Cola Zero 500ml"
+      ],
+      "hallazgos_catalogo": [
+        "Churrasco",
+        "Chuleta Apanada",
+        "sopa"
+      ]
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a06_venta_cruzada.txt; se omite la tabla de margen por producto (aparece marcada).",
+    "objetivo": 2,
+    "ref": "o2_07b",
+    "orden": 19
+  },
+  {
+    "id": "o2_07b_terminal_a06_p2",
+    "archivo": "o2_07b_terminal_a06_p2.png",
+    "paso": 7,
+    "tipo": "terminal",
+    "titulo": "Paso 6, venta cruzada: reglas, hallazgos del catálogo y combos (parte 2 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a06_venta_cruzada   # continuación",
+    "cifras": {
+      "reglas_por_producto": 32,
+      "reglas_por_categoria": 22,
+      "lift_maximo_producto": 7.616662,
+      "pct_canastas_2_o_mas": 0.304276,
+      "pares_plato_bebida_lift_2": 14,
+      "combos_sugeridos": [
+        "Churrasco + Limonada Natural",
+        "Churrasco + Jugo Natural FRESA",
+        "Churrasco + Coca Cola 1.5L",
+        "Chuleta Apanada + Jugo Natural FRESA",
+        "Churrasco + Coca Cola Zero 500ml"
+      ],
+      "hallazgos_catalogo": [
+        "Churrasco",
+        "Chuleta Apanada",
+        "sopa"
+      ]
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a06_venta_cruzada.txt; se omite la tabla de margen por producto (aparece marcada).",
+    "objetivo": 2,
+    "ref": "o2_07b",
+    "orden": 20
+  },
+  {
+    "id": "o2_07c_grafica_sin_bebida",
+    "archivo": "o2_07c_grafica_sin_bebida.png",
+    "paso": 7,
+    "tipo": "grafica",
+    "titulo": "Pedidos sin bebida por categoría de plato",
+    "archivo_codigo": "backend/analisis/a06_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "pct_sin_bebida": {
+        "promos": 0.938,
+        "menu_dia": 0.924,
+        "hamburguesas": 0.714,
+        "pollo": 0.698,
+        "porciones": 0.63,
+        "carta": 0.543
+      },
+      "todos_los_platos": 0.814,
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a06_venta_cruzada_pedidos_sin_bebida.png.",
+    "objetivo": 2,
+    "ref": "o2_07c",
+    "orden": 21
+  },
+  {
+    "id": "o2_08a_codigo_a07",
+    "archivo": "o2_08a_codigo_a07.png",
+    "paso": 8,
+    "tipo": "codigo",
+    "titulo": "Paso 7, segmentación: reglas de segmento RFM, puntajes por quintiles y K-Means",
+    "archivo_codigo": "backend/analisis/a07_segmentacion.py",
+    "lineas": [
+      [
+        17,
+        27
+      ],
+      [
+        37,
+        45
+      ],
+      [
+        48,
+        55
+      ],
+      [
+        116,
+        122
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "17-27 y 37-45 y 48-55 y 116-122",
+    "objetivo": 2,
+    "ref": "o2_08a",
+    "orden": 22
+  },
+  {
+    "id": "o2_08b_terminal_a07_p1",
+    "archivo": "o2_08b_terminal_a07_p1.png",
+    "paso": 8,
+    "tipo": "terminal",
+    "titulo": "Paso 7, segmentación RFM y K-Means (parte 1 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a07_segmentacion",
+    "cifras": {
+      "clientes_segmentados": 121,
+      "dinero_total": 9251800,
+      "k_kmeans": 4,
+      "silueta": 0.538871,
+      "rand_ajustado": 0.420947
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a07_segmentacion.txt; solo agregados y códigos anónimos C###.",
+    "objetivo": 2,
+    "ref": "o2_08b",
+    "orden": 23
+  },
+  {
+    "id": "o2_08b_terminal_a07_p2",
+    "archivo": "o2_08b_terminal_a07_p2.png",
+    "paso": 8,
+    "tipo": "terminal",
+    "titulo": "Paso 7, segmentación RFM y K-Means (parte 2 de 2)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m analisis.a07_segmentacion   # continuación",
+    "cifras": {
+      "clientes_segmentados": 121,
+      "dinero_total": 9251800,
+      "k_kmeans": 4,
+      "silueta": 0.538871,
+      "rand_ajustado": 0.420947
+    },
+    "nota": "Ejecutado sobre la copia de la BD (C:\\rr_evid2\\red_rooster.db, variable ANALISIS_DB); salida completa en backend/analisis/salidas/a07_segmentacion.txt; solo agregados y códigos anónimos C###.",
+    "objetivo": 2,
+    "ref": "o2_08b",
+    "orden": 24
+  },
+  {
+    "id": "o2_08c_grafica_clientes_dinero",
+    "archivo": "o2_08c_grafica_clientes_dinero.png",
+    "paso": 8,
+    "tipo": "grafica",
+    "titulo": "Participación de cada segmento en clientes y dinero",
+    "archivo_codigo": "backend/analisis/a07_*.py",
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "k_kmeans": 4,
+      "dimensiones_px": [
+        1600,
+        900
+      ]
+    },
+    "nota": "Gráfica generada por el paso del análisis; se copia tal cual desde backend/analisis/salidas/a07_segmentacion_clientes_vs_dinero.png.",
+    "objetivo": 2,
+    "ref": "o2_08c",
+    "orden": 25
+  },
+  {
+    "id": "o2_09a_terminal_pruebas_p1",
+    "archivo": "o2_09a_terminal_pruebas_p1.png",
+    "paso": 9,
+    "tipo": "terminal",
+    "titulo": "Pruebas del paquete de análisis (pytest -v), parte 1 de 2",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m pytest tests/analisis -v",
+    "cifras": {
+      "resumen": "126 passed in 44.60s",
+      "codigo_salida": 0,
+      "passed": 126
+    },
+    "nota": "Salida real de pytest; la segunda imagen continúa la lista y trae el resumen final.",
+    "objetivo": 2,
+    "ref": "o2_09a",
+    "orden": 26
+  },
+  {
+    "id": "o2_09a_terminal_pruebas_p2",
+    "archivo": "o2_09a_terminal_pruebas_p2.png",
+    "paso": 9,
+    "tipo": "terminal",
+    "titulo": "Pruebas del paquete de análisis (pytest -v), parte 2 de 2",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m pytest tests/analisis -v   # continuación",
+    "cifras": {
+      "resumen": "126 passed in 44.60s",
+      "codigo_salida": 0,
+      "passed": 126
+    },
+    "nota": "Salida real de pytest; la segunda imagen continúa la lista y trae el resumen final.",
+    "objetivo": 2,
+    "ref": "o2_09a",
+    "orden": 27
+  },
+  {
+    "id": "o3_01a_arquitectura",
+    "archivo": "o3_01a_arquitectura.png",
+    "paso": 1,
+    "tipo": "diagrama",
+    "titulo": "Arquitectura de la plataforma y flujo de datos",
+    "archivo_codigo": "backend/app (adapters · application · domain · etl · ml) y frontend/src",
+    "lineas": null,
+    "comando": null,
+    "cifras": {},
+    "nota": "Diagrama generado con nombres verificados contra la estructura de carpetas; no es una captura de una herramienta externa.",
+    "objetivo": 3,
+    "ref": "o3_01a",
+    "orden": 28
+  },
+  {
+    "id": "o3_02a_codigo_umbrales",
+    "archivo": "o3_02a_codigo_umbrales.png",
+    "paso": 2,
+    "tipo": "codigo",
+    "titulo": "Umbrales de Apriori y Gemini: valores por defecto y archivo de ejemplo",
+    "archivo_codigo": "backend/app/core/config.py · backend/.env.example",
+    "lineas": [
+      [
+        22,
+        27
+      ],
+      [
+        17,
+        19
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": "Se muestra .env.example (plantilla sin secretos); el .env real no se publica.",
+    "lineas_texto": "22-27 y 17-19",
+    "objetivo": 3,
+    "ref": "o3_02a",
+    "orden": 29
+  },
+  {
+    "id": "o3_02b_codigo_costos",
+    "archivo": "o3_02b_codigo_costos.png",
+    "paso": 2,
+    "tipo": "codigo",
+    "titulo": "Regla única del costo faltante (domain/costos.py)",
+    "archivo_codigo": "backend/app/domain/costos.py",
+    "lineas": [
+      [
+        1,
+        35
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "1-35",
+    "objetivo": 3,
+    "ref": "o3_02b",
+    "orden": 30
+  },
+  {
+    "id": "o3_03a_codigo_etiquetas_rfm",
+    "archivo": "o3_03a_codigo_etiquetas_rfm.png",
+    "paso": 3,
+    "tipo": "codigo",
+    "titulo": "Etiquetas de segmento por número de clusters y asignación por puntaje RFM",
+    "archivo_codigo": "backend/app/ml/rfm_kmeans.py",
+    "lineas": [
+      [
+        11,
+        18
+      ],
+      [
+        21,
+        34
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "11-18 y 21-34",
+    "objetivo": 3,
+    "ref": "o3_03a",
+    "orden": 31
+  },
+  {
+    "id": "o3_04a_app_datos_antes",
+    "archivo": "o3_04a_app_datos_antes.png",
+    "paso": 4,
+    "tipo": "app",
+    "titulo": "Página Datos antes de ejecutar el pipeline",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "metricas_visibles": [
+        "Demanda · XGBoost",
+        "0,52",
+        "MAE (UNIDADES)",
+        "0,57",
+        "R² EN PRUEBA",
+        "Línea base lag-7: MAE 0,6 · 236 días de historia",
+        "Venta cruzada · Apriori",
+        "0",
+        "REGLAS (LIFT > 1,2)",
+        "—",
+        "LIFT MÁXIMO",
+        "3.017 canastas analizadas",
+        "Segmentos · K-Means",
+        "0,54",
+        "COEFICIENTE DE SILUETA",
+        "4",
+        "CLUSTERS (K)",
+        "123 clientes con compras"
+      ],
+      "corridas_en_historial": 1
+    },
+    "nota": "Corrida previa de la copia de la BD: se hizo con los umbrales antiguos de Apriori (soporte 0,02; confianza 0,3; lift 1,2).",
+    "objetivo": 3,
+    "ref": "o3_04a",
+    "orden": 32
+  },
+  {
+    "id": "o3_04b_app_datos_despues",
+    "archivo": "o3_04b_app_datos_despues.png",
+    "paso": 4,
+    "tipo": "app",
+    "titulo": "Página Datos después de «Ejecutar pipeline» con «Forzar reentrenamiento»",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "metricas_visibles": [
+        "Demanda · XGBoost",
+        "0,52",
+        "MAE (UNIDADES)",
+        "0,57",
+        "R² EN PRUEBA",
+        "Línea base lag-7: MAE 0,6 · 236 días de historia",
+        "Venta cruzada · Apriori",
+        "32",
+        "REGLAS (LIFT > 1,0)",
+        "7,62",
+        "LIFT MÁXIMO",
+        "3.017 canastas analizadas",
+        "Segmentos · K-Means",
+        "0,54",
+        "COEFICIENTE DE SILUETA",
+        "4",
+        "CLUSTERS (K)",
+        "123 clientes con compras"
+      ],
+      "corridas_en_historial": 2,
+      "aviso": "Pipeline completado en 3,07 s",
+      "ultima_corrida_api": {
+        "id": 2,
+        "status": "SUCCESS",
+        "rows_extracted": 0
+      }
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_04b",
+    "orden": 33
+  },
+  {
+    "id": "o3_04c_terminal_etl_runs",
+    "archivo": "o3_04c_terminal_etl_runs.png",
+    "paso": 4,
+    "tipo": "terminal",
+    "titulo": "Consulta de la última fila de etl_runs (métricas de la corrida)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "SELECT id, status AS estado, rows_extracted AS filas,        round(json_extract(metrics,'$.demanda.mae'),4) AS mae, round(json_extract(metrics,'$.demanda.r2'),4) AS r2,        round(json_extract(metrics,'$.demanda.mae_baseline_lag7'),4) AS mae_base_lag7,        round(json_extract(metrics,'$.demanda.r2_baseline_lag7'),4) AS r2_base_lag7,        json_extract(metrics,'$.canasta.n_canastas') AS canastas, json_extract(metrics,'$.canasta.n_reglas') AS n_reglas,        json_extract(metrics,'$.segmentos.k') AS k, round(json_extract(metrics,'$.segmentos.silhouette'),4) AS silueta,        json_extract(metrics,'$.segmentos.n_clientes') AS n_clientes FROM etl_runs ORDER BY id DESC LIMIT 1;",
+    "cifras": {
+      "id": 2,
+      "estado": "SUCCESS",
+      "filas": 0,
+      "mae": 0.5212,
+      "r2": 0.5689,
+      "mae_base_lag7": 0.5985,
+      "r2_base_lag7": 0.2505,
+      "canastas": 3017,
+      "n_reglas": 32,
+      "k": 4,
+      "silueta": 0.5429,
+      "n_clientes": 123,
+      "r2_en_la_plataforma": 0.5689207420149625
+    },
+    "nota": "Consulta de solo lectura sobre la copia de la BD, después de la corrida forzada.",
+    "objetivo": 3,
+    "ref": "o3_04c",
+    "orden": 34
+  },
+  {
+    "id": "o3_05a_app_inicio_kpis",
+    "archivo": "o3_05a_app_inicio_kpis.png",
+    "paso": 5,
+    "tipo": "app",
+    "titulo": "Inicio: indicadores de los últimos 30 días",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "tarjetas_visibles": [
+        [
+          "$ 16.850.900",
+          "VENTAS",
+          "298 ventas · 710 unidades"
+        ],
+        [
+          "$ 56.547",
+          "TICKET PROMEDIO",
+          "Valor medio por venta"
+        ],
+        [
+          "61,16 %",
+          "MARGEN",
+          "$ 10.305.635 de utilidad bruta"
+        ],
+        [
+          "0,22×",
+          "ROTACIÓN",
+          "2,71× anualizada · inventario $ 29.401.680"
+        ]
+      ],
+      "api_kpis_30d": {
+        "total_ventas": 16850900.0,
+        "n_ventas": 298,
+        "unidades_vendidas": 710,
+        "ticket_promedio": 56546.64,
+        "margen": 10305635.39,
+        "margen_pct": 61.16,
+        "rotacion": 0.223,
+        "valor_inventario": 29401679.87
+      }
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_05a",
+    "orden": 35
+  },
+  {
+    "id": "o3_06a_app_analitica_demanda",
+    "archivo": "o3_06a_app_analitica_demanda.png",
+    "paso": 6,
+    "tipo": "app",
+    "titulo": "Analítica, pestaña Demanda",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "pastillas_visibles": [
+        "MAE 0,52 U.",
+        "R² 0,57",
+        "LÍNEA BASE LAG-7: MAE 0,6",
+        "1.320 OBS. DE PRUEBA (ÚLTIMOS 30 DÍAS)"
+      ],
+      "mae": 0.5212307534463683,
+      "r2": 0.5689207420149625,
+      "baseline_lag7_mae": 0.5984848484848485
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_06a",
+    "orden": 36
+  },
+  {
+    "id": "o3_06b_app_analitica_venta_cruzada",
+    "archivo": "o3_06b_app_analitica_venta_cruzada.png",
+    "paso": 6,
+    "tipo": "app",
+    "titulo": "Analítica, pestaña Venta cruzada",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "reglas_en_api": 32,
+      "filas_visibles": 32,
+      "primeras_reglas": [
+        "Limonada Natural Mojarra Frita 0,63 % 17,92 % 7,62",
+        "Mojarra Frita Limonada Natural 0,63 % 26,76 % 7,62",
+        "Jugo Natural FRESA Pechuga a la Plancha 0,7 % 22,34 % 7,09",
+        "Pechuga a la Plancha Jugo Natural FRESA 0,7 % 22,11 % 7,09",
+        "Jugo Natural FRESA Chuleta Apanada 0,96 % 30,85 % 6,84"
+      ],
+      "n_reglas_metricas": 32,
+      "lift_max": 7.616662237576402
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_06b",
+    "orden": 37
+  },
+  {
+    "id": "o3_06c_app_analitica_segmentos",
+    "archivo": "o3_06c_app_analitica_segmentos.png",
+    "paso": 6,
+    "tipo": "app",
+    "titulo": "Analítica, pestaña Segmentos con el tooltip de un punto RFM",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "pastillas_visibles": [
+        "SILUETA 0,54",
+        "K = 4",
+        "123 CLIENTES IDENTIFICADOS"
+      ],
+      "tooltip": [
+        "C007 · Campeones",
+        "Recencia: 8 días",
+        "Monetario: $ 467.800"
+      ],
+      "segmentos": [
+        {
+          "segmento": "Leales",
+          "clientes": 38
+        },
+        {
+          "segmento": "En riesgo",
+          "clientes": 70
+        },
+        {
+          "segmento": "Campeones",
+          "clientes": 7
+        },
+        {
+          "segmento": "Ocasionales",
+          "clientes": 8
+        }
+      ],
+      "k": 4,
+      "silueta": 0.5428791532523202
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_06c",
+    "orden": 38
+  },
+  {
+    "id": "o3_07a_app_clientes_busqueda",
+    "archivo": "o3_07a_app_clientes_busqueda.png",
+    "paso": 7,
+    "tipo": "app",
+    "titulo": "Clientes con la búsqueda «C001» aplicada",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "busqueda": "C001",
+      "filas_visibles": 1,
+      "codigos": [
+        "C001"
+      ]
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_07a",
+    "orden": 39
+  },
+  {
+    "id": "o3_08a_codigo_guardrails",
+    "archivo": "o3_08a_codigo_guardrails.png",
+    "paso": 8,
+    "tipo": "codigo",
+    "titulo": "Asesor: verificación de cifras citadas y guardrails (descuento máximo y datos obligatorios)",
+    "archivo_codigo": "backend/app/application/asesor.py",
+    "lineas": [
+      [
+        74,
+        85
+      ],
+      [
+        88,
+        115
+      ]
+    ],
+    "comando": null,
+    "cifras": {},
+    "nota": null,
+    "lineas_texto": "74-85 y 88-115",
+    "objetivo": 3,
+    "ref": "o3_08a",
+    "orden": 40
+  },
+  {
+    "id": "o3_08b_app_asesor",
+    "archivo": null,
+    "paso": 8,
+    "tipo": "app",
+    "titulo": "Asesor con una pregunta real y su respuesta",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {},
+    "nota": "PENDIENTE: requiere GEMINI_API_KEY en backend/.env. Sin la clave, el asesor responde en modo «simulado» y no se captura como si fuera Gemini. Regenerar con --solo-asesor.",
+    "estado": "pendiente",
+    "objetivo": 3,
+    "ref": "o3_08b",
+    "orden": 41
+  },
+  {
+    "id": "o3_09a_swagger_analytics",
+    "archivo": "o3_09a_swagger_analytics.png",
+    "paso": 9,
+    "tipo": "app",
+    "titulo": "Swagger: sección analytics con GET /analytics/segments ejecutado",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": null,
+    "cifras": {
+      "codigo_http": "200",
+      "clientes_en_respuesta": 123,
+      "campos_de_cliente": [
+        "cluster",
+        "codigo_anonimo",
+        "customer_id",
+        "first_name",
+        "frequency",
+        "last_name",
+        "monetary",
+        "recency",
+        "segment_label"
+      ],
+      "ejemplo_codigo_anonimo": "C003"
+    },
+    "nota": null,
+    "objetivo": 3,
+    "ref": "o3_09a",
+    "orden": 42
+  },
+  {
+    "id": "o3_10a_terminal_pytest",
+    "archivo": "o3_10a_terminal_pytest.png",
+    "paso": 10,
+    "tipo": "terminal",
+    "titulo": "Suite completa de pruebas (pytest -q)",
+    "archivo_codigo": null,
+    "lineas": null,
+    "comando": "venv\\Scripts\\python -m pytest -q",
+    "cifras": {
+      "resumen": "499 passed, 165 warnings in 142.50s (0:02:22)",
+      "codigo_salida": 0,
+      "passed": 499
+    },
+    "nota": "Salida real de la suite completa (tests/unit, tests/api, tests/analisis).",
+    "objetivo": 3,
+    "ref": "o3_10a",
+    "orden": 43
+  }
+]

@@ -1,0 +1,131 @@
+{
+  "pedidos_por_dia_abierto": {
+    "base_n": 106,
+    "caida_n": 62,
+    "media_base": 16.462264,
+    "media_caida": 13.112903,
+    "mann_whitney": {
+      "U": 4284.5,
+      "p": 0.00101,
+      "delta_cliff": 0.303865,
+      "magnitud": "pequeño"
+    },
+    "diferencia_medias": 3.349361,
+    "ic95_bootstrap": [
+      1.719393,
+      5.031665
+    ],
+    "replicas": 10000,
+    "semilla": 42,
+    "conclusion": "La caída de pedidos por día abierto es estadísticamente significativa (p < 0,05).",
+    "sin_dias_casi_vacios": {
+      "base_n": 106,
+      "caida_n": 53,
+      "media_base": 16.462264,
+      "media_caida": 14.830189,
+      "mann_whitney": {
+        "U": 3330.5,
+        "p": 0.056315,
+        "delta_cliff": 0.185653,
+        "magnitud": "pequeño"
+      },
+      "diferencia_medias": 1.632075,
+      "ic95_bootstrap": [
+        0.198113,
+        3.04717
+      ],
+      "conclusion": "Sin los días casi sin pedidos la diferencia deja de ser significativa (p >= 0,05)."
+    }
+  },
+  "chi2_canal_periodo": {
+    "canales": [
+      "mesa",
+      "llevar",
+      "domicilio"
+    ],
+    "tabla": {
+      "base": {
+        "mesa": 675,
+        "llevar": 955,
+        "domicilio": 115
+      },
+      "caida": {
+        "mesa": 403,
+        "llevar": 395,
+        "domicilio": 15
+      }
+    },
+    "chi2": 44.137884,
+    "gl": 2,
+    "p": 0.0,
+    "v_cramer": 0.131358,
+    "esperada_minima": 41.317435,
+    "conclusion": "El canal y el periodo no son independientes: la mezcla de canales cambió (p < 0,05)."
+  },
+  "chi2_mesa_llevar_periodo": {
+    "canales": [
+      "mesa",
+      "llevar"
+    ],
+    "tabla": {
+      "base": {
+        "mesa": 675,
+        "llevar": 955
+      },
+      "caida": {
+        "mesa": 403,
+        "llevar": 395
+      }
+    },
+    "chi2": 17.565899,
+    "gl": 1,
+    "p": 2.8e-05,
+    "v_cramer": 0.085057,
+    "esperada_minima": 354.301483,
+    "conclusion": "El canal y el periodo no son independientes: la mezcla de canales cambió (p < 0,05)."
+  },
+  "kruskal_dia_semana": {
+    "Base + caída": {
+      "H": 10.465123,
+      "gl": 5,
+      "p": 0.063079,
+      "epsilon2": 0.062665,
+      "conclusion": "sin diferencias claras"
+    },
+    "Solo base": {
+      "H": 9.972864,
+      "gl": 5,
+      "p": 0.076008,
+      "epsilon2": 0.09498,
+      "conclusion": "sin diferencias claras"
+    },
+    "Solo caída": {
+      "H": 13.750701,
+      "gl": 5,
+      "p": 0.017273,
+      "epsilon2": 0.225421,
+      "conclusion": "hay diferencias"
+    }
+  },
+  "ticket": {
+    "pedidos_base": 1745,
+    "pedidos_caida": 813,
+    "media_base": 45339.369628,
+    "media_caida": 49503.567036,
+    "mediana_base": 40000.0,
+    "mediana_caida": 35000.0,
+    "mann_whitney_caida_vs_base": {
+      "U": 662751.5,
+      "p": 0.007284,
+      "delta_cliff": -0.065682,
+      "magnitud": "insignificante"
+    },
+    "diferencia_medias": 4164.197408,
+    "ic95_bootstrap": [
+      -436.844967,
+      9382.466661
+    ],
+    "conclusion": "El ticket de la caída es significativamente distinto al del periodo base (p < 0,05)."
+  },
+  "graficas": []
+}

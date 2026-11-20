@@ -1,0 +1,199 @@
+{
+  "efecto_dia_semana": {
+    "media_general": 15.22619,
+    "dias": [
+      {
+        "dia": "lunes",
+        "dias": 28,
+        "media": 13.571429,
+        "indice_vs_media_general": 0.891321,
+        "media_base": 16.388889,
+        "media_caida": 8.5,
+        "variacion": -0.481356
+      },
+      {
+        "dia": "miércoles",
+        "dias": 28,
+        "media": 14.285714,
+        "indice_vs_media_general": 0.938233,
+        "media_base": 14.117647,
+        "media_caida": 14.545455,
+        "variacion": 0.030303
+      },
+      {
+        "dia": "jueves",
+        "dias": 28,
+        "media": 15.071429,
+        "indice_vs_media_general": 0.989836,
+        "media_base": 15.647059,
+        "media_caida": 14.181818,
+        "variacion": -0.093643
+      },
+      {
+        "dia": "viernes",
+        "dias": 28,
+        "media": 17.5,
+        "indice_vs_media_general": 1.149335,
+        "media_base": 18.222222,
+        "media_caida": 16.2,
+        "variacion": -0.110976
+      },
+      {
+        "dia": "sábado",
+        "dias": 28,
+        "media": 14.964286,
+        "indice_vs_media_general": 0.982799,
+        "media_base": 17.777778,
+        "media_caida": 9.9,
+        "variacion": -0.443125
+      },
+      {
+        "dia": "domingo",
+        "dias": 28,
+        "media": 15.964286,
+        "indice_vs_media_general": 1.048475,
+        "media_base": 16.444444,
+        "media_caida": 15.1,
+        "variacion": -0.081757
+      }
+    ]
+  },
+  "efecto_quincena": {
+    "Con quincena": {
+      "dias": 10,
+      "media_pedidos": 15.8,
+      "indice": 0.980355
+    },
+    "Sin quincena": {
+      "dias": 158,
+      "media_pedidos": 15.189873,
+      "indice": 1.001243
+    },
+    "diferencia_indice": -0.020862
+  },
+  "efecto_festivo": {
+    "Con festivo": {
+      "dias": 11,
+      "media_pedidos": 14.636364,
+      "indice": 0.889103
+    },
+    "Sin festivo": {
+      "dias": 157,
+      "media_pedidos": 15.267516,
+      "indice": 1.00777
+    },
+    "diferencia_indice": -0.117751
+  },
+  "tukey": {
+    "q1": 12.0,
+    "q3": 19.0,
+    "iqr": 7.0,
+    "valla_inferior": 1.5,
+    "dias_anomalos": [
+      "2026-09-19"
+    ],
+    "dias_atipicos_al_alza": [
+      "2026-07-31"
+    ],
+    "valla_inferior_solo_base": 2.5,
+    "dias_anomalos_solo_base": [
+      "2026-09-19",
+      "2026-10-10",
+      "2026-10-12",
+      "2026-11-02"
+    ]
+  },
+  "casi_sin_pedidos": {
+    "umbral": 5,
+    "minimo_periodo_base": 7.0,
+    "dias": 9,
+    "detalle": [
+      {
+        "fecha": "2026-09-19",
+        "dia": "sábado",
+        "pedidos": 1.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-09-21",
+        "dia": "lunes",
+        "pedidos": 5.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-03",
+        "dia": "sábado",
+        "pedidos": 5.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-10",
+        "dia": "sábado",
+        "pedidos": 2.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-12",
+        "dia": "lunes",
+        "pedidos": 2.0,
+        "festivo": true,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-23",
+        "dia": "viernes",
+        "pedidos": 3.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-24",
+        "dia": "sábado",
+        "pedidos": 3.0,
+        "festivo": false,
+        "quincena": false
+      },
+      {
+        "fecha": "2026-10-31",
+        "dia": "sábado",
+        "pedidos": 4.0,
+        "festivo": false,
+        "quincena": true
+      },
+      {
+        "fecha": "2026-11-02",
+        "dia": "lunes",
+        "pedidos": 2.0,
+        "festivo": true,
+        "quincena": false
+      }
+    ]
+  },
+  "domicilios": {
+    "ultimo_domicilio": "2026-11-13",
+    "primer_domicilio": "2026-03-23",
+    "interrupcion_mas_larga": {
+      "ultimo_antes": "2026-08-30",
+      "primero_despues": "2026-10-26",
+      "dias_sin_domicilio": 56
+    },
+    "domicilios_por_mes": {
+      "marzo": 36,
+      "abril": 61,
+      "mayo": 50,
+      "junio": 22,
+      "julio": 41,
+      "agosto": 2,
+      "octubre": 2,
+      "noviembre": 15
+    }
+  },
+  "graficas": [
+    "a02_estacionalidad_anomalias_pedidos_dia_semana_base_vs_caida.png",
+    "a02_estacionalidad_anomalias_serie_diaria_anomalias.png"
+  ]
+}

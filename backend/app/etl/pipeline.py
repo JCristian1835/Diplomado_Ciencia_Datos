@@ -14,9 +14,9 @@ from app.ml import basket_apriori, demand_xgb, rfm_kmeans
 
 @dataclass
 class ConfigAnalitica:
-    apriori_min_support: float = 0.02
-    apriori_min_confidence: float = 0.3
-    apriori_min_lift: float = 1.2
+    apriori_min_support: float = 0.005
+    apriori_min_confidence: float = 0.15
+    apriori_min_lift: float = 1.0
     test_dias: int = 30
     semilla: int = 42
 

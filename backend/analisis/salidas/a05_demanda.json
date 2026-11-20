@@ -1,0 +1,1332 @@
+{
+  "importancia_xgboost": {
+    "dia_semana": 0.235103,
+    "es_quincena": 0.233684,
+    "es_festivo": 0.167095,
+    "semana_anterior": 0.246229,
+    "dias_adelante": 0.117889
+  },
+  "metricas": {
+    "7": {
+      "M1": {
+        "mae": 3.944444,
+        "r2": -0.217488,
+        "dias_evaluados": 39
+      },
+      "M2": {
+        "mae": 4.012821,
+        "r2": -0.327651,
+        "dias_evaluados": 39
+      },
+      "M3": {
+        "mae": 4.432805,
+        "r2": -0.559437,
+        "dias_evaluados": 39
+      },
+      "ganador": "M1"
+    },
+    "30": {
+      "M1": {
+        "mae": 3.805556,
+        "r2": -0.185912,
+        "dias_evaluados": 42
+      },
+      "M2": {
+        "mae": 4.208333,
+        "r2": -0.55749,
+        "dias_evaluados": 42
+      },
+      "M3": {
+        "mae": 4.266796,
+        "r2": -0.455008,
+        "dias_evaluados": 42
+      },
+      "ganador": "M1"
+    }
+  },
+  "modelo_elegido": "M1",
+  "motivo": "M1 Promedio 24 días gana a 30 días y XGBoost no gana a 7 días",
+  "mae_banda": 3.805556,
+  "detalle_pruebas": [
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-06",
+      "real": 19.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 14.0,
+      "M3": 12.036109
+    },
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-07",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 6.0,
+      "M3": 9.757055
+    },
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-08",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 16.0,
+      "M3": 11.602895
+    },
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-09",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 6.25,
+      "M3": 11.187073
+    },
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-11",
+      "real": 7.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 14.25,
+      "M3": 12.853014
+    },
+    {
+      "horizonte": 7,
+      "ventana": 1,
+      "origen": "2026-11-05",
+      "fecha": "2026-11-12",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 11.666667,
+      "M2": 13.5,
+      "M3": 12.206852
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-10-30",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 12.083333,
+      "M2": 16.0,
+      "M3": 14.468165
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-10-31",
+      "real": 4.0,
+      "evaluable": false,
+      "M1": 12.083333,
+      "M2": 6.25,
+      "M3": 12.28691
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-11-01",
+      "real": 12.0,
+      "evaluable": true,
+      "M1": 12.083333,
+      "M2": 16.25,
+      "M3": 14.764891
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-11-02",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 12.083333,
+      "M2": 7.75,
+      "M3": 8.257643
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-11-04",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 12.083333,
+      "M2": 14.5,
+      "M3": 11.186234
+    },
+    {
+      "horizonte": 7,
+      "ventana": 2,
+      "origen": "2026-10-29",
+      "fecha": "2026-11-05",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 12.083333,
+      "M2": 11.75,
+      "M3": 11.965792
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-23",
+      "real": 3.0,
+      "evaluable": false,
+      "M1": 13.291667,
+      "M2": 17.75,
+      "M3": 12.231766
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-24",
+      "real": 3.0,
+      "evaluable": false,
+      "M1": 13.291667,
+      "M2": 9.75,
+      "M3": 12.62608
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-25",
+      "real": 19.0,
+      "evaluable": true,
+      "M1": 13.291667,
+      "M2": 15.75,
+      "M3": 13.252855
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-26",
+      "real": 9.0,
+      "evaluable": true,
+      "M1": 13.291667,
+      "M2": 8.75,
+      "M3": 11.10083
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-28",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 13.291667,
+      "M2": 13.75,
+      "M3": 12.621502
+    },
+    {
+      "horizonte": 7,
+      "ventana": 3,
+      "origen": "2026-10-22",
+      "fecha": "2026-10-29",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 13.291667,
+      "M2": 14.0,
+      "M3": 12.805957
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-16",
+      "real": 18.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 16.75,
+      "M3": 15.67697
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-17",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 6.25,
+      "M3": 13.555098
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-18",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 13.25,
+      "M3": 12.801879
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-19",
+      "real": 12.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 7.0,
+      "M3": 12.196824
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-21",
+      "real": 8.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 15.25,
+      "M3": 10.151609
+    },
+    {
+      "horizonte": 7,
+      "ventana": 4,
+      "origen": "2026-10-15",
+      "fecha": "2026-10-22",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 12.208333,
+      "M2": 14.75,
+      "M3": 10.716223
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-09",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 13.25,
+      "M2": 17.0,
+      "M3": 15.036963
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-10",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 13.25,
+      "M2": 11.25,
+      "M3": 15.94068
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-11",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 13.25,
+      "M2": 12.25,
+      "M3": 13.662534
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-12",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 13.25,
+      "M2": 8.25,
+      "M3": 12.651666
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-14",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 13.25,
+      "M2": 16.0,
+      "M3": 13.513937
+    },
+    {
+      "horizonte": 7,
+      "ventana": 5,
+      "origen": "2026-10-08",
+      "fecha": "2026-10-15",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 13.25,
+      "M2": 14.75,
+      "M3": 19.359638
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-02",
+      "real": 22.0,
+      "evaluable": true,
+      "M1": 14.5,
+      "M2": 16.25,
+      "M3": 15.986051
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-03",
+      "real": 5.0,
+      "evaluable": false,
+      "M1": 14.5,
+      "M2": 13.25,
+      "M3": 14.716254
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-04",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 14.5,
+      "M2": 13.25,
+      "M3": 13.942166
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-05",
+      "real": 8.0,
+      "evaluable": true,
+      "M1": 14.5,
+      "M2": 10.5,
+      "M3": 13.362989
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-07",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 14.5,
+      "M2": 17.0,
+      "M3": 15.13063
+    },
+    {
+      "horizonte": 7,
+      "ventana": 6,
+      "origen": "2026-10-01",
+      "fecha": "2026-10-08",
+      "real": 9.0,
+      "evaluable": true,
+      "M1": 14.5,
+      "M2": 16.75,
+      "M3": 15.904934
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-09-25",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 15.75,
+      "M3": 15.436985
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-09-26",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 14.0,
+      "M3": 24.666276
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-09-27",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 14.0,
+      "M3": 23.202478
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-09-28",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 12.5,
+      "M3": 21.445734
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-09-30",
+      "real": 18.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 15.5,
+      "M3": 9.23487
+    },
+    {
+      "horizonte": 7,
+      "ventana": 7,
+      "origen": "2026-09-24",
+      "fecha": "2026-10-01",
+      "real": 24.0,
+      "evaluable": true,
+      "M1": 14.291667,
+      "M2": 14.0,
+      "M3": 11.668184
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-18",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 16.0,
+      "M3": 17.781049
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-19",
+      "real": 1.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.25,
+      "M3": 17.508331
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-20",
+      "real": 6.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 17.25,
+      "M3": 15.537886
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-21",
+      "real": 5.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 16.25,
+      "M3": 16.730134
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-23",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 15.0,
+      "M3": 13.134206
+    },
+    {
+      "horizonte": 7,
+      "ventana": 8,
+      "origen": "2026-09-17",
+      "fecha": "2026-09-24",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 14.75,
+      "M3": 15.609345
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-14",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.0,
+      "M3": 12.036773
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-15",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 14.75,
+      "M3": 16.82612
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-16",
+      "real": 18.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.75,
+      "M3": 14.540761
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-17",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 6.25,
+      "M3": 9.123176
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-18",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 13.25,
+      "M3": 10.930184
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-19",
+      "real": 12.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 7.0,
+      "M3": 9.098608
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-21",
+      "real": 8.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.0,
+      "M3": 11.750592
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-22",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 14.75,
+      "M3": 12.140251
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-23",
+      "real": 3.0,
+      "evaluable": false,
+      "M1": 12.333333,
+      "M2": 16.75,
+      "M3": 13.884926
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-24",
+      "real": 3.0,
+      "evaluable": false,
+      "M1": 12.333333,
+      "M2": 6.25,
+      "M3": 5.846464
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-25",
+      "real": 19.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 13.25,
+      "M3": 10.559048
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-26",
+      "real": 9.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 7.0,
+      "M3": 6.2402
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-28",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.0,
+      "M3": 11.369645
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-29",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 14.75,
+      "M3": 12.118589
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-30",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.75,
+      "M3": 13.617565
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-10-31",
+      "real": 4.0,
+      "evaluable": false,
+      "M1": 12.333333,
+      "M2": 6.25,
+      "M3": 3.219621
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-01",
+      "real": 12.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 13.25,
+      "M3": 10.295586
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-02",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 12.333333,
+      "M2": 7.0,
+      "M3": 2.717116
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-04",
+      "real": 15.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.0,
+      "M3": 11.477355
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-05",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 14.75,
+      "M3": 11.844875
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-06",
+      "real": 19.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.75,
+      "M3": 13.841627
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-07",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 6.25,
+      "M3": 4.434102
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-08",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 13.25,
+      "M3": 10.676367
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-09",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 7.0,
+      "M3": 4.706619
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-11",
+      "real": 7.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 16.0,
+      "M3": 11.706042
+    },
+    {
+      "horizonte": 30,
+      "ventana": 1,
+      "origen": "2026-10-13",
+      "fecha": "2026-11-12",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 12.333333,
+      "M2": 14.75,
+      "M3": 11.797921
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-14",
+      "real": 7.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 18.5,
+      "M3": 14.958642
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-16",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 14.0,
+      "M3": 16.101979
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-17",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 13.5,
+      "M3": 15.018792
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-18",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 16.0,
+      "M3": 18.839684
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-19",
+      "real": 1.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.25,
+      "M3": 19.131812
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-20",
+      "real": 6.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 17.25,
+      "M3": 15.69331
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-21",
+      "real": 5.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.5,
+      "M3": 15.062988
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-23",
+      "real": 14.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 14.0,
+      "M3": 15.890336
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-24",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 13.5,
+      "M3": 15.303303
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-25",
+      "real": 10.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 16.0,
+      "M3": 17.707706
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-26",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 18.25,
+      "M3": 18.011093
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-27",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 17.25,
+      "M3": 15.623934
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-28",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 18.5,
+      "M3": 15.242993
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-09-30",
+      "real": 18.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 14.0,
+      "M3": 14.515801
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-01",
+      "real": 24.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 13.5,
+      "M3": 15.360573
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-02",
+      "real": 22.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 16.0,
+      "M3": 17.732184
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-03",
+      "real": 5.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.25,
+      "M3": 18.04244
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-04",
+      "real": 13.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 17.25,
+      "M3": 15.604665
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-05",
+      "real": 8.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 18.5,
+      "M3": 15.387057
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-07",
+      "real": 16.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 14.0,
+      "M3": 16.128649
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-08",
+      "real": 9.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 13.5,
+      "M3": 15.593647
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-09",
+      "real": 21.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 16.0,
+      "M3": 18.238425
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-10",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.25,
+      "M3": 18.549297
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-11",
+      "real": 17.0,
+      "evaluable": true,
+      "M1": 16.25,
+      "M2": 17.25,
+      "M3": 15.519522
+    },
+    {
+      "horizonte": 30,
+      "ventana": 2,
+      "origen": "2026-09-13",
+      "fecha": "2026-10-12",
+      "real": 2.0,
+      "evaluable": false,
+      "M1": 16.25,
+      "M2": 18.5,
+      "M3": 15.20778
+    }
+  ],
+  "pronostico": [
+    {
+      "fecha": "2026-11-14",
+      "dia": "sábado",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-15",
+      "dia": "domingo",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-16",
+      "dia": "lunes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-18",
+      "dia": "miércoles",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-19",
+      "dia": "jueves",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-20",
+      "dia": "viernes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-21",
+      "dia": "sábado",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-22",
+      "dia": "domingo",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-23",
+      "dia": "lunes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-25",
+      "dia": "miércoles",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-26",
+      "dia": "jueves",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-27",
+      "dia": "viernes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-28",
+      "dia": "sábado",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-29",
+      "dia": "domingo",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-11-30",
+      "dia": "lunes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-02",
+      "dia": "miércoles",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-03",
+      "dia": "jueves",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-04",
+      "dia": "viernes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-05",
+      "dia": "sábado",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-06",
+      "dia": "domingo",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-07",
+      "dia": "lunes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-09",
+      "dia": "miércoles",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-10",
+      "dia": "jueves",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-11",
+      "dia": "viernes",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-12",
+      "dia": "sábado",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    },
+    {
+      "fecha": "2026-12-13",
+      "dia": "domingo",
+      "pronostico": 12.458333,
+      "minimo": 8.652778,
+      "maximo": 16.263889
+    }
+  ],
+  "pronostico_promedio_por_dia_abierto": 12.458333,
+  "pronostico_total_pedidos": 323.916667,
+  "calendario_coincide_dim_fecha": true,
+  "semilla": 42,
+  "graficas": [
+    "a05_demanda_pronostico_30_dias.png"
+  ]
+}

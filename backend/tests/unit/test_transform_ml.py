@@ -80,7 +80,8 @@ def test_imputar_y_calidad():
     items, prods, cal = t.imputar(it, _productos())
     assert len(items) == 6                       # quantity nula -> 0 -> descartada
     assert items["subtotal"].notna().all()
-    assert prods["unit_cost"].tolist() == [50.0, 0.0, 10.0]
+    # costo nulo de "Pan" (cat. y, sin costos) -> precio 100 x mediana global de {x: 50/100, Sin categoría: 10/100} = 30
+    assert prods["unit_cost"].tolist() == [50.0, 30.0, 10.0]
     assert prods["category"].tolist() == ["x", "y", "Sin categoría"]
     assert cal["nulos_imputados"] >= 3 and "fecha" in items
 
@@ -165,7 +166,10 @@ def test_kmeans_silueta_k_y_etiquetas():
     assert -1 <= met["silhouette"] <= 1 and 2 <= met["k"] <= 6
     assert met["silhouette"] > 0.3                       # grupos bien separados
     assert len(out) == 60 and out["segment_label"].notna().all()
-    assert set(out["segment_label"]) <= {"Campeones", "Leales", "En riesgo", "Perdidos", "Nuevos", "Ocasionales"}
+    # Todas las etiquetas posibles: las de _ETIQUETAS_POR_K (k = 2..6) y "Nuevos" (reemplaza a En riesgo/Perdidos
+    # cuando su cluster tiene recencia no peor que la mediana).
+    posibles = {e for etiquetas in rfm_kmeans._ETIQUETAS_POR_K.values() for e in etiquetas} | {"Nuevos"}
+    assert set(out["segment_label"]) <= posibles
     assert out["cluster"].nunique() == met["k"] or out["cluster"].nunique() >= 2
     assert "Campeones" in set(out["segment_label"])
 

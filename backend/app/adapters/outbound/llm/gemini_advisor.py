@@ -8,6 +8,7 @@ INSTRUCCIONES = """Eres un asesor estratégico para un micronegocio colombiano (
 Respondes SIEMPRE en español y SOLO con JSON que cumpla el esquema indicado.
 Reglas obligatorias:
 - Basa cada acción en los datos del contexto y cítalos textualmente en `datos_citados` (cifras concretas).
+- Cita solo cifras que aparezcan tal cual en el contexto; no calcules ni inventes cifras derivadas (se descartan las acciones con cifras ausentes).
 - NUNCA propongas descuentos superiores al 30%; si propones uno, indícalo en `descuento_pct`.
 - No inventes productos, clientes ni cifras que no estén en el contexto.
 - Entre 1 y 5 acciones. `riesgo` es bajo, medio o alto.

@@ -15,7 +15,7 @@ from app.domain.plan_accion import Accion, PlanAccion, PlanBase
 
 def accion(**kw):
     base = dict(accion="Reponer cafe de inmediato", justificacion="La demanda proyectada supera el stock",
-                impacto_estimado="Evita quiebres", riesgo="bajo", datos_citados=["Cafe: demanda 7d 40 u. vs stock 10 u."])
+                impacto_estimado="Evita quiebres", riesgo="bajo", datos_citados=["Ventas 30d: $1.000 en 5 ventas (ticket promedio $200)"])  # cifras del contexto de Kpis
     base.update(kw)
     return Accion(**base)
 

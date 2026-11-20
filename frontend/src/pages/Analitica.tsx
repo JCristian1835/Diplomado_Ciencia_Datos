@@ -9,7 +9,7 @@ import { Pill } from '../ui/Badges';
 import { Field, Segmented, Select, Tabs } from '../ui/Inputs';
 import { Alert, Card, CardHeader, EmptyState, Skeleton } from '../ui/Surfaces';
 import { btnClass, vars } from '../ui/cls';
-import { formatoCOP, formatoDec, formatoNum } from '../ui/format';
+import { formatoCOP, formatoDec, formatoNum, formatoPct } from '../ui/format';
 
 const TABS = [
   { id: 'demanda', texto: 'Demanda' },
@@ -92,9 +92,9 @@ function VentaCruzada({ m }: { m?: Metricas }) {
     <div className="stack">
       <div className="metrics">
         <Pill tone="gold">{formatoNum(m?.n_reglas)} reglas</Pill>
-        {cn && <Pill>Soporte ≥ {cn.min_support}</Pill>}
-        {cn && <Pill>Confianza ≥ {cn.min_confidence}</Pill>}
-        {cn && <Pill>Lift &gt; {cn.min_lift}</Pill>}
+        {cn && <Pill>Soporte ≥ {formatoPct(cn.min_support * 100)}</Pill>}
+        {cn && <Pill>Confianza ≥ {formatoPct(cn.min_confidence * 100)}</Pill>}
+        {cn && <Pill>Lift &gt; {Number(cn.min_lift).toLocaleString('es-CO', { minimumFractionDigits: 1 })}</Pill>}
         {cn && <Pill>{formatoNum(cn.n_canastas)} canastas</Pill>}
       </div>
       {reglas.isError && <Alert tone="danger" title="No se pudieron cargar las reglas" role="alert">{mensajeError(reglas.error)}</Alert>}

@@ -1,0 +1,26 @@
+$ venv\Scripts\python -m analisis.a04_descomposicion_caida
+==============================================================================
+ PASO 4 - DESCOMPOSICIÓN DE LA CAÍDA
+==============================================================================
+
+--- Descomposición de la caída (día casi sin pedidos = 5 pedidos o menos) ---
+Pedidos por día abierto: base 16,46 -> caída 13,11  (diferencia 3,35)
+Días casi sin pedidos: base 0 de 106, caída 9 de 62
+
+Componente                    Pedidos/día ab.  % de la caída
+----------------------------  ---------------  -------------
+(a) Domicilios perdidos                  0,84         25,2 %
+(b) Días casi sin pedidos                1,68         50,0 %
+(c) Demanda en días normales             0,83         24,8 %
+Total de la caída                        3,35        100,0 %
+
+La suma de los tres componentes cuadra con la caída total: sí
+
+--- Sensibilidad a la definición de día anómalo ---
+Definición                      Días  (a) Domicilios  (b) Días vacíos  (c) Demanda
+------------------------------  ----  --------------  ---------------  -----------
+<= 5 pedidos (principal)           9          25,2 %           50,0 %       24,8 %
+Tukey base + caída (valla 1,5)     1          25,2 %            5,8 %       69,0 %
+Tukey solo base (valla 2,5)        4          25,2 %           22,9 %       51,9 %
+
+Gráfica guardada: analisis/salidas/a04_descomposicion_caida_cascada_caida.png

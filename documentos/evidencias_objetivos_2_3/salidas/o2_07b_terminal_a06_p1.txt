@@ -1,0 +1,44 @@
+$ venv\Scripts\python -m analisis.a06_venta_cruzada
+==============================================================================
+ PASO 6 - VENTA CRUZADA
+==============================================================================
+
+--- Tamaño de la canasta (productos distintos por pedido pagado) ---
+Productos distintos  Pedidos  % de pedidos
+-------------------  -------  ------------
+1                      2.099        69,6 %
+2                        548        18,2 %
+3                        224         7,4 %
+4 o más                  146         4,8 %
+
+Pedidos con 2 o más productos distintos: 918 de 3.017 (30,4 %); promedio 1,52 productos por pedido.
+
+--- Reglas Apriori por producto: soporte >= 0,005, confianza >= 0,15, lift > 1 ---
+Número de reglas: 32
+Si compra                  Entonces compra  Soporte  Confianza  Lift
+--------------------  --------------------  -------  ---------  ----
+Limonada Natural             Mojarra Frita   0,0063      0,179  7,62
+Mojarra Frita             Limonada Natural   0,0063      0,268  7,62
+Jugo Natural FRESA    Pechuga a la Plancha   0,0070      0,223  7,09
+Pechuga a la Plancha    Jugo Natural FRESA   0,0070      0,221  7,09
+Jugo Natural FRESA         Chuleta Apanada   0,0096      0,309  6,84
+Chuleta Apanada         Jugo Natural FRESA   0,0096      0,213  6,84
+Limonada Natural      Pechuga a la Plancha   0,0070      0,198  6,29
+Pechuga a la Plancha      Limonada Natural   0,0070      0,221  6,29
+Porción de Papa                    ½ Pollo   0,0066      0,290  5,00
+Limonada Natural        Jugo Natural FRESA   0,0053      0,151  4,84
+
+--- Reglas Apriori por categoría: soporte >= 0,005, confianza >= 0,15, lift > 1 ---
+Número de reglas: 22
+Si compra               Entonces compra  Soporte  Confianza  Lift
+----------------------  ---------------  -------  ---------  ----
+carta + pollo                   bebidas   0,0136      0,774  4,11
+carta + menu_dia                bebidas   0,0099      0,698  3,71
+carta + hamburguesas            bebidas   0,0192      0,667  3,54
+carta + porciones               bebidas   0,0126      0,633  3,36
+bebidas + hamburguesas            carta   0,0192      0,841  2,89
+bebidas + porciones               carta   0,0126      0,760  2,61
+bebidas                           carta   0,1332      0,708  2,43
+carta                           bebidas   0,1332      0,457  2,43
+carta + promos                  bebidas   0,0089      0,403  2,14
+porciones               bebidas + carta   0,0126      0,281  2,11

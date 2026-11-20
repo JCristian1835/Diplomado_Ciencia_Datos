@@ -1,0 +1,229 @@
+{
+  "poblaciones": {
+    "clientes_registrados": 126,
+    "clientes_identificados_con_pedidos": 123,
+    "clientes_de_domicilio": 121,
+    "identificados_no_domicilio": 2,
+    "registrados_sin_pedidos": 3,
+    "pedidos_de_domicilio_con_cliente": 229,
+    "ultimo_domicilio": "2026-11-13",
+    "fecha_referencia": "2026-11-14"
+  },
+  "rfm_resumen": {
+    "recencia": {
+      "count": 121.0,
+      "mean": 150.165289,
+      "std": 66.750824,
+      "min": 1.0,
+      "25%": 120.0,
+      "50%": 167.0,
+      "75%": 202.0,
+      "max": 236.0
+    },
+    "frecuencia": {
+      "count": 121.0,
+      "mean": 1.892562,
+      "std": 1.371141,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 2.0,
+      "max": 7.0
+    },
+    "monetario": {
+      "count": 121.0,
+      "mean": 76461.157025,
+      "std": 65181.55845,
+      "min": 15500.0,
+      "25%": 39900.0,
+      "50%": 51000.0,
+      "75%": 95000.0,
+      "max": 467800.0
+    }
+  },
+  "segmentos": {
+    "tabla": [
+      {
+        "segmento": "Campeones",
+        "clientes": 10,
+        "pct_clientes": 0.082645,
+        "dinero": 2038800,
+        "pct_dinero": 0.220368,
+        "recencia_media": 76.9,
+        "frecuencia_media": 4.8,
+        "ticket_cliente": 203880.0,
+        "puntaje_r": 4.6,
+        "puntaje_f": 5.0,
+        "puntaje_m": 4.6,
+        "accion": "Reconocerlos y darles un beneficio exclusivo"
+      },
+      {
+        "segmento": "Leales",
+        "clientes": 17,
+        "pct_clientes": 0.140496,
+        "dinero": 2050500,
+        "pct_dinero": 0.221633,
+        "recencia_media": 120.941176,
+        "frecuencia_media": 3.588235,
+        "ticket_cliente": 120617.647059,
+        "puntaje_r": 3.823529,
+        "puntaje_f": 4.294118,
+        "puntaje_m": 4.411765,
+        "accion": "Mantener la relación con un programa de puntos"
+      },
+      {
+        "segmento": "Prometedores",
+        "clientes": 2,
+        "pct_clientes": 0.016529,
+        "dinero": 86000,
+        "pct_dinero": 0.009295,
+        "recencia_media": 63.5,
+        "frecuencia_media": 2.0,
+        "ticket_cliente": 43000.0,
+        "puntaje_r": 4.5,
+        "puntaje_f": 3.0,
+        "puntaje_m": 2.0,
+        "accion": "Invitarlos a un tercer pedido con un combo"
+      },
+      {
+        "segmento": "Necesitan atención",
+        "clientes": 5,
+        "pct_clientes": 0.041322,
+        "dinero": 353900,
+        "pct_dinero": 0.038252,
+        "recencia_media": 164.0,
+        "frecuencia_media": 2.0,
+        "ticket_cliente": 70780.0,
+        "puntaje_r": 3.0,
+        "puntaje_f": 3.0,
+        "puntaje_m": 3.4,
+        "accion": "Recordarles el menú antes de que se enfríen"
+      },
+      {
+        "segmento": "En riesgo",
+        "clientes": 16,
+        "pct_clientes": 0.132231,
+        "dinero": 1732600,
+        "pct_dinero": 0.187272,
+        "recencia_media": 195.8125,
+        "frecuencia_media": 2.1875,
+        "ticket_cliente": 108287.5,
+        "puntaje_r": 1.8125,
+        "puntaje_f": 3.1875,
+        "puntaje_m": 4.1875,
+        "accion": "Campaña de reactivación con oferta personal"
+      },
+      {
+        "segmento": "Nuevos",
+        "clientes": 28,
+        "pct_clientes": 0.231405,
+        "dinero": 1241900,
+        "pct_dinero": 0.134233,
+        "recencia_media": 91.964286,
+        "frecuencia_media": 1.0,
+        "ticket_cliente": 44353.571429,
+        "puntaje_r": 4.5,
+        "puntaje_f": 1.0,
+        "puntaje_m": 2.0,
+        "accion": "Dar la bienvenida y lograr el segundo pedido"
+      },
+      {
+        "segmento": "Una sola vez",
+        "clientes": 43,
+        "pct_clientes": 0.355372,
+        "dinero": 1748100,
+        "pct_dinero": 0.188947,
+        "recencia_media": 202.093023,
+        "frecuencia_media": 1.0,
+        "ticket_cliente": 40653.488372,
+        "puntaje_r": 1.790698,
+        "puntaje_f": 1.0,
+        "puntaje_m": 1.976744,
+        "accion": "Oferta de regreso con envío gratis"
+      }
+    ],
+    "dinero_total": 9251800,
+    "top_clientes": [
+      {
+        "codigo": "C007",
+        "pedidos": 7,
+        "dinero": 467800,
+        "segmento": "Campeones"
+      },
+      {
+        "codigo": "C041",
+        "pedidos": 6,
+        "dinero": 299500,
+        "segmento": "Campeones"
+      },
+      {
+        "codigo": "C014",
+        "pedidos": 6,
+        "dinero": 244900,
+        "segmento": "Campeones"
+      },
+      {
+        "codigo": "C036",
+        "pedidos": 4,
+        "dinero": 238500,
+        "segmento": "Campeones"
+      },
+      {
+        "codigo": "C074",
+        "pedidos": 4,
+        "dinero": 227900,
+        "segmento": "Campeones"
+      }
+    ]
+  },
+  "kmeans": {
+    "silueta_por_k": {
+      "2": 0.466286,
+      "3": 0.506914,
+      "4": 0.538871,
+      "5": 0.483037,
+      "6": 0.49206
+    },
+    "mejor_k": 4,
+    "silueta_mejor": 0.538871,
+    "rand_ajustado_vs_reglas": 0.420947,
+    "semilla": 42,
+    "grupos": [
+      {
+        "clientes": 38,
+        "pct_clientes": 0.31405,
+        "recencia_mediana": 168.0,
+        "frecuencia_mediana": 3.0,
+        "gasto_mediano": 114100.0,
+        "pct_dinero": 0.484825
+      },
+      {
+        "clientes": 68,
+        "pct_clientes": 0.561983,
+        "recencia_mediana": 178.5,
+        "frecuencia_mediana": 1.0,
+        "gasto_mediano": 41500.0,
+        "pct_dinero": 0.311745
+      },
+      {
+        "clientes": 7,
+        "pct_clientes": 0.057851,
+        "recencia_mediana": 6.0,
+        "frecuencia_mediana": 4.0,
+        "gasto_mediano": 172700.0,
+        "pct_dinero": 0.165741
+      },
+      {
+        "clientes": 8,
+        "pct_clientes": 0.066116,
+        "recencia_mediana": 7.0,
+        "frecuencia_mediana": 1.0,
+        "gasto_mediano": 49700.0,
+        "pct_dinero": 0.03769
+      }
+    ]
+  },
+  "graficas": [
+    "a07_segmentacion_clientes_vs_dinero.png"
+  ]
+}

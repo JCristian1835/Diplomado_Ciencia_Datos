@@ -1,0 +1,27 @@
+$ venv\Scripts\python -m analisis.a03_inferencia   # continuación
+--- Chi-cuadrado sin domicilio: mesa vs llevar x periodo ---
+Canal   Base  % base  Caída  % caída
+------  ----  ------  -----  -------
+mesa     675  41,4 %    403   50,5 %
+llevar   955  58,6 %    395   49,5 %
+Chi-cuadrado = 17,57   g.l. = 1   p < 0,0001
+V de Cramér = 0,085   (frecuencia esperada mínima = 354,3; válida si >= 5)
+Conclusión: El canal y el periodo no son independientes: la mezcla de canales cambió (p < 0,05).
+Se excluyen los pedidos 'sin_dato' (menos de 5 en total): su frecuencia esperada sería insuficiente.
+
+--- Kruskal-Wallis: ¿cambian los pedidos según el día de la semana? ---
+Muestra           H  g.l.  valor p  epsilon²  Conclusión (alfa 0,05)
+------------  -----  ----  -------  --------  ----------------------
+Base + caída  10,47     5   0,0631     0,063  sin diferencias claras
+Solo base      9,97     5   0,0760     0,095  sin diferencias claras
+Solo caída    13,75     5   0,0173     0,225         hay diferencias
+epsilon² mide cuánta de la variación de los pedidos explica el día de la semana (0 a 1).
+
+--- Mann-Whitney: ticket por pedido, caída vs base (delta > 0: caída mayor) ---
+Caída: n = 813, media = $ 49.504, mediana = $ 35.000
+Base: n = 1745, media = $ 45.339, mediana = $ 40.000
+Estadístico U = 662.751,5   p = 0,0073
+Tamaño del efecto (delta de Cliff) = -0,066 -> insignificante
+Conclusión: El ticket de la caída es significativamente distinto al del periodo base (p < 0,05).
+Diferencia de medias (caída - base) = $ 4.164   IC 95 % bootstrap: [$ -437 ; $ 9.382]
+Lectura: la mediana y la media se mueven en sentidos opuestos (pocos pedidos muy grandes jalan la media); por eso el efecto es insignificante y el IC de la media puede incluir el 0.

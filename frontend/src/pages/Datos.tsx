@@ -87,7 +87,7 @@ export default function Datos() {
           <CardHeader level={3} icon="cruce" title="Venta cruzada · Apriori" />
           {metricas.isLoading ? <Skeleton ancho="60%" /> : !m?.disponible ? <p className="muted small">Sin ejecutar</p> : (
             <div className="stack">
-              <Stat valor={formatoNum(m.n_reglas)} etiqueta="Reglas (lift > 1,2)" />
+              <Stat valor={formatoNum(m.n_reglas)} etiqueta={d?.canasta?.min_lift == null ? 'Reglas' : `Reglas (lift > ${Number(d.canasta.min_lift).toLocaleString('es-CO', { minimumFractionDigits: 1 })})`} />
               <Stat valor={formatoDec(d?.canasta?.lift_max)} etiqueta="Lift máximo" />
               <small className="muted">{formatoNum(d?.canasta?.n_canastas)} canastas analizadas</small>
             </div>

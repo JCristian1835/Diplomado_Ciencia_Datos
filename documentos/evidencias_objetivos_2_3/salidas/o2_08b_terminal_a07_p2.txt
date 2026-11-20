@@ -1,0 +1,30 @@
+$ venv\Scripts\python -m analisis.a07_segmentacion   # continuación
+--- Cinco clientes con mayor gasto (código anónimo) ---
+Código  Pedidos     Dinero  Segmento 
+------  -------  ---------  ---------
+C007          7  $ 467.800  Campeones
+C041          6  $ 299.500  Campeones
+C014          6  $ 244.900  Campeones
+C036          4  $ 238.500  Campeones
+C074          4  $ 227.900  Campeones
+
+--- K-Means (variables en log y estandarizadas, semilla 42) ---
+k  Silueta          
+-  -------  --------
+2    0,466          
+3    0,507          
+4    0,539  <- mejor
+5    0,483          
+6    0,492          
+
+Perfil de los 4 grupos (medianas):
+Grupo    Clientes  % clientes  Recencia  Pedidos      Gasto  % dinero
+-------  --------  ----------  --------  -------  ---------  --------
+Grupo 1        38      31,4 %       168        3  $ 114.100    48,5 %
+Grupo 2        68      56,2 %       178        1   $ 41.500    31,2 %
+Grupo 3         7       5,8 %         6        4  $ 172.700    16,6 %
+Grupo 4         8       6,6 %         7        1   $ 49.700     3,8 %
+
+Concordancia con los segmentos por reglas (índice de Rand ajustado): 0,421 (1 = idénticos, 0 = azar).
+
+Gráfica guardada: analisis/salidas/a07_segmentacion_clientes_vs_dinero.png

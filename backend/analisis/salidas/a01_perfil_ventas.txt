@@ -1,0 +1,91 @@
+
+==============================================================================
+ PASO 1 - PERFIL DE VENTAS (EDA descriptivo)
+==============================================================================
+
+--- Resumen general ---
+Periodo de datos: 23-03-2026 a 13-11-2026
+Pedidos pagados: 3.017  (no pagados, excluidos: 25)
+Ingresos de pedidos pagados: $ 138.605.100
+Excluidos de las comparaciones: 10 pedidos del 13-nov (día incompleto)
+Pedidos registrados en martes (día de descanso): 5
+
+--- Pedidos, ingresos y ticket por mes (noviembre: 1 al 12) ---
+Mes          Periodo  Pedidos      Ingresos  Ticket prom.  Días abiertos  Pedidos/día ab.
+----------  --------  -------  ------------  ------------  -------------  ---------------
+marzo       Arranque       87   $ 3.554.800      $ 40.860              7             11,7
+abril       Arranque      362  $ 15.119.200      $ 41.766             26             13,9
+mayo            Base      456  $ 19.750.000      $ 43.311             27             16,9
+junio           Base      399  $ 18.554.500      $ 46.503             25             16,0
+julio           Base      458  $ 20.045.700      $ 43.768             27             17,0
+agosto          Base      432  $ 20.767.000      $ 48.072             27             16,0
+septiembre     Caída      349  $ 15.760.900      $ 45.160             25             14,0
+octubre        Caída      332  $ 17.734.400      $ 53.417             27             12,3
+noviembre      Caída      132   $ 6.751.100      $ 51.145             10             13,2
+
+--- Por día de la semana (periodos base + caída; el martes no abre) ---
+Día        Pedidos      Ingresos  Ticket prom.  Ped./día base  Ped./día caída
+---------  -------  ------------  ------------  -------------  --------------
+lunes          380  $ 16.626.600      $ 43.754           16,4             8,5
+miércoles      400  $ 13.578.600      $ 33.946           14,1            14,5
+jueves         422  $ 14.483.200      $ 34.320           15,6            14,2
+viernes        490  $ 22.412.200      $ 45.739           18,2            16,2
+sábado         419  $ 25.121.400      $ 59.956           17,8             9,9
+domingo        447  $ 27.141.600      $ 60.719           16,4            15,1
+
+--- Pedidos por hora (base + caída) - sirve para validar las franjas ---
+Hora   Pedidos  % del total
+-----  -------  -----------
+10:00        1        0,0 %
+11:00       17        0,7 %
+12:00      243        9,5 %
+13:00      452       17,7 %
+14:00      383       15,0 %
+15:00      310       12,1 %
+16:00      211        8,2 %
+17:00      173        6,8 %
+18:00      163        6,4 %
+19:00      190        7,4 %
+20:00      197        7,7 %
+21:00      119        4,7 %
+22:00       73        2,9 %
+23:00       26        1,0 %
+Hora pico: 13:00. Hay un segundo repunte entre las 19 y las 20 h; las franjas fijadas (almuerzo, tarde, noche) separan bien esos dos picos, por eso no se ajustan.
+
+--- Por franja horaria ---
+Franja                    Pedidos  % total  % base  % caída  Ticket prom.
+------------------------  -------  -------  ------  -------  ------------
+Almuerzo (antes de 15 h)    1.096   42,8 %  39,8 %   49,3 %      $ 38.811
+Tarde (15 h a 17:59)          694   27,1 %  28,5 %   24,2 %      $ 48.446
+Noche (desde las 18 h)        768   30,0 %  31,7 %   26,4 %      $ 56.258
+
+--- Por canal (base + caída) ---
+Categoría  Pedidos  Base  % base  Caída  % caída      Ingresos  Ticket prom.
+---------  -------  ----  ------  -----  -------  ------------  ------------
+llevar       1.350   955  54,7 %    395   48,6 %  $ 63.170.600      $ 46.793
+mesa         1.078   675  38,7 %    403   49,6 %  $ 51.316.900      $ 47.604
+domicilio      130   115   6,6 %     15    1,8 %   $ 4.876.100      $ 37.508
+
+--- Por método de pago (base + caída) ---
+Categoría      Pedidos   Base  % base  Caída  % caída      Ingresos  Ticket prom.
+-------------  -------  -----  ------  -----  -------  ------------  ------------
+TRANSFERENCIA    1.493  1.022  58,6 %    471   57,9 %  $ 70.229.800      $ 47.039
+EFECTIVO           943    639  36,6 %    304   37,4 %  $ 42.250.600      $ 44.804
+TARJETA             92     57   3,3 %     35    4,3 %   $ 5.350.500      $ 58.158
+NEQUI               30     27   1,5 %      3    0,4 %   $ 1.532.700      $ 51.090
+
+--- Pedidos por día abierto: estadísticos descriptivos ---
+Estadístico     Base (may-ago)  Caída (sep-12 nov)
+--------------  --------------  ------------------
+Días abiertos              106                  62
+Media                    16,46               13,11
+Mediana                   16,0                13,0
+Desv. estándar            4,50                5,83
+Cuartil 1                 13,0                 9,2
+Cuartil 3                 20,0                17,0
+Mínimo                       7                   1
+Máximo                      30                  24
+
+Variación de la media: -20,3 % (16,46 -> 13,11 pedidos por día abierto)
+
+Gráfica guardada: analisis/salidas/a01_perfil_ventas_pedidos_por_dia_abierto_mes.png

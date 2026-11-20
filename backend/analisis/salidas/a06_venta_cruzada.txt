@@ -1,0 +1,125 @@
+
+==============================================================================
+ PASO 6 - VENTA CRUZADA
+==============================================================================
+
+--- Tamaño de la canasta (productos distintos por pedido pagado) ---
+Productos distintos  Pedidos  % de pedidos
+-------------------  -------  ------------
+1                      2.099        69,6 %
+2                        548        18,2 %
+3                        224         7,4 %
+4 o más                  146         4,8 %
+
+Pedidos con 2 o más productos distintos: 918 de 3.017 (30,4 %); promedio 1,52 productos por pedido.
+
+--- Reglas Apriori por producto: soporte >= 0,005, confianza >= 0,15, lift > 1 ---
+Número de reglas: 32
+Si compra                  Entonces compra  Soporte  Confianza  Lift
+--------------------  --------------------  -------  ---------  ----
+Limonada Natural             Mojarra Frita   0,0063      0,179  7,62
+Mojarra Frita             Limonada Natural   0,0063      0,268  7,62
+Jugo Natural FRESA    Pechuga a la Plancha   0,0070      0,223  7,09
+Pechuga a la Plancha    Jugo Natural FRESA   0,0070      0,221  7,09
+Jugo Natural FRESA         Chuleta Apanada   0,0096      0,309  6,84
+Chuleta Apanada         Jugo Natural FRESA   0,0096      0,213  6,84
+Limonada Natural      Pechuga a la Plancha   0,0070      0,198  6,29
+Pechuga a la Plancha      Limonada Natural   0,0070      0,221  6,29
+Porción de Papa                    ½ Pollo   0,0066      0,290  5,00
+Limonada Natural        Jugo Natural FRESA   0,0053      0,151  4,84
+
+--- Reglas Apriori por categoría: soporte >= 0,005, confianza >= 0,15, lift > 1 ---
+Número de reglas: 22
+Si compra               Entonces compra  Soporte  Confianza  Lift
+----------------------  ---------------  -------  ---------  ----
+carta + pollo                   bebidas   0,0136      0,774  4,11
+carta + menu_dia                bebidas   0,0099      0,698  3,71
+carta + hamburguesas            bebidas   0,0192      0,667  3,54
+carta + porciones               bebidas   0,0126      0,633  3,36
+bebidas + hamburguesas            carta   0,0192      0,841  2,89
+bebidas + porciones               carta   0,0126      0,760  2,61
+bebidas                           carta   0,1332      0,708  2,43
+carta                           bebidas   0,1332      0,457  2,43
+carta + promos                  bebidas   0,0089      0,403  2,14
+porciones               bebidas + carta   0,0126      0,281  2,11
+
+--- Pedidos sin bebida por categoría de plato ---
+Categorías de bebida (products.category): bebidas -> Club Colombia, Coca Cola 1.5L, Coca Cola 237ml vidrio, Coca Cola 250ml, Coca Cola 400ml, Coca Cola Zero 500ml, Coronita, Jugo Natural FRESA, Jugo Natural LULO, Limonada Natural, Poker, Quatro 1.5L, Quatro 400ml, agua con gas, agua sin gas
+Categoría de plato  Pedidos con la categoría  Sin bebida  % sin bebida
+------------------  ------------------------  ----------  ------------
+promos                                   755         708        93,8 %
+menu_dia                               1.033         955        92,4 %
+hamburguesas                             241         172        71,4 %
+pollo                                    434         303        69,8 %
+porciones                                135          85        63,0 %
+carta                                    879         477        54,3 %
+Todos los platos                       3.010       2.449        81,4 %
+Un pedido con platos de varias categorías cuenta en cada una de ellas.
+
+--- Margen por producto (precio real = mediana cobrada; * = costo faltante estimado con la mediana de la categoría) ---
+Producto                   Categoría  Precio real      Costo    Margen  Margen %  Unidades
+----------------------  ------------  -----------  ---------  --------  --------  --------
+Limonada Natural             bebidas     $ 10.000    $ 1.300   $ 8.700    87,0 %       154
+Coca Cola 237ml vidrio       bebidas      $ 3.000      $ 437   $ 2.563    85,4 %        37
+Jugo Natural FRESA           bebidas     $ 10.000    $ 2.300   $ 7.700    77,0 %       149
+Jugo Natural LULO            bebidas     $ 10.000    $ 2.300   $ 7.700    77,0 %        58
+Quatro 1.5L                  bebidas      $ 8.000    $ 3.151   $ 4.849    60,6 %        15
+Coca Cola 250ml              bebidas      $ 3.000    $ 1.202   $ 1.798    59,9 %       101
+Coca Cola Zero 500ml         bebidas      $ 5.000   $ 2.014*   $ 2.986    59,7 %        81
+agua sin gas                 bebidas      $ 3.000   $ 1.208*   $ 1.792    59,7 %        31
+agua con gas                 bebidas      $ 4.000   $ 1.611*   $ 2.389    59,7 %        19
+Quatro 400ml                 bebidas      $ 5.000    $ 2.092   $ 2.908    58,2 %        61
+Coca Cola 400ml              bebidas      $ 5.000    $ 2.500   $ 2.500    50,0 %        75
+Coca Cola 1.5L               bebidas      $ 8.000    $ 4.048   $ 3.952    49,4 %        78
+Coronita                     bebidas      $ 6.500    $ 3.500   $ 3.000    46,2 %        20
+Club Colombia                bebidas      $ 6.500    $ 3.500   $ 3.000    46,2 %        17
+Poker                        bebidas      $ 5.000    $ 3.500   $ 1.500    30,0 %        44
+Chuleta Apanada                carta     $ 30.000    $ 8.279  $ 21.721    72,4 %       182
+Pechuga a la Plancha           carta     $ 27.000    $ 9.479  $ 17.521    64,9 %       110
+Lomo de Cerdo                  carta     $ 27.000    $ 9.479  $ 17.521    64,9 %        44
+papa salada                    carta      $ 5.000   $ 1.766*   $ 3.234    64,7 %         3
+Churrasco                      carta     $ 35.000  $ 14.129*  $ 20.871    59,6 %       415
+Mojarra Frita                  carta     $ 35.000   $ 14.129  $ 20.871    59,6 %        93
+salchipapas mini               carta     $ 15.500   $ 6.535*   $ 8.965    57,8 %         8
+Alitas BBQ                     carta     $ 23.000    $ 9.760  $ 13.240    57,6 %       398
+Salchipapas 3R                 carta     $ 23.000   $ 10.981  $ 12.019    52,3 %       103
+Costillas BBQ                  carta     $ 27.000   $ 16.479  $ 10.521    39,0 %        80
+Hamburguesa de Res      hamburguesas     $ 23.000    $ 8.571  $ 14.429    62,7 %       101
+Hamburguesa de Pollo    hamburguesas     $ 23.000    $ 8.975  $ 14.025    61,0 %        24
+Hamburguesa 3R          hamburguesas     $ 28.000   $ 12.875  $ 15.125    54,0 %       189
+Menú del Día                menu_dia     $ 15.500    $ 5.184  $ 10.316    66,6 %       927
+sopa                        menu_dia      $ 8.000   $ 2.807*   $ 5.193    64,9 %        27
+Almuerzo especial           menu_dia     $ 25.000   $ 8.773*  $ 16.227    64,9 %       310
+Menú del Día Llevar         menu_dia     $ 16.500    $ 6.062  $ 10.438    63,3 %       387
+Bandeja con Pollo              pollo     $ 23.000    $ 5.993  $ 17.007    73,9 %       180
+Huevo                          pollo      $ 2.500     $ 840*   $ 1.660    66,4 %        18
+¼ Pollo                        pollo     $ 12.000    $ 4.167   $ 7.833    65,3 %        23
+1 Pollo                        pollo     $ 39.900   $ 16.800  $ 23.100    57,9 %       124
+½ Pollo                        pollo     $ 23.000    $ 9.843  $ 13.157    57,2 %       176
+Porción de Arroz           porciones      $ 4.000      $ 447   $ 3.553    88,8 %        67
+Porción de Ensalada        porciones      $ 8.000      $ 900   $ 7.100    88,8 %        29
+Porción de Papa            porciones      $ 8.000    $ 1.840   $ 6.160    77,0 %        77
+decoracion                 porciones     $ 15.000    $ 7.000   $ 8.000    53,3 %         2
+Promo 20 Alitas               promos     $ 45.000   $ 17.838  $ 27.162    60,4 %       244
+Promo 2 Hamburguesas          promos     $ 40.000   $ 17.142  $ 22.858    57,1 %       145
+Combo Pollo al Horno          promos     $ 49.900   $ 22.281  $ 27.619    55,3 %       450
+
+--- Hallazgos de calidad del catálogo (se usa el precio real y un costo estimado) ---
+Producto         Hallazgo                             Precio lista  Precio real  Costo registrado  Costo usado
+---------------  -----------------------------------  ------------  -----------  ----------------  -----------
+Churrasco        costo registrado >= precio de lista      $ 40.000     $ 35.000          $ 40.000     $ 14.129
+Chuleta Apanada  precio de lista distinto al cobrado     $ 350.000     $ 30.000           $ 8.279      $ 8.279
+sopa             42 % de las ventas con otro precio        $ 8.000      $ 8.000               $ 0      $ 2.807
+Criterios: costo >= precio de lista; precio de lista a más de 20 % del cobrado; más de 30 % de las ventas a un precio que se aparta más de 20 % del real.
+
+--- Combos sugeridos: plato + bebida, lift >= 2, los 5 más frecuentes (precio = 90 % de la suma de precios reales) ---
+Pares plato + bebida con lift >= 2: 14
+Plato                          Bebida  Soporte  Lift  Suma precios  Precio combo     Costo    Margen  Margen %
+---------------  --------------------  -------  ----  ------------  ------------  --------  --------  --------
+Churrasco            Limonada Natural   0,0149  4,28      $ 45.000      $ 40.500  $ 15.429  $ 25.071    61,9 %
+Churrasco          Jugo Natural FRESA   0,0116  3,76      $ 45.000      $ 40.500  $ 16.429  $ 24.071    59,4 %
+Churrasco              Coca Cola 1.5L   0,0109  4,32      $ 43.000      $ 38.700  $ 18.177  $ 20.523    53,0 %
+Chuleta Apanada    Jugo Natural FRESA   0,0096  6,84      $ 40.000      $ 36.000  $ 10.579  $ 25.421    70,6 %
+Churrasco        Coca Cola Zero 500ml   0,0083  4,07      $ 40.000      $ 36.000  $ 16.143  $ 19.857    55,2 %
+
+Gráfica guardada: analisis/salidas/a06_venta_cruzada_pedidos_sin_bebida.png

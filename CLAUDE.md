@@ -10,11 +10,12 @@ Lee siempre `PLAN.md` (fuente de verdad), `documento_srs_especificaci_n_t_cnica.
 ## Comandos
 - Backend (desde `backend/`): `venv\Scripts\python -m uvicorn app.main:app --port 8010`; pruebas: `venv\Scripts\python -m pytest -q`.
 - Frontend (desde `frontend/`): `npm run dev`, `npm run build` (tsc + vite), `npm run lint` (oxlint).
+- Análisis de los objetivos 2 y 3 (desde `backend/`): `venv\Scripts\python -m analisis.correr_todo`; lee `red_rooster.db` en solo lectura y escribe en `backend/analisis/salidas/`.
 - Todo junto: `iniciar_sistema.bat`.
 - Credenciales demo: `admin` / `admin123` (configurables en `backend/.env`).
 
 ## Convenciones backend
-- Python 3.13 en `backend/venv`. SQLite en `backend/data/micronegocio.db` (se siembra sola si está vacía).
+- Python 3.13 en `backend/venv`. SQLite: la base activa es `backend/data/red_rooster.db` (datos reales; `micronegocio.db` es la sintética anterior).
 - Hexagonal estricta: `domain/` no importa de `adapters/`; `application/` depende solo de los puertos (`domain/ports.py`); `etl/` y `ml/` trabajan sobre DataFrames y puertos, sin SQLAlchemy.
 - Identificadores y comentarios en español. Fechas naive en hora local (UTC-5).
 - Secretos nunca en el repo: solo `.env.example`; `.env`, `venv`, `data/*.db` están en `.gitignore`.
@@ -30,4 +31,5 @@ Lee siempre `PLAN.md` (fuente de verdad), `documento_srs_especificaci_n_t_cnica.
 ## Datos del caso Red Rooster
 - La fuente es `BD/pedidos.json` (datos reales) junto con `BD/productos.json`; `BD/` no se versiona.
 - La clave HMAC `backend/data/.privacy_key` no se cambia (rompe los códigos de cliente `C###`).
+- Costo faltante (`app/domain/costos.py`: `costo_es_real`, `costo_unitario`): un costo >= precio, 0 o nulo se trata como faltante y se estima con la mediana costo/precio de la categoría; el precio real es la mediana cobrada. Lo usan los KPIs de margen y valor de inventario, `etl/transform.imputar` y el paquete `analisis/`. No volver a tomar costo 0 como real.
 - `backend/data/red_rooster.db` se reconstruye borrándola: el importador no borra pedidos ausentes del origen.

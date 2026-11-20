@@ -46,7 +46,7 @@ echo        INSTALACION Y LANZAMIENTO COMPLETADOS
 echo ===================================================
 echo.
 echo - El Backend y el Frontend se abrieron en ventanas nuevas.
-echo - La primera vez el backend siembra datos sinteticos (unos 20 s).
+echo - La primera vez el backend carga los datos reales de Red Rooster desde BD\pedidos.json.
 echo - No cierres esas ventanas mientras uses la aplicacion.
 echo.
 echo Accede a la plataforma: http://localhost:5180

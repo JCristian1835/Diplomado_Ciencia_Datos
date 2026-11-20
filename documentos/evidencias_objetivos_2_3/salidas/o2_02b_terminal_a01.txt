@@ -1,0 +1,42 @@
+$ venv\Scripts\python -m analisis.a01_perfil_ventas
+==============================================================================
+ PASO 1 - PERFIL DE VENTAS (EDA descriptivo)
+==============================================================================
+
+--- Resumen general ---
+Periodo de datos: 23-03-2026 a 13-11-2026
+Pedidos pagados: 3.017  (no pagados, excluidos: 25)
+Ingresos de pedidos pagados: $ 138.605.100
+Excluidos de las comparaciones: 10 pedidos del 13-nov (día incompleto)
+Pedidos registrados en martes (día de descanso): 5
+
+--- Pedidos, ingresos y ticket por mes (noviembre: 1 al 12) ---
+Mes          Periodo  Pedidos      Ingresos  Ticket prom.  Días abiertos  Pedidos/día ab.
+----------  --------  -------  ------------  ------------  -------------  ---------------
+marzo       Arranque       87   $ 3.554.800      $ 40.860              7             11,7
+abril       Arranque      362  $ 15.119.200      $ 41.766             26             13,9
+mayo            Base      456  $ 19.750.000      $ 43.311             27             16,9
+junio           Base      399  $ 18.554.500      $ 46.503             25             16,0
+julio           Base      458  $ 20.045.700      $ 43.768             27             17,0
+agosto          Base      432  $ 20.767.000      $ 48.072             27             16,0
+septiembre     Caída      349  $ 15.760.900      $ 45.160             25             14,0
+octubre        Caída      332  $ 17.734.400      $ 53.417             27             12,3
+noviembre      Caída      132   $ 6.751.100      $ 51.145             10             13,2
+
+[ ... secciones omitidas en la imagen: Por día de la semana; Pedidos por hora; Por franja horaria; Por canal; Por método de pago ]
+
+--- Pedidos por día abierto: estadísticos descriptivos ---
+Estadístico     Base (may-ago)  Caída (sep-12 nov)
+--------------  --------------  ------------------
+Días abiertos              106                  62
+Media                    16,46               13,11
+Mediana                   16,0                13,0
+Desv. estándar            4,50                5,83
+Cuartil 1                 13,0                 9,2
+Cuartil 3                 20,0                17,0
+Mínimo                       7                   1
+Máximo                      30                  24
+
+Variación de la media: -20,3 % (16,46 -> 13,11 pedidos por día abierto)
+
+Gráfica guardada: analisis/salidas/a01_perfil_ventas_pedidos_por_dia_abierto_mes.png

@@ -1,0 +1,100 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>backend/analisis/a03_inferencia.py</title><style>
+*{box-sizing:border-box}
+body{margin:0;padding:14px;background:#fff;font-family:"Segoe UI",Arial,sans-serif}
+.panel{width:1100px;border:1px solid #b9c0ca;border-radius:8px;overflow:hidden;font-size:15px}
+.cab{display:flex;justify-content:space-between;gap:16px;padding:10px 16px;background:#e9edf2;color:#1f2933;
+  font:600 16px "Segoe UI",Arial,sans-serif;border-bottom:1px solid #b9c0ca}
+.cab .der{font-weight:400;color:#4a5563}
+.codigo{background:#fafbfc;padding:10px 0}
+.codigo table{border-collapse:collapse;width:100%}
+.codigo td{vertical-align:top;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace}
+.codigo td.n{width:58px;text-align:right;padding:0 12px 0 0;color:#7b8594;border-right:1px solid #d9dee5;user-select:none}
+.codigo td.c{padding:0 14px 0 14px;white-space:pre-wrap;overflow-wrap:anywhere;color:#1f2933}
+.codigo tr.dest td{background:#fff3c4}
+.codigo tr.dest td.n{color:#6b5300;font-weight:700}
+.codigo tr.sep td{color:#7b8594;text-align:center;background:#eef1f5;font-style:italic}
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codigo .hll { background-color: #ffffcc }
+.codigo { background: #f8f8f8; }
+.codigo .c { color: #3D7B7B; font-style: italic } /* Comment */
+.codigo .err { border: 1px solid #F00 } /* Error */
+.codigo .k { color: #008000; font-weight: bold } /* Keyword */
+.codigo .o { color: #666 } /* Operator */
+.codigo .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.codigo .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.codigo .cp { color: #9C6500 } /* Comment.Preproc */
+.codigo .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.codigo .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.codigo .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.codigo .gd { color: #A00000 } /* Generic.Deleted */
+.codigo .ge { font-style: italic } /* Generic.Emph */
+.codigo .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codigo .gr { color: #E40000 } /* Generic.Error */
+.codigo .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codigo .gi { color: #008400 } /* Generic.Inserted */
+.codigo .go { color: #717171 } /* Generic.Output */
+.codigo .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codigo .gs { font-weight: bold } /* Generic.Strong */
+.codigo .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codigo .gt { color: #04D } /* Generic.Traceback */
+.codigo .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codigo .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codigo .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codigo .kp { color: #008000 } /* Keyword.Pseudo */
+.codigo .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codigo .kt { color: #B00040 } /* Keyword.Type */
+.codigo .m { color: #666 } /* Literal.Number */
+.codigo .s { color: #BA2121 } /* Literal.String */
+.codigo .na { color: #687822 } /* Name.Attribute */
+.codigo .nb { color: #008000 } /* Name.Builtin */
+.codigo .nc { color: #00F; font-weight: bold } /* Name.Class */
+.codigo .no { color: #800 } /* Name.Constant */
+.codigo .nd { color: #A2F } /* Name.Decorator */
+.codigo .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.codigo .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.codigo .nf { color: #00F } /* Name.Function */
+.codigo .nl { color: #767600 } /* Name.Label */
+.codigo .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.codigo .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codigo .nv { color: #19177C } /* Name.Variable */
+.codigo .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.codigo .w { color: #BBB } /* Text.Whitespace */
+.codigo .mb { color: #666 } /* Literal.Number.Bin */
+.codigo .mf { color: #666 } /* Literal.Number.Float */
+.codigo .mh { color: #666 } /* Literal.Number.Hex */
+.codigo .mi { color: #666 } /* Literal.Number.Integer */
+.codigo .mo { color: #666 } /* Literal.Number.Oct */
+.codigo .sa { color: #BA2121 } /* Literal.String.Affix */
+.codigo .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codigo .sc { color: #BA2121 } /* Literal.String.Char */
+.codigo .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codigo .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codigo .s2 { color: #BA2121 } /* Literal.String.Double */
+.codigo .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.codigo .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codigo .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.codigo .sx { color: #008000 } /* Literal.String.Other */
+.codigo .sr { color: #A45A77 } /* Literal.String.Regex */
+.codigo .s1 { color: #BA2121 } /* Literal.String.Single */
+.codigo .ss { color: #19177C } /* Literal.String.Symbol */
+.codigo .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codigo .fm { color: #00F } /* Name.Function.Magic */
+.codigo .vc { color: #19177C } /* Name.Variable.Class */
+.codigo .vg { color: #19177C } /* Name.Variable.Global */
+.codigo .vi { color: #19177C } /* Name.Variable.Instance */
+.codigo .vm { color: #19177C } /* Name.Variable.Magic */
+.codigo .il { color: #666 } /* Literal.Number.Integer.Long */
+.term{background:#1b1f27;color:#d9dee7;padding:12px 18px 16px}
+.term pre{margin:0;font:15px/1.5 Consolas,"Cascadia Mono","Courier New",monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .pr{color:#7ee787}
+.term .cm{color:#f0f3f6;font-weight:700}
+.term .nota{color:#8b98a9}
+.term .hl{background:#33405a;display:inline-block;width:100%}
+.cab.osc{background:#2b313c;color:#e6eaf0;border-bottom:1px solid #12151b}
+.cab.osc .der{color:#9aa7b8}
+svg text{font-family:"Segoe UI",Arial,sans-serif}
+</style></head><body><div class="panel"><div class="cab"><span>backend/analisis/a03_inferencia.py</span><span class="der">líneas 19–28 · 35–39 · 42–45 · 92–96</span></div><div class="codigo"><table><tr><td class="n">19</td><td class="c"><span class="k">def</span><span class="w"> </span><span class="nf">magnitud</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span></td></tr><tr><td class="n">20</td><td class="c"><span class="w">    </span><span class="sd">"""Interpretación habitual del delta de Cliff (Romano et al., 2006)."""</span></td></tr><tr class="dest"><td class="n">21</td><td class="c">    <span class="n">delta</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span></td></tr><tr><td class="n">22</td><td class="c">    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.147</span><span class="p">:</span></td></tr><tr><td class="n">23</td><td class="c">        <span class="k">return</span> <span class="s2">"insignificante"</span></td></tr><tr><td class="n">24</td><td class="c">    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.33</span><span class="p">:</span></td></tr><tr><td class="n">25</td><td class="c">        <span class="k">return</span> <span class="s2">"pequeño"</span></td></tr><tr><td class="n">26</td><td class="c">    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;</span> <span class="mf">0.474</span><span class="p">:</span></td></tr><tr><td class="n">27</td><td class="c">        <span class="k">return</span> <span class="s2">"mediano"</span></td></tr><tr><td class="n">28</td><td class="c">    <span class="k">return</span> <span class="s2">"grande"</span></td></tr><tr class="sep"><td class="n">⋯</td><td class="c">⋯</td></tr><tr><td class="n">35</td><td class="c"><span class="k">def</span><span class="w"> </span><span class="nf">mann_whitney</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span></td></tr><tr><td class="n">36</td><td class="c"><span class="w">    </span><span class="sd">"""U de Mann-Whitney bilateral y delta de Cliff (positivo si `a` tiende a ser mayor que `b`)."""</span></td></tr><tr class="dest"><td class="n">37</td><td class="c">    <span class="n">r</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s2">"two-sided"</span><span class="p">)</span></td></tr><tr class="dest"><td class="n">38</td><td class="c">    <span class="n">delta</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="o">.</span><span class="n">statistic</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span></td></tr><tr><td class="n">39</td><td class="c">    <span class="k">return</span> <span class="p">{</span><span class="s2">"U"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="s2">"delta_cliff"</span><span class="p">:</span> <span class="n">delta</span><span class="p">,</span> <span class="s2">"magnitud"</span><span class="p">:</span> <span class="n">magnitud</span><span class="p">(</span><span class="n">delta</span><span class="p">)}</span></td></tr><tr class="sep"><td class="n">⋯</td><td class="c">⋯</td></tr><tr><td class="n">42</td><td class="c"><span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_diferencia_medias</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rng</span><span class="p">):</span></td></tr><tr><td class="n">43</td><td class="c"><span class="w">    </span><span class="sd">"""IC 95 % percentil de mean(a) - mean(b), remuestreando cada grupo con reemplazo."""</span></td></tr><tr class="dest"><td class="n">44</td><td class="c">    <span class="n">diferencias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">REPLICAS</span><span class="p">)])</span></td></tr><tr><td class="n">45</td><td class="c">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diferencias</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">])</span></td></tr><tr class="sep"><td class="n">⋯</td><td class="c">⋯</td></tr><tr><td class="n">92</td><td class="c">    <span class="n">v</span> <span class="o">=</span> <span class="n">ventas</span><span class="p">[</span><span class="n">ventas</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"base"</span><span class="p">,</span> <span class="s2">"caida"</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">ventas</span><span class="p">[</span><span class="s2">"canal"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">canales</span><span class="p">)]</span></td></tr><tr><td class="n">93</td><td class="c">    <span class="n">cruce</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s2">"canal"</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="s2">"periodo"</span><span class="p">])</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">canales</span><span class="p">,</span> <span class="p">[</span><span class="s2">"base"</span><span class="p">,</span> <span class="s2">"caida"</span><span class="p">]]</span></td></tr><tr class="dest"><td class="n">94</td><td class="c">    <span class="n">res</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">cruce</span><span class="p">)</span></td></tr><tr class="dest"><td class="n">95</td><td class="c">    <span class="n">v_cramer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">statistic</span> <span class="o">/</span> <span class="p">(</span><span class="n">cruce</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">cruce</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span></td></tr><tr><td class="n">96</td><td class="c">    <span class="n">esperado_min</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">expected_freq</span><span class="o">.</span><span class="n">min</span><span class="p">()</span></td></tr></table></div></div></body></html>

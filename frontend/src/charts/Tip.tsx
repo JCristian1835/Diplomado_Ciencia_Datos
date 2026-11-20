@@ -4,7 +4,7 @@ interface Props {
   active?: boolean;
   payload?: { name?: string; value?: number | string; color?: string; payload?: Record<string, unknown> }[];
   label?: string | number;
-  formato?: (v: number) => string;
+  formato?: (v: number, nombre?: string) => string;
   titulo?: (label: string | number | undefined, p: Record<string, unknown> | undefined) => ReactNode;
 }
 
@@ -16,7 +16,7 @@ export function Tip({ active, payload, label, formato, titulo }: Props) {
       <b>{titulo ? titulo(label, payload[0].payload) : String(label ?? payload[0].name ?? '')}</b>
       {payload.map((p, i) => (
         <span key={i} style={{ color: p.color }}>
-          {p.name}: {typeof p.value === 'number' && formato ? formato(p.value) : String(p.value)}
+          {p.name}: {typeof p.value === 'number' && formato ? formato(p.value, p.name) : String(p.value)}
         </span>
       ))}
     </div>

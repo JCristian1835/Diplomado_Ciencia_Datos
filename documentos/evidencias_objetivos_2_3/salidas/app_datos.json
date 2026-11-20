@@ -1,0 +1,114 @@
+{
+  "datos_antes": {
+    "metricas": [
+      "Demanda · XGBoost",
+      "0,52",
+      "MAE (UNIDADES)",
+      "0,57",
+      "R² EN PRUEBA",
+      "Línea base lag-7: MAE 0,6 · 236 días de historia",
+      "Venta cruzada · Apriori",
+      "0",
+      "REGLAS (LIFT > 1,2)",
+      "—",
+      "LIFT MÁXIMO",
+      "3.017 canastas analizadas",
+      "Segmentos · K-Means",
+      "0,54",
+      "COEFICIENTE DE SILUETA",
+      "4",
+      "CLUSTERS (K)",
+      "123 clientes con compras"
+    ],
+    "corridas": 1
+  },
+  "aviso_pipeline": "Pipeline completado en 3,07 s",
+  "datos_despues": {
+    "metricas": [
+      "Demanda · XGBoost",
+      "0,52",
+      "MAE (UNIDADES)",
+      "0,57",
+      "R² EN PRUEBA",
+      "Línea base lag-7: MAE 0,6 · 236 días de historia",
+      "Venta cruzada · Apriori",
+      "32",
+      "REGLAS (LIFT > 1,0)",
+      "7,62",
+      "LIFT MÁXIMO",
+      "3.017 canastas analizadas",
+      "Segmentos · K-Means",
+      "0,54",
+      "COEFICIENTE DE SILUETA",
+      "4",
+      "CLUSTERS (K)",
+      "123 clientes con compras"
+    ],
+    "corridas": 2
+  },
+  "inicio": {
+    "periodo": [],
+    "tarjetas": [
+      [
+        "$ 16.850.900",
+        "VENTAS",
+        "298 ventas · 710 unidades"
+      ],
+      [
+        "$ 56.547",
+        "TICKET PROMEDIO",
+        "Valor medio por venta"
+      ],
+      [
+        "61,16 %",
+        "MARGEN",
+        "$ 10.305.635 de utilidad bruta"
+      ],
+      [
+        "0,22×",
+        "ROTACIÓN",
+        "2,71× anualizada · inventario $ 29.401.680"
+      ]
+    ]
+  },
+  "demanda": {
+    "pastillas": [
+      "MAE 0,52 U.",
+      "R² 0,57",
+      "LÍNEA BASE LAG-7: MAE 0,6",
+      "1.320 OBS. DE PRUEBA (ÚLTIMOS 30 DÍAS)"
+    ]
+  },
+  "cruzada": {
+    "filas": 32,
+    "primeras": [
+      "Limonada Natural Mojarra Frita 0,63 % 17,92 % 7,62",
+      "Mojarra Frita Limonada Natural 0,63 % 26,76 % 7,62",
+      "Jugo Natural FRESA Pechuga a la Plancha 0,7 % 22,34 % 7,09",
+      "Pechuga a la Plancha Jugo Natural FRESA 0,7 % 22,11 % 7,09",
+      "Jugo Natural FRESA Chuleta Apanada 0,96 % 30,85 % 6,84"
+    ]
+  },
+  "segmentos": {
+    "pastillas": [
+      "SILUETA 0,54",
+      "K = 4",
+      "123 CLIENTES IDENTIFICADOS"
+    ],
+    "tooltip": [
+      "C007 · Campeones",
+      "Recencia: 8 días",
+      "Monetario: $ 467.800"
+    ]
+  },
+  "clientes": {
+    "filas": 1,
+    "codigos": [
+      "C001"
+    ]
+  },
+  "swagger": {
+    "codigo": "200",
+    "tiene_codigo_anonimo": true
+  }
+}
